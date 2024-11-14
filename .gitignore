@@ -1,0 +1,33 @@
+# Unity generated files
+Client/[Ll]ibrary/
+Client/[Tt]emp/
+Client/[Oo]bj/
+Client/[Bb]uild/
+Client/[Bb]uilds/
+Client/[Ll]ogs/
+Client/[Uu]ser[Ss]ettings/
+
+# Crash Reports
+Client/[Cc]rash[Rr]eports/
+
+# Visual Studio
+Client/.vs/
+Client/*.csproj
+Client/*.sln
+Client/*.suo
+Client/*.tmp
+Client/*.user
+Client/*.userprefs
+Client/*.pidb
+Client/*.booproj
+Client/*.svd
+Client/[Aa]ssets/**/*.cs.meta
+Client/[Aa]ssets/**/*.js.meta
+
+# Rider
+Client/.idea/
+Client/*.sln.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
