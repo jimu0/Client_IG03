@@ -55,14 +55,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2dc886499c26824283350fa532d087d, type: 3}
+  m_Script: {fileID: 0}
   m_Name: XRGeneralSettingsPerBuildTarget
   m_EditorClassIdentifier: 
-  Keys: 01000000070000000d000000
-  Values:
-  - {fileID: 344535600482597114}
-  - {fileID: -667663475920344640}
-  - {fileID: 9110634573716289243}
 --- !u!114 &344535600482597114
 MonoBehaviour:
   m_ObjectHideFlags: 0
