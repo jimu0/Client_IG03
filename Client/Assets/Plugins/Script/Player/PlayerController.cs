@@ -17,17 +17,20 @@ public class PlayerController : MonoBehaviour
     public float jumpCutMultiplier = 0.5f; // 动态跳跃调整系数
 
     private Rigidbody2D rb;
-    public Animator animator;
+    //public Animator animator;
     private bool isGrounded;
     private float moveInput;
     private float coyoteTimeCounter;
 
     public Transform meshTsf;
+    
+    private PlayerCharacterAction characterAction;//动画模块
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         //animator = GetComponent<Animator>();
+        characterAction = GetComponent<PlayerCharacterAction>();
     }
 
     private void Update()
@@ -59,14 +62,16 @@ public class PlayerController : MonoBehaviour
             velocity = new Vector2(velocity.x, velocity.y * jumpCutMultiplier);
             rb.velocity = velocity;
         }
-
-        // 更新动画参数
-        if (animator != null)
+        
+        // 如果有动画模块，让它处理动画逻辑
+        if (characterAction != null)
         {
-            //Debug.Log(moveInput);
-            animator.SetBool("IsRuning", Mathf.Abs(moveInput)!=0);
-            animator.SetBool("IsGrounded", isGrounded);
+            characterAction.HandleAnimation(isGrounded, moveInput);
         }
+
+
+
+
     }
 
     private void FixedUpdate()
@@ -81,6 +86,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        if (characterAction != null) characterAction.PlayJumpAnimation();
     }
 
     private void OnDrawGizmosSelected()
