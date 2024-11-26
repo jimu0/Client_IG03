@@ -1,101 +1,126 @@
+using Cinemachine;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // 移动速度
+    //public float rotationSpeed = 10f; // 角色旋转速度
     public float jumpForce = 10f; // 跳跃力度
-
-    [Header("Ground Check")]
-    public Transform groundCheckPoint;
-    public float groundCheckRadius = 0.2f;
-    public LayerMask groundLayer;
-
-    [Header("Advanced Settings")]
-    public float coyoteTime = 0.2f; // 跳跃缓冲时间
-    public float jumpCutMultiplier = 0.5f; // 动态跳跃调整系数
-
-    private Rigidbody2D rb;
-    //public Animator animator;
+    public float gravity = -9.8f; // 重力
+    private CharacterController characterController;
+    private Vector3 moveDirection;
+    private float ySpeed; // 角色的垂直速度
     private bool isGrounded;
+    private float moveInputHorizontal; // 水平输入
+    private float moveInputVertical; // 垂直输入
     private float moveInput;
-    private float coyoteTimeCounter;
-
-    public Transform meshTsf;
-    
     private PlayerCharacterAction characterAction;//动画模块
 
+    public Transform  meshTsf;
+    public Transform cameraTsf;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
         characterAction = GetComponent<PlayerCharacterAction>();
+        meshTsf = transform.Find("Mesh");
+
     }
 
     private void Update()
     {
-        // 获取输入
-        moveInput = Input.GetAxisRaw("Horizontal");
-        // 检测是否在地面
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        CheckGrounded();
+        ApplyGravity(true);
+        Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Rotate(); // 角色旋转
+        
+        // 控制动画状态
+        UpdateAnimations();
 
-        // 跳跃缓冲
+    }
+
+    /// <summary>
+    /// 检测地面
+    /// </summary>
+    private void CheckGrounded()
+    {
+        isGrounded = characterController.isGrounded;
+    }
+    
+    /// <summary>
+    /// 施加重力
+    /// </summary>
+    /// <param name="gravitySwitch">重力开关</param>
+    private void ApplyGravity(bool gravitySwitch)
+    {
+        if (gravitySwitch && !isGrounded) ySpeed += gravity * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// 跳跃
+    /// </summary>
+    private void Jump()
+    {
         if (isGrounded)
         {
-            coyoteTimeCounter = coyoteTime;
+            ySpeed = -0.5f; // 给角色一点向下的速度，防止粘在地面上
+            if (Input.GetButtonDown("Jump")) ySpeed = jumpForce;
         }
         else
         {
-            coyoteTimeCounter -= Time.deltaTime;
+            if (Input.GetButtonDown("Jump")) { }
         }
+        // 应用垂直速度
+        moveDirection.y = ySpeed;
+    }
+    
+    /// <summary>
+    /// 移动
+    /// </summary>
+    /// <param name="moveH">左右向量</param>
+    /// <param name="moveV">前后向量</param>
+    private void Move(float moveH, float moveV)
+    {
+        moveInputHorizontal = moveH;
+        moveInputVertical = moveV;
+        Transform moveTransform = transform;
+        Vector3 move = moveTransform.right * moveInputHorizontal + moveTransform.forward * moveInputVertical;
+        moveDirection = move.normalized * moveSpeed;
+        Jump();
+        characterController.Move(moveDirection * Time.deltaTime);
+    }
+    
+    /// <summary>
+    /// 旋转
+    /// </summary>
+    private void Rotate()
+    {
+        // CinemachineBrain cineBrain = null;
+        // if (Camera.main != null) cineBrain = Camera.main.GetComponent<CinemachineBrain>();
+        // if (cineBrain != null)
+        // {
+        //     CinemachineVirtualCamera cineVcam = (CinemachineVirtualCamera)cineBrain.ActiveVirtualCamera;
+        //     if (cineVcam != null) cameraTsf = cineVcam.transform;
+        // }
         
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0)
-        {
-            Jump();
-        }
+        if (Camera.main == null || meshTsf == null) return;
+        Quaternion camQuaternion = cameraTsf.rotation;
+        camQuaternion.x = 0;
+        camQuaternion.z = 0;
+        meshTsf.rotation = camQuaternion;
+    }
 
-        // 动态跳跃调整
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
-        {
-            Vector2 velocity = rb.velocity;
-            velocity = new Vector2(velocity.x, velocity.y * jumpCutMultiplier);
-            rb.velocity = velocity;
-        }
-        
+
+
+    private void UpdateAnimations()
+    {
         // 如果有动画模块，让它处理动画逻辑
         if (characterAction != null)
         {
             characterAction.HandleAnimation(isGrounded, moveInput);
         }
-
-
-
-
     }
-
-    private void FixedUpdate()
-    {
-        // 水平移动
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-        meshTsf.rotation = moveInput != 0 
-            ? Quaternion.Euler(0, moveInput > 0 ? 90 : -90, 0) 
-            : meshTsf.rotation;
-    }
-
-    private void Jump()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        if (characterAction != null) characterAction.PlayJumpAnimation();
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        // 检测地面范围绘制
-        if (groundCheckPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRadius);
-        }
-    }
+    
+    
 }
