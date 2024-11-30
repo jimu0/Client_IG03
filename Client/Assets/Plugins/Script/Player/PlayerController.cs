@@ -1,9 +1,11 @@
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public PawnState selfPos = new(Vector3.zero, new Quaternion(),null);
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // 移动速度
     //public float rotationSpeed = 10f; // 角色旋转速度
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //transform.SetPositionAndRotation(selfPos.Position, Quaternion.identity);
+        //meshTsf.SetPositionAndRotation(Vector3.zero, selfPos.Rotation);
+        
         CheckGrounded();
         ApplyGravity(true);
         Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -40,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    
+    
     /// <summary>
     /// 检测地面
     /// </summary>
@@ -84,11 +91,11 @@ public class PlayerController : MonoBehaviour
     {
         moveInputHorizontal = moveH;
         moveInputVertical = moveV;
-        Transform moveTransform = transform;
-        Vector3 move = moveTransform.right * moveInputHorizontal + moveTransform.forward * moveInputVertical;
+        Vector3 move = selfPos.right * moveInputHorizontal + selfPos.forward * moveInputVertical;
         moveDirection = move.normalized * moveSpeed;
         Jump();
-        characterController.Move(moveDirection * Time.deltaTime);
+        selfPos.SetPosition(moveDirection * Time.deltaTime);
+        characterController.Move(selfPos.Position);
     }
     
     /// <summary>
@@ -108,7 +115,8 @@ public class PlayerController : MonoBehaviour
         Quaternion camQuaternion = cameraTsf.rotation;
         camQuaternion.x = 0;
         camQuaternion.z = 0;
-        meshTsf.rotation = camQuaternion;
+        selfPos.SetRotation(camQuaternion);
+        meshTsf.SetLocalPositionAndRotation(Vector3.zero, selfPos.Rotation);
     }
 
 
