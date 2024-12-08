@@ -18,14 +18,14 @@ public class PlayerController : MonoBehaviour
     private float moveInputHorizontal; // 水平输入
     private float moveInputVertical; // 垂直输入
     private float moveInput;
-    private PlayerCharacterAction characterAction;//动画模块
+    private CharacterAction characterAction;//动画模块
 
     public Transform  meshTsf;
     public Transform cameraTsf;
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        characterAction = GetComponent<PlayerCharacterAction>();
+        characterAction = GetComponent<CharacterAction>();
         meshTsf = transform.Find("Mesh");
 
     }

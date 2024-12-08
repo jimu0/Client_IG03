@@ -17,6 +17,23 @@ public class PawnState
         this.MountObj = mountObj;
     }
 
+    public void SetTsf(Transform tsf)
+    {
+        Position = tsf.position;
+        Rotation = tsf.rotation;
+    }
+    public void SetPos(Vector3 pos,Quaternion rot)
+    {
+        Position = pos;
+        Rotation = rot;
+    }
+    public void SetPos(Vector3 pos,Quaternion rot, GameObject mountObj)
+    {
+        Position = pos;
+        Rotation = rot;
+        MountObj = mountObj;
+    }
+    
     /// <summary>
     /// 更新Pawn的位置。
     /// </summary>
