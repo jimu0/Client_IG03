@@ -992,9 +992,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5556098184358313717}
+  - component: {fileID: 7347307070912757813}
+  - component: {fileID: 4550857337080747130}
   - component: {fileID: 2133682901}
-  - component: {fileID: 5347810827440799656}
-  - component: {fileID: 5894894129152872082}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1021,6 +1021,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7347307070912757813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556098184358313719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e0f8ccdebf264d8260fb5f5a3b326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  jumpForce: 7.2
+  gravity: -9.8
+  meshTsf: {fileID: 5556098183870166596}
+  cameraTsf: {fileID: 4014471920248028592}
+--- !u!114 &4550857337080747130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556098184358313719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a68808909059734eba73ad8e008f29f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4190177328658225903}
 --- !u!143 &2133682901
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1039,39 +1069,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.08, z: 0}
---- !u!114 &5347810827440799656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556098184358313719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdabcff9cb858fb4db4a131c6f9b3788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 10
-  gravity: -9.8
-  meshTsf: {fileID: 5556098183870166596}
-  cameraTsf: {fileID: 8862440083375939465}
---- !u!114 &5894894129152872082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5556098184358313719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a68808909059734eba73ad8e008f29f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4190177328658225903}
-  LandingAudioClip: {fileID: 0}
-  FootstepAudioClips: []
-  FootstepAudioVolume: 0.5
 --- !u!1 &6227226360449274843
 GameObject:
   m_ObjectHideFlags: 0
