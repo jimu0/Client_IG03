@@ -160,6 +160,7 @@ using UnityEngine.InputSystem;
         {
             // 根据移动速度、冲刺速度以及按下冲刺按钮来设置目标速度
             float targetSpeed = input.sprint ? sprintSpeed : moveSpeed;
+            //input.
             //// 一种简单的加速和减速设计，易于删除，替换或迭代
             
             // 注意：Vector2的==运算符使用近似值，因此不容易出现浮点错误，如果没有输入，则比大小更便宜
@@ -196,19 +197,23 @@ using UnityEngine.InputSystem;
             if (input.move != Vector2.zero)
             {
                 targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
                 // 单位旋转到相对于摄像机的朝向
-                if (input.move.y < 0)
+                float targetRotationBack;
+                if (input.move.y >= 0)
                 {
-                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
-                    frontBack = 1.0f;
+                    targetRotationBack = targetRotation;
+                    frontBack = 1;
                 }
                 else
                 {
-                    frontBack = -1.0f;
+                    targetRotationBack = targetRotation + 180f;
+                    frontBack = -1;
                 }
-            }
+                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotationBack, ref rotationVelocity, rotationSmoothTime);
+                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
+            }
+            
             Vector3 targetDirection = Quaternion.Euler(0.0f, targetRotation, 0.0f) * Vector3.forward;
             // 移动单位
             Vector3 dirJump = Vector3.zero;
