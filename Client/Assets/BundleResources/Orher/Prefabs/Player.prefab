@@ -856,14 +856,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5556098184358313719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8e0f8ccdebf264d8260fb5f5a3b326, type: 3}
+  m_Script: {fileID: 11500000, guid: cdabcff9cb858fb4db4a131c6f9b3788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jumpForce: 7.2
+  moveSpeed: 5
+  jumpForce: 10
   gravity: -9.8
-  meshTsf: {fileID: 5556098183870166596}
-  cameraTsf: {fileID: 0}
+  meshTsf: {fileID: 4443990055670217071}
+  cameraTsf: {fileID: 8862440083375939465}
 --- !u!114 &4550857337080747130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +873,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5556098184358313719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a68808909059734eba73ad8e008f29f, type: 3}
+  m_Script: {fileID: 11500000, guid: 991c4b76925dfe240b7e4697c18dc0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4190177328658225903}
