@@ -1,4 +1,4 @@
-Shader "Unlit/NPR"
+Shader "DTYShader/Unlit/NPR"
 {
     
     Properties

@@ -31,3 +31,4 @@ Client/*.sln.iml
 # OS generated files
 .DS_Store
 Thumbs.db
+Client/.vscode
