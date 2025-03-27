@@ -1,0 +1,16 @@
+{
+    "name": "GameConfig",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b48be955427611241bcb6f2a07949c5b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
