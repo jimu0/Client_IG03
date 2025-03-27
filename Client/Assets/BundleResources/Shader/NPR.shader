@@ -35,12 +35,17 @@ Shader "DTYShader/Unlit/NPR"
 
         Pass
         {
+            
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             // make fog work
             #pragma multi_compile_fog
 
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS // 必须保留的阴影
+            #pragma skip_variants _SHADOWS_SOFT         // 跳过软阴影变体
+            //#pragma skip_variants _FOG                  // 跳过雾效变体
+            
             #include "UnityCG.cginc"
 
             struct appdata
@@ -166,6 +171,11 @@ Shader "DTYShader/Unlit/NPR"
             CGPROGRAM
             #pragma vertex vertOutline
             #pragma fragment fragOutline
+            
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS // 必须保留的阴影
+            #pragma skip_variants _SHADOWS_SOFT         // 跳过软阴影变体
+            //#pragma skip_variants _FOG                  // 跳过雾效变体
+            
             #include "UnityCG.cginc"
 
             float _OutlineWidth;
