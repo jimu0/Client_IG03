@@ -25,7 +25,7 @@ public class TmpGameManager : MonoBehaviour
 
 
         //test
-        ResourceManger.LoadSceneAsync("Scene_NPRscence", null);
+        ResourceManger.LoadSceneAsync("Scene_UIScene", null);
     }
 
     private IEnumerator InitAndStart()

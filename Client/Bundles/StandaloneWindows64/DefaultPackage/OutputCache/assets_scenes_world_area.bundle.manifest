@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 715001930
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4278e6aedd3b8ebb4753b61b8d0b48be
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8735aed30a71f6aa0b4d33cf6422e116
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 156
+  Script: {instanceID: 0}
+- Class: 1953259897
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/World/Area/World_Area1_1_TerrainData.asset
+Dependencies: []

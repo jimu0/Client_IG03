@@ -1,0 +1,113 @@
+{
+    "FileVersion": "1.5.2",
+    "EnableAddressable": false,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 1,
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "2025-03-29-73",
+    "AssetList": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/CardGameScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": [
+                3
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/MainScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": [
+                3
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/NPRscence.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": [
+                3
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/TestScene.unity",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/World/Area/World_Area1_1_TerrainData.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Scenes/World/WorldSky_mat.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_scenes.bundle",
+            "UnityCRC": 3792443318,
+            "FileHash": "36914a3c73ba186822524185161e0616",
+            "FileCRC": "a7e5aa7d",
+            "FileSize": 8857187,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_scenes_world_area.bundle",
+            "UnityCRC": 715001930,
+            "FileHash": "c5acfcbd035c0fe8dfb5911dba7ca433",
+            "FileCRC": "e3190228",
+            "FileSize": 354801,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "assets_scenes_world.bundle",
+            "UnityCRC": 3257689016,
+            "FileHash": "09cff1672b0c06b3540c8f81a7aca92d",
+            "FileCRC": "36be58ff",
+            "FileSize": 19599,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        },
+        {
+            "BundleName": "unityshaders.bundle",
+            "UnityCRC": 1366313117,
+            "FileHash": "6b37e9ab4d7a1ac00c7d1274a8e86559",
+            "FileCRC": "64c20313",
+            "FileSize": 42600,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0
+            ]
+        }
+    ]
+}
