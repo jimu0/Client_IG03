@@ -1,0 +1,56 @@
+{
+    "FileVersion": "1.5.2",
+    "EnableAddressable": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": true,
+    "OutputNameStyle": 1,
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "Simulate",
+    "AssetList": [
+        {
+            "Address": "Scene_CardGameScene",
+            "AssetPath": "Assets/Scenes/CardGameScene.unity",
+            "AssetGUID": "02d440a91786b0f43af35bd42f983f43",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "Scene_MainScene",
+            "AssetPath": "Assets/Scenes/MainScene.unity",
+            "AssetGUID": "99c9720ab356a0642a771bea13969a05",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "Scene_NPRscence",
+            "AssetPath": "Assets/Scenes/NPRscence.unity",
+            "AssetGUID": "9fc0d4010bbf28b4594072e72b8655ab",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        },
+        {
+            "Address": "Scene_TestScene",
+            "AssetPath": "Assets/Scenes/TestScene.unity",
+            "AssetGUID": "73856f9a24262f347876451f233c82e1",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependIDs": []
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "defaultpackage_assets_scenes.bundle",
+            "UnityCRC": 0,
+            "FileHash": "00000000000000000000000000000000",
+            "FileCRC": "00000000",
+            "FileSize": 0,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": []
+        }
+    ]
+}
