@@ -21,8 +21,6 @@ Client/*.userprefs
 Client/*.pidb
 Client/*.booproj
 Client/*.svd
-Client/[Aa]ssets/**/*.cs.meta
-Client/[Aa]ssets/**/*.js.meta
 
 # Rider
 Client/.idea/
