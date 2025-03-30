@@ -25,13 +25,21 @@ public class TmpGameManager : MonoBehaviour
 
 
         //test
-        ResourceManger.LoadSceneAsync("Scene_UIScene", null);
+        TimerManager.Register(5f, 
+            () => 
+            {
+                Debug.Log("Change Scene");    
+                ResourceManger.LoadSceneAsync("Scene_UIScene", null);
+            });
     }
 
     private IEnumerator InitAndStart()
     {
         yield return ResourceManger.Init();
         yield return  ConfigManager.Init();
+
+        AudioManager.Init();
+        TimerManager.Init();
 
         GameStart();
     }
