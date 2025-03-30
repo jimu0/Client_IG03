@@ -16,11 +16,13 @@ public partial class Tables
 {
     public PropTable PropTable {get; }
     public ExampleTable ExampleTable {get; }
+    public PawnTable PawnTable {get; }
 
     public Tables(System.Func<string, JSONNode> loader)
     {
         PropTable = new PropTable(loader("proptable"));
         ExampleTable = new ExampleTable(loader("exampletable"));
+        PawnTable = new PawnTable(loader("pawntable"));
         ResolveRef();
     }
     
@@ -28,6 +30,7 @@ public partial class Tables
     {
         PropTable.ResolveRef(this);
         ExampleTable.ResolveRef(this);
+        PawnTable.ResolveRef(this);
     }
 }
 
