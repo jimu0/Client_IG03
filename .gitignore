@@ -30,3 +30,4 @@ Client/*.sln.iml
 .DS_Store
 Thumbs.db
 Client/.vscode
+Client/fmod_editor.log

@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: 
-  sourceBankPath: 
+  sourceProjectPath: ../../Clinet_IG03_fmod/fmodProj/fmod1.fspro
+  sourceBankPath: ../../Clinet_IG03_fmod/fmodProj/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -402,8 +402,11 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - assets
+  - Bank B
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

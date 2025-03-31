@@ -38,7 +38,7 @@ public class TmpGameManager : MonoBehaviour
         yield return ResourceManger.Init();
         yield return  ConfigManager.Init();
 
-        AudioManager.Init();
+        //AudioManager.Init();
         TimerManager.Init();
 
         GameStart();
