@@ -43,3 +43,16 @@ MonoBehaviour:
         FilterRuleName: CollectScene
         AssetTags: 
         UserData: 
+    - GroupName: Audio
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/BundleResources/Audio
+        CollectorGUID: 83d7fdbd8c55fcf42a134b8475341f64
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackRawFile
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

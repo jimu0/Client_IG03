@@ -10,8 +10,6 @@ public static class ConfigManager
     private static Tables tables;
 #if UNITY_EDITOR
     private static string jsonPath = "Assets/Scripts/GameConfig/Json";
-#else
-    private static string jsonPath = Application.streamingAssetsPath;
 #endif
 
     public static IEnumerator Init()
@@ -29,6 +27,10 @@ public static class ConfigManager
 
     private static JSONNode LoadJson(string file)
     {
-        return JSON.Parse(File.ReadAllText($"{jsonPath}/{file}.json", System.Text.Encoding.UTF8));
+//#if UNITY_EDITOR
+//        return JSON.Parse(File.ReadAllText($"{jsonPath}/{file}.json", System.Text.Encoding.UTF8));
+//#else
+        return JSON.Parse(ResourceManger.LoadResSync<TextAsset>("ConfigJson_"+file).text);
+//#endif
     }
 }

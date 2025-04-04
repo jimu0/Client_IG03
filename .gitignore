@@ -31,3 +31,6 @@ Client/*.sln.iml
 Thumbs.db
 Client/.vscode
 Client/fmod_editor.log
+Client/Assets/StreamingAssets
+Client/Assets/StreamingAssets.meta
+Client/Bundles
