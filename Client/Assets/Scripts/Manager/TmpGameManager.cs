@@ -30,6 +30,7 @@ public class TmpGameManager : MonoBehaviour
             () => 
             {
                 Debug.Log("Change Scene");    
+                AudioManager.StopAllSounds();//¹Ø±ÕÉùÒô×ÜÏß
                 ResourceManger.LoadSceneAsync("Scene_UIScene", null);
             });
     }

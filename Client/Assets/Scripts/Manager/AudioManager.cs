@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 using FMODUnity;
 
@@ -65,5 +66,22 @@ public static class AudioManager
     {
         // var path = "";
         // var description = FMODUnity.RuntimeManager.GetEventDescription(path);
+    }
+
+    /// <summary>
+    /// 停止播放声音
+    /// </summary>
+    /// <param name="musicInstance"></param>
+    public static void StopPlaying(EventInstance musicInstance)
+    {
+        musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        musicInstance.release();
+    }
+    
+    // 停止所有声音事件
+    public static void StopAllSounds()
+    {
+        Bus masterBus = RuntimeManager.GetBus("bus:/");
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }

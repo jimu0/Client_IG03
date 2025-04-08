@@ -7,5 +7,5 @@ using UnityEngine;
 /// </summary>
 public static class AudioConst
 {
-    public const string Test = "event:/Ëæ»úÓïÒôplay";
+    public const string Test = "event:/Arpent";
 }

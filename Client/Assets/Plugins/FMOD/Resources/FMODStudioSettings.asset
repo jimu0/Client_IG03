@@ -407,6 +407,8 @@ MonoBehaviour:
   Banks:
   - assets
   - Bank B
+  - "\u4E3B\u754C\u9762\u80CC\u666F"
+  - "\u901A\u7528\u70B9\u51FB"
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

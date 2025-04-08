@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/assets.bank
   Name: assets
   StudioPath: bank:/assets
-  lastModified: 638790439300000000
+  lastModified: 638797436648468317
   FileSizes:
   - Name: Desktop
     Value: 36224
@@ -77,6 +77,28 @@ MonoBehaviour:
   - on
   - off
   Exists: 1
+--- !u!114 &-7676878511461849324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: "bank:/\u4E3B\u754C\u9762\u80CC\u666F.bank"
+  m_EditorClassIdentifier: 
+  Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u4E3B\u754C\u9762\u80CC\u666F.bank"
+  Name: "\u4E3B\u754C\u9762\u80CC\u666F"
+  StudioPath: "bank:/\u4E3B\u754C\u9762\u80CC\u666F"
+  lastModified: 638797437739710976
+  FileSizes:
+  - Name: Desktop
+    Value: 2280736
+  - Name: Mobile
+    Value: 1274624
+  Exists: 1
 --- !u!114 &-7241571888649922857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,13 +114,40 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/Bank B.bank
   Name: Bank B
   StudioPath: bank:/Bank B
-  lastModified: 638790439300000000
+  lastModified: 638797436648503430
   FileSizes:
   - Name: Desktop
     Value: 494
   - Name: Mobile
     Value: 494
   Exists: 1
+--- !u!114 &-7043687357187075087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/back_004
+  m_EditorClassIdentifier: 
+  Path: event:/back_004
+  Guid:
+    Data1: 2013330509
+    Data2: 1248339570
+    Data3: -155973749
+    Data4: 2113998206
+  Banks:
+  - {fileID: -3769736245090596827}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5626408393256713879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +174,28 @@ MonoBehaviour:
   - on
   - off
   Exists: 1
+--- !u!114 &-3769736245090596827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: "bank:/\u901A\u7528\u70B9\u51FB.bank"
+  m_EditorClassIdentifier: 
+  Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u901A\u7528\u70B9\u51FB.bank"
+  Name: "\u901A\u7528\u70B9\u51FB"
+  StudioPath: "bank:/\u901A\u7528\u70B9\u51FB"
+  lastModified: 638797437739919909
+  FileSizes:
+  - Name: Desktop
+    Value: 5056
+  - Name: Mobile
+    Value: 4576
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,9 +213,14 @@ MonoBehaviour:
   - {fileID: -8997115213600954330}
   - {fileID: -7241571888649922857}
   - {fileID: 5018280972016655682}
+  - {fileID: -7676878511461849324}
+  - {fileID: -3769736245090596827}
   EditorEvents:
   - {fileID: 7265750967951918573}
   - {fileID: -8937978313804899538}
+  - {fileID: 5161741008288463386}
+  - {fileID: -7043687357187075087}
+  - {fileID: 609912715838986780}
   EditorParameters:
   - {fileID: 1687164050968434774}
   - {fileID: 1531786801914800405}
@@ -153,7 +229,7 @@ MonoBehaviour:
   - {fileID: 5018280972016655682}
   StringsBanks:
   - {fileID: 811740939546395592}
-  cacheTime: 638790439300000000
+  cacheTime: 638797437739919909
   cacheVersion: 131616
 --- !u!114 &369285304447063890
 MonoBehaviour:
@@ -181,6 +257,33 @@ MonoBehaviour:
   - line
   - rainbow
   Exists: 1
+--- !u!114 &609912715838986780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/confirmation_001
+  m_EditorClassIdentifier: 
+  Path: event:/confirmation_001
+  Guid:
+    Data1: -2101194331
+    Data2: 1110799479
+    Data3: -335549563
+    Data4: 1208846995
+  Banks:
+  - {fileID: -3769736245090596827}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &811740939546395592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,12 +299,12 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638790439300000000
+  lastModified: 638797437739359123
   FileSizes:
   - Name: Desktop
-    Value: 1246
+    Value: 1458
   - Name: Mobile
-    Value: 1246
+    Value: 1458
   Exists: 1
 --- !u!114 &1531786801914800405
 MonoBehaviour:
@@ -298,13 +401,40 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638790439300000000
+  lastModified: 638797437739348983
   FileSizes:
   - Name: Desktop
-    Value: 3073664
+    Value: 2272
   - Name: Mobile
-    Value: 1583456
+    Value: 2272
   Exists: 1
+--- !u!114 &5161741008288463386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Arpent
+  m_EditorClassIdentifier: 
+  Path: event:/Arpent
+  Guid:
+    Data1: -171092323
+    Data2: 1322361163
+    Data3: -1244662137
+    Data4: 1298255000
+  Banks:
+  - {fileID: -7676878511461849324}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7265750967951918573
 MonoBehaviour:
   m_ObjectHideFlags: 0

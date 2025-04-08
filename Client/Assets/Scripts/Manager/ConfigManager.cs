@@ -28,7 +28,7 @@ public static class ConfigManager
     private static JSONNode LoadJson(string file)
     {
 //#if UNITY_EDITOR
-//        return JSON.Parse(File.ReadAllText($"{jsonPath}/{file}.json", System.Text.Encoding.UTF8));
+        //return JSON.Parse(File.ReadAllText($"{jsonPath}/{file}.json", System.Text.Encoding.UTF8));
 //#else
         return JSON.Parse(ResourceManger.LoadResSync<TextAsset>("ConfigJson_"+file).text);
 //#endif
