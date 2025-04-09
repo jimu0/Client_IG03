@@ -5,10 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerCharacter : MonoBehaviour
 {
-    public PawnState selfPos = new(Vector3.zero, new Quaternion(),null);
+    public PawnState selfState = new(Vector3.zero, new Quaternion(),null);
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // 移动速度
-    //public float rotationSpeed = 10f; // 角色旋转速度
     public float jumpForce = 10f; // 跳跃力度
     public float gravity = -9.8f; // 重力
     private CharacterController characterController;
@@ -18,7 +17,11 @@ public class PlayerCharacter : MonoBehaviour
     private float moveInputHorizontal; // 水平输入
     private float moveInputVertical; // 垂直输入
     private float moveInput;
-    private CharacterAction characterAction;//动画模块
+    
+    [SerializeField] private float rotationSpeed = 720f; // 旋转速度
+    private float targetYRotation; // 目标模型的当前朝向角度
+
+    private CharacterAction characterAction; // 动画模块
 
     public Transform  meshTsf;
     public Transform cameraTsf;
@@ -32,17 +35,13 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Update()
     {
-        //transform.SetPositionAndRotation(selfPos.Position, Quaternion.identity);
-        //meshTsf.SetPositionAndRotation(Vector3.zero, selfPos.Rotation);
-        
         CheckGrounded();
         ApplyGravity(true);
-        Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetMouseButton(1)) Rotate(); // 角色旋转
+        //Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Move(Input.GetAxisRaw("Horizontal"), 0);
+        //if (Input.GetMouseButton(1)) Rotate(); // 3D环境的角色旋转响应
         moveInput = characterController.velocity.magnitude;
         UpdateAnimations();// 控制动画状态
-
     }
 
     
@@ -91,11 +90,14 @@ public class PlayerCharacter : MonoBehaviour
     {
         moveInputHorizontal = moveH;
         moveInputVertical = moveV;
-        Vector3 move = selfPos.right * moveInputHorizontal + selfPos.forward * moveInputVertical;
+        Vector3 move = selfState.right * moveInputHorizontal + selfState.forward * moveInputVertical;
         moveDirection = move.normalized * moveSpeed;
+
+        UpdateRotation();
+        
         Jump();
-        selfPos.SetPosition(moveDirection * Time.deltaTime);
-        characterController.Move(selfPos.Position);
+        selfState.SetPosition(moveDirection * Time.deltaTime);
+        characterController.Move(selfState.Position);
     }
     
     /// <summary>
@@ -107,12 +109,35 @@ public class PlayerCharacter : MonoBehaviour
         Quaternion camQuaternion = cameraTsf.rotation;
         camQuaternion.x = 0;
         camQuaternion.z = 0;
-        selfPos.SetRotation(camQuaternion);
-        meshTsf.SetLocalPositionAndRotation(Vector3.zero, selfPos.Rotation);
+        selfState.SetRotation(camQuaternion);
+        meshTsf.SetLocalPositionAndRotation(Vector3.zero, selfState.Rotation);
     }
 
 
+    /// <summary>
+    /// 更新模型朝向
+    /// </summary>
+    private void UpdateRotation()
+    {
+        float rotSpeed;
+        float currentYAngle = meshTsf.eulerAngles.y;
+        if (isGrounded)
+        {
+            if (Mathf.Abs(moveInputHorizontal) > 0.1f) targetYRotation = (moveInputHorizontal > 0) ? 0f : 180f;
+            rotSpeed = rotationSpeed;
+        }
+        else
+        {
+            rotSpeed = 1250f; // 置空时用极快的转向归位到跳起前的朝向
+        }
+        if (!(Mathf.Abs(Mathf.DeltaAngle(currentYAngle, targetYRotation)) > 0.5f)) return; // 微小阈值避免抖动
+        float newYAngle = Mathf.MoveTowardsAngle(currentYAngle, targetYRotation, rotSpeed * Time.deltaTime);
+        meshTsf.rotation = Quaternion.Euler(0, newYAngle, 0);
+    }
 
+    /// <summary>
+    /// 更新动画
+    /// </summary>
     private void UpdateAnimations()
     {
         // 如果有动画模块，让它处理动画逻辑

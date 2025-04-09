@@ -487,7 +487,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3956387832522023893}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
@@ -496,7 +496,7 @@ Transform:
   - {fileID: 6942923936483416896}
   m_Father: {fileID: 5556098183870166596}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &4190177328658225903
 Animator:
   serializedVersion: 4
@@ -889,7 +889,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5556098183870166597}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -899,7 +899,7 @@ Transform:
   - {fileID: 4443990055670217071}
   m_Father: {fileID: 5556098184358313717}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5556098183985092206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,8 +1034,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  jumpForce: 7.2
+  jumpForce: 5.4
   gravity: -9.8
+  rotationSpeed: 720
   meshTsf: {fileID: 5556098183870166596}
   cameraTsf: {fileID: 4014471920248028592}
 --- !u!114 &4550857337080747130
@@ -1051,6 +1052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4190177328658225903}
+  LandingAudioClip: {fileID: 0}
+  FootstepAudioClips: []
+  FootstepAudioVolume: 0.5
 --- !u!143 &2133682901
 CharacterController:
   m_ObjectHideFlags: 0

@@ -8,13 +8,16 @@ public class PawnState
 {
     public Vector3 Position { get; set; }
     public Quaternion Rotation { get; set; }
+    //public Quaternion MeshRot { get; set; }
     public GameObject MountObj { get; set; }
+
 
     public PawnState(Vector3 position, Quaternion rotation, GameObject mountObj)
     {
         this.Position = position;
         this.Rotation = rotation;
         this.MountObj = mountObj;
+
     }
 
     public void SetTsf(Transform tsf)
