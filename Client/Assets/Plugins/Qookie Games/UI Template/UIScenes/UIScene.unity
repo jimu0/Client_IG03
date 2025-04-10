@@ -2408,8 +2408,8 @@ MonoBehaviour:
   - name: Mini Game 2
     scene: scenemini2
     color: {r: 0.17647056, g: 0.75319976, b: 0.83137256, a: 1}
-  - name: Mini Game 3
-    scene: scenemini3
+  - name: HorizontalRPG
+    scene: Test_HorizontalRPG
     color: {r: 0.83137256, g: 0.22271071, b: 0.17647056, a: 1}
   - name: World3d
     scene: World_Area1_1
@@ -4554,7 +4554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 577983.1}
+  m_AnchoredPosition: {x: 0, y: 584982.06}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &993092077
@@ -6661,7 +6661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 595340.8}
+  m_AnchoredPosition: {x: 0, y: 602339.75}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1473203448

@@ -27,20 +27,52 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Scenes
-        CollectorGUID: e980e8ee518845046961567c2f31988e
-        CollectorType: 0
-        AddressRuleName: AddressByGroupAndFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectScene
-        AssetTags: 
-        UserData: 
       - CollectPath: Assets/Plugins/Qookie Games/UI Template/UIScenes
         CollectorGUID: 131a6b21c8605f84396be9f6751fb6e3
         CollectorType: 0
         AddressRuleName: AddressByGroupAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectScene
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/Actor
+        CollectorGUID: 36fde1fa3d9848841903c1e52656a616
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/Pipeline
+        CollectorGUID: 063cf2b97f75345468aa52fabb4618a2
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/Settings
+        CollectorGUID: 709f11a7f3c4041caa4ef136ea32d874
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/Shader
+        CollectorGUID: 285e39721554a0c468d4709965453eaf
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/Shaders
+        CollectorGUID: 1c85cdf0620d6c74092b86e7fda6b152
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
     - GroupName: Audio

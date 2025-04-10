@@ -14,9 +14,10 @@ Shader "Custom/HalfLambert"
 
         Pass
         {
-            Name "ForwardLit"
-            Tags { "LightMode" = "UniversalForward" }
-
+            Name "DepthNormals"
+            Tags { "LightMode" = "DepthNormals" }
+            //Tags { "LightMode" = "UniversalForward" }
+            
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
