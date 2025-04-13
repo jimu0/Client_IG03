@@ -5,8 +5,12 @@ using UnityTimer;
 
 public static class TimerManager
 {
+    public static int TimerID = 0;
+    private static Dictionary<int, Timer> m_dicTimer;
     public static void Init()
     {
+        TimerID = 0;
+        m_dicTimer = new Dictionary<int, Timer>();
     }
 
     /// <summary>
@@ -20,18 +24,23 @@ public static class TimerManager
     /// <param name="useRealTime">true：不受time scale影响</param>
     /// <param name="autoDestroyOwner">关联的object，object销毁时，timer也自动销毁</param>
     /// <returns></returns>
-    public static Timer Register (float duration, System.Action onComplete, System.Action<float> onUpdate = null,
+    public static int Register (float duration, System.Action onComplete, System.Action<float> onUpdate = null,
         bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null)
     {
-        return Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, autoDestroyOwner);
+        var timer = Timer.Register(duration, onComplete, onUpdate, isLooped, useRealTime, autoDestroyOwner);
+        m_dicTimer.Add(++TimerID, timer);
+        return TimerID;
     }
 
     /// <summary>
     /// 取消->销毁
     /// </summary>
     /// <param name="timer"></param>
-    public static void Cancel(Timer timer)
+    public static void Cancel(int timerID)
     {
+        Timer timer;
+        if (!m_dicTimer.TryGetValue(timerID, out timer))
+            return;
         Timer.Cancel(timer);
     }
 
@@ -39,8 +48,11 @@ public static class TimerManager
     /// 暂停
     /// </summary>
     /// <param name="timer"></param>
-    public static void Pause(Timer timer)
+    public static void Pause(int timerID)
     {
+        Timer timer;
+        if (!m_dicTimer.TryGetValue(timerID, out timer))
+            return;
         Timer.Pause(timer);
     }
 
@@ -48,10 +60,12 @@ public static class TimerManager
     /// 恢复
     /// </summary>
     /// <param name="timer"></param>
-    public static void Resume(Timer timer)
+    public static void Resume(int timerID)
     {
+        Timer timer;
+        if (!m_dicTimer.TryGetValue(timerID, out timer))
+            return;
         Timer.Resume(timer);
-
     }
 
     public static void CancelAllRegisteredTimers()

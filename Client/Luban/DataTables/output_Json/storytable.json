@@ -1,0 +1,51 @@
+[
+  {
+    "id": 10000,
+    "index": 0,
+    "type": 0,
+    "speaker": "主角",
+    "content": "你好"
+  },
+  {
+    "id": 10000,
+    "index": 1,
+    "type": 0,
+    "speaker": "小机器人",
+    "content": "你好"
+  },
+  {
+    "id": 10000,
+    "index": 2,
+    "type": 0,
+    "speaker": "主角",
+    "content": "你是谁"
+  },
+  {
+    "id": 10000,
+    "index": 3,
+    "type": 0,
+    "speaker": "主角",
+    "content": "我是来自神秘星球的机器人2号，我要拯救世界！！"
+  },
+  {
+    "id": 10001,
+    "index": 0,
+    "type": 1,
+    "speaker": "",
+    "content": "这是一个机器人"
+  },
+  {
+    "id": 10001,
+    "index": 1,
+    "type": 1,
+    "speaker": "",
+    "content": "这是一个机器人"
+  },
+  {
+    "id": 10002,
+    "index": 0,
+    "type": 2,
+    "speaker": "",
+    "content": "机械废墟"
+  }
+]

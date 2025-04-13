@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public static class ResourceManger
 {
     private static ResourcePackage package;
+    private static string defaultPackageName = "DefaultPackage";
 
     private static Dictionary<string, AssetOperationHandle> m_dicHandle;
 
@@ -15,19 +16,19 @@ public static class ResourceManger
         m_dicHandle = new Dictionary<string, AssetOperationHandle>();
 
         YooAssets.Initialize();
-        package = YooAssets.CreatePackage("DefaultPackage");
+        package = YooAssets.CreatePackage(defaultPackageName);
         YooAssets.SetDefaultPackage(package);
 
 #if UNITY_EDITOR
         var initParameters = new EditorSimulateModeParameters();
-        initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+        initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(defaultPackageName);
         yield return package.InitializeAsync(initParameters);
 #else
         var initParameters = new OfflinePlayModeParameters();
         yield return package.InitializeAsync(initParameters);
 #endif
 
-        Debug.Log("YooAssets"+ YooAssets.GetPackage("DefaultPackage"));
+        Debug.Log("YooAssets"+ YooAssets.GetPackage(defaultPackageName));
     }
 
     /// <summary>

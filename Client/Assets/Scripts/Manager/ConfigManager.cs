@@ -4,12 +4,18 @@ using UnityEngine;
 using cfg;
 using SimpleJSON;
 using System.IO;
+using System;
 
 public static class ConfigManager
 {
     private static Tables tables;
 #if UNITY_EDITOR
     private static string jsonPath = "Assets/Scripts/GameConfig/Json";
+
+    internal static List<StoryCfg> GetAllStoryCfg()
+    {
+        return tables.StoryTable.DataList;
+    }
 #endif
 
     public static IEnumerator Init()

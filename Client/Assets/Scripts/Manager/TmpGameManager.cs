@@ -23,15 +23,18 @@ public class TmpGameManager : MonoBehaviour
         Debug.Log("Game Start!");
         // 游戏开始的逻辑 显示主菜单等  
 
-
         //test
         AudioManager.PlayOneShot(AudioConst.Test);
-        TimerManager.Register(5f, 
+        TimerManager.Register(1f, 
             () => 
             {
-                Debug.Log("Change Scene");    
-                AudioManager.StopAllSounds();//关闭声音总线
-                ResourceManger.LoadSceneAsync("Scene_UIScene", null);
+                //Debug.Log("Change Scene");
+                //AudioManager.StopAllSounds();//关闭声音总线
+                //ResourceManger.LoadSceneAsync("Scene_UIScene", null);
+
+                Debug.Log("Start Story");
+                StoryManager.StartStory(10000);
+                StoryManager.StartStory(10002);
             });
     }
 
@@ -42,6 +45,8 @@ public class TmpGameManager : MonoBehaviour
 
         AudioManager.Init();
         TimerManager.Init();
+        StoryManager.Init();
+        WorldStateManager.Init();
 
         GameStart();
     }
