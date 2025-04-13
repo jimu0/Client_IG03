@@ -55,7 +55,7 @@ public class ColliderEvent : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (CollisionExitEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (CollisionExitEvent == null || CollisionExitEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
@@ -66,7 +66,7 @@ public class ColliderEvent : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (CollisionStayEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (CollisionStayEvent == null || CollisionStayEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
@@ -77,7 +77,7 @@ public class ColliderEvent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (TriggerEnterEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (TriggerEnterEvent == null || TriggerEnterEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
@@ -88,7 +88,7 @@ public class ColliderEvent : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (TriggerExitEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (TriggerExitEvent == null || TriggerExitEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
@@ -99,7 +99,7 @@ public class ColliderEvent : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (TriggerStayEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (TriggerStayEvent == null || TriggerStayEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
