@@ -39,6 +39,11 @@ public class PlayerCharacter : MonoBehaviour
         ApplyGravity(true);
         //Move(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         Move(Input.GetAxisRaw("Horizontal"), 0);
+        // 强制固定Z轴位置
+        Vector3 fixedPosition = transform.position;
+        fixedPosition.z = 0;
+        transform.position = fixedPosition;
+        
         //if (Input.GetMouseButton(1)) Rotate(); // 3D环境的角色旋转响应
         moveInput = characterController.velocity.magnitude;
         UpdateAnimations();// 控制动画状态
