@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public enum EPartnerState
 {
     Follow,
@@ -15,72 +14,60 @@ public enum EPartnerState
 public class PartnerController : MonoBehaviour, IPushable
 {
     public Transform followTarget;
-    public float moveDistance = 1f;
-    public float moveSpeed = 3f;
-    public float followSpeed = 10f;
-    public float gravityValue = -9.8f;
+    private float m_moveDistance => PlayerManager.instance.BoxMoveDistance;
+    private float m_moveSpeed => PlayerManager.instance.BoxMoveSpeed;
+    private float m_followSpeed => 10f;
+    private float m_gravityValue => PlayerManager.instance.GravityValue;
 
-    public float flyMaxDistance = 20f;
-    public float flySpeed = 10f;
+    private float m_flyMaxDistance => PlayerManager.instance.PartnerFlyMaxDistance;
+    private float m_flySpeed => PlayerManager.instance.PartnerFlySpeed;
 
-    private EPartnerState state;
-    private bool flyEndBack;
+    private EPartnerState m_state;
+    private bool m_flyEndBack;
 
     [SerializeField]
-    private IPushable linkedBox;
-    private Collider colider;
+    private IPushable m_linkedBox;
+    private Collider m_colider;
 
-    private Rigidbody rigidbody;
-    private bool isMove;
-    private Vector3 targetPos;
-    private Vector3 moveDirection;
-    private Vector3 curPos;
+    public Rigidbody rigidbody;
+    private Vector3 m_targetPos;
+    private Vector3 m_moveDirection;
+    private Vector3 m_curPos;
+    private float m_activePosY;
+    private bool m_isMoving;
+    private bool m_isGrounded;
     
-    private Vector3 size;
-    private RaycastHit hitInfo;
-    private bool isGrounded;
-    private Vector3 rigidVelocity;
+    private Vector3 m_size;
+    private RaycastHit m_hitInfo;
+    private Vector3 m_rigidVelocity;
     
     public Transform meshTran;
+
     void Start()
     {
-        colider = GetComponent<Collider>();
+        m_colider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
-        size = new Vector3(1,1,1);
-        DoFollow();
+        m_size = new Vector3(1,1,1);
     }
 
-    void Update()
+    public void DoUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            if (state == EPartnerState.Follow)
-                DoShoot(followTarget.forward);
-            else
-                DoFollow();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            DoSwitchActive();
-        }
-
         UpdateMove();
         UpdateGravity();
     }
 
     private void UpdateMove()
     {
-        if(isMove)
+        if(m_isMoving)
         {
-            curPos = Vector3.MoveTowards(curPos, targetPos, Time.deltaTime * (state == EPartnerState.Flying ? flySpeed : moveSpeed));
-            if(curPos == targetPos)
+            m_curPos = Vector3.MoveTowards(m_curPos, m_targetPos, Time.deltaTime * (m_state == EPartnerState.Flying ? m_flySpeed : m_moveSpeed));
+            if(m_curPos == m_targetPos)
             {
-                isMove = false;
-                rigidbody.MovePosition(targetPos);
-                if (state == EPartnerState.Flying)
+                m_isMoving = false;
+                rigidbody.MovePosition(m_targetPos);
+                if (m_state == EPartnerState.Flying)
                 {
-                    if (flyEndBack)
+                    if (m_flyEndBack)
                         DoFollow();
                     else
                         BeBox();
@@ -88,116 +75,180 @@ public class PartnerController : MonoBehaviour, IPushable
             }
             else
             {
-                rigidbody.MovePosition(curPos);
+                rigidbody.MovePosition(m_curPos);
             }
         }
-        else if (state == EPartnerState.Follow)
+        else if (m_state == EPartnerState.Follow)
         {
-            curPos = Vector3.MoveTowards(curPos, followTarget.position, Time.deltaTime * followSpeed);
-            rigidbody.MovePosition(curPos);
+            m_curPos = Vector3.MoveTowards(m_curPos, followTarget.position, Time.deltaTime * m_followSpeed);
+            rigidbody.MovePosition(m_curPos);
         }
     }
 
     private void UpdateGravity()
     {
-        if (isGrounded || state == EPartnerState.BoxActive || state == EPartnerState.BoxActiveWithLink || state == EPartnerState.Flying || state == EPartnerState.Follow)
+        if (m_isGrounded || m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink || m_state == EPartnerState.Flying || m_state == EPartnerState.Follow)
         {
-            rigidVelocity = rigidbody.velocity;
-            rigidVelocity.y = 0;
-            rigidbody.velocity = rigidVelocity;
+            m_rigidVelocity = rigidbody.velocity;
+            m_rigidVelocity.y = 0;
+            rigidbody.velocity = m_rigidVelocity;
         }
         else
         {
-            rigidbody.AddForce(0, gravityValue, 0, ForceMode.Acceleration);
+            rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
         }
     }
 
     private void CheckGround()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, size.y/2+0.01f,  LayerMask.GetMask("Ground", "Pushable"));
+        m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));
+        if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
+            m_isGrounded = transform.position.y < m_activePosY;
         //Debug.Log("isGrounded" + isGrounded);
     }
 
     public bool CanDoAction()
     {
-        return !isMove;
+        return !m_isMoving;
     }
 
-    // k
-    public void DoShoot(Vector3 direction)
+    public bool DoShootOrFollow()
+    {
+        if (m_state == EPartnerState.Follow)
+            return DoShoot(followTarget.forward);
+        else
+            return DoFollow();
+    }
+
+    public bool DoShoot(Vector3 direction)
     {   
         if (!CanDoAction())
-            return;
+            return false;
 
-        if (state != EPartnerState.Follow)
-            return;
+        if (m_state != EPartnerState.Follow)
+            return false;
         
         Ray ray = new Ray(followTarget.position, direction);
         RaycastHit result;
-        float flyDistance = flyMaxDistance;
-        bool hit = Physics.Raycast(ray, out result,flyMaxDistance,  LayerMask.GetMask("Ground", "Pushable"));
+        float flyDistance = m_flyMaxDistance;
+        bool hit = Physics.Raycast(ray, out result,m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));
         if (hit)
         {
-            flyDistance = Mathf.Abs(result.point.x - transform.position.x) - size.x/2;
+            flyDistance = Mathf.Abs(GetHorizontalValue(result.point - transform.position)) - m_size.x/2;
         }
 
         if (flyDistance < 1)
-            return;
+            return false;
 
-        flyEndBack = !hit;
-        moveDirection = direction;
-        targetPos = transform.position + direction * flyDistance;
-        targetPos.x = Mathf.Round(targetPos.x / 0.5f) * 0.5f;
-        targetPos.y = Mathf.Round(targetPos.y / 0.5f) * 0.5f;
-        curPos = transform.position;
-        isMove = true;
+        m_flyEndBack = !hit;
+        m_moveDirection = direction;
+        m_targetPos = transform.position + direction * flyDistance;
+        AlignPosition(ref m_targetPos);
+
+        m_curPos = transform.position;
+        m_isMoving = true;
 
         BeShoot();
+        return true;
     }
 
-    // k
-    public void DoFollow()
+    public void ForceDoFollow()
     {
-        if (!CanDoAction())
-            return;
-
-        if (state == EPartnerState.Follow)
-            return;
-
         GetLink()?.SetLink(null);
         SetLink(null);
-        curPos = transform.position;
-        colider.enabled = false;
+        m_curPos = transform.position;
+        m_colider.enabled = false;
         BeFollow();
     }
 
-    // l    
+    public bool DoFollow()
+    {
+        if (!CanDoAction())
+            return false;
+
+        if (m_state == EPartnerState.Follow)
+            return false;
+
+        GetLink()?.SetLink(null);
+        SetLink(null);
+        m_curPos = transform.position;
+        m_colider.enabled = false;
+        BeFollow();
+        return true;
+    }
+
+    public bool DoActive()
+    {
+        if (!CanDoAction())
+            return false;
+
+        if (m_state != EPartnerState.Box)
+            return false;
+
+        CheckGround();
+        if (!m_isGrounded)
+        {
+            return false;
+        }
+
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit result;
+        bool hit = Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerLink));
+        if (hit)
+        {
+            var other = result.collider.gameObject.GetComponent<IPushable>();
+            if (other != null)
+            {
+                SetLink(other);
+                other.SetLink(this);
+            }
+        }
+
+        DoMove(Vector3.up);
+        m_activePosY = m_targetPos.y;
+        BeActive();
+
+        return true;
+    }
+
+    public bool DoInactive()
+    {
+        if (!CanDoAction())
+            return false;
+
+        if (m_state != EPartnerState.BoxActive && m_state != EPartnerState.BoxActiveWithLink)
+            return false;
+
+        GetLink()?.SetLink(null);
+        SetLink(null);
+        BeInactive();
+
+        return true;
+    }
+
+    /// <summary>
+    /// 暂时废弃
+    /// </summary>
     public void DoSwitchActive()
     {
         if (!CanDoAction())
-        {
-            Debug.Log(" DoSwitchActive 11");
             return;
-        }
 
-        if (state != EPartnerState.Box && state != EPartnerState.BoxActive && state != EPartnerState.BoxActiveWithLink)
-        {
-            Debug.Log(" DoSwitchActive 22" + state);
+        if (m_state != EPartnerState.Box && m_state != EPartnerState.BoxActive && m_state != EPartnerState.BoxActiveWithLink)
             return;
-        }
 
-        if (state == EPartnerState.Box)
+        if (m_state == EPartnerState.Box)
         {
             CheckGround();
-            if (!isGrounded)
+            if (!m_isGrounded)
             {
-                Debug.Log(" DoSwitchActive 33" + isGrounded);
+                //Debug.Log(" DoSwitchActive 33" + isGrounded);
                 return;
             }
 
             Ray ray = new Ray(transform.position, Vector3.down);
             RaycastHit result;
-            bool hit = Physics.Raycast(ray, out result, size.y / 2 + 0.01f, LayerMask.GetMask("Ground", "Pushable"));
+            bool hit = Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerLink));
             if (hit)
             {
                 var other = result.collider.gameObject.GetComponent<IPushable>();
@@ -209,6 +260,7 @@ public class PartnerController : MonoBehaviour, IPushable
             }
 
             DoMove(Vector3.up);
+            m_activePosY = m_targetPos.y;
             BeActive();
         }
         else
@@ -263,24 +315,24 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void BeShoot()
     {
-        state = EPartnerState.Flying;
-        colider.enabled = false;
+        m_state = EPartnerState.Flying;
+        m_colider.enabled = false;
         // todo 模型动画
     }
 
     public void BeBox()
     {
         CheckGround();
-        state = EPartnerState.Box;
-        colider.enabled = true;
+        m_state = EPartnerState.Box;
+        m_colider.enabled = true;
         // todo 模型动画
         meshTran.localScale = Vector3.one;
     }
 
     public void BeFollow()
     {
-        state = EPartnerState.Follow;
-        colider.enabled = false;
+        m_state = EPartnerState.Follow;
+        m_colider.enabled = false;
         // todo 模型动画
         meshTran.localScale = Vector3.one * 0.3f;
     }
@@ -288,16 +340,16 @@ public class PartnerController : MonoBehaviour, IPushable
     public void BeActive()
     {
         CheckGround();
-        state = GetLink() == null ? EPartnerState.BoxActive : EPartnerState.BoxActiveWithLink;
-        colider.enabled = true;
+        m_state = GetLink() == null ? EPartnerState.BoxActive : EPartnerState.BoxActiveWithLink;
+        m_colider.enabled = true;
         // todo 模型动画
     }
 
     public void BeInactive()
     {
         CheckGround();
-        state = EPartnerState.Box;
-        colider.enabled = true;
+        m_state = EPartnerState.Box;
+        m_colider.enabled = true;
         // todo 模型动画
     }
 
@@ -306,20 +358,46 @@ public class PartnerController : MonoBehaviour, IPushable
         CheckGround();
     }
 
+    private float GetHorizontalValue(Vector3 v3)
+    {
+        if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
+            return v3.z;
+
+        //if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
+        //    return v3.y;
+
+        if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
+            return v3.x;
+
+        return 0;
+    }
+
+    private void AlignPosition(ref Vector3 pos)
+    {
+        if((rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
+            pos.x = Mathf.Round(m_targetPos.x / 0.5f) * 0.5f;
+
+        if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
+            pos.y = Mathf.Round(m_targetPos.y / 0.5f) * 0.5f;
+
+        if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
+            pos.z = Mathf.Round(m_targetPos.z / 0.5f) * 0.5f;
+    }
+
     #region IPushable
     public IPushable GetLink()
     {
-        return linkedBox;
+        return m_linkedBox;
     }
 
     public void SetLink(IPushable other)
     {   
-        linkedBox = other;
+        m_linkedBox = other;
     }
 
     public void DoMove(Vector3 direction)
     {
-        if (isMove)
+        if (m_isMoving)
             return;
 
         if (!IsCanMove(direction))
@@ -334,12 +412,11 @@ public class PartnerController : MonoBehaviour, IPushable
             return;
         }
 
-        moveDirection = direction;
-        targetPos = transform.position + direction * moveDistance;
-        targetPos.x = Mathf.Round(targetPos.x / 0.5f) * 0.5f;
-        targetPos.y = Mathf.Round(targetPos.y/0.5f) * 0.5f;
-        curPos = transform.position;
-        isMove = true;
+        m_moveDirection = direction;
+        m_targetPos = transform.position + direction * m_moveDistance;
+        AlignPosition(ref m_targetPos);
+        m_curPos = transform.position;
+        m_isMoving = true;
 
         GetLink()?.DoMove(direction);
         TryMoveNearby();
@@ -355,19 +432,22 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
-        bool isHorizontal = direction.x != 0;
+        float horizontalValue = GetHorizontalValue(direction);
+        bool isHorizontal = horizontalValue != 0;
         Ray ray = new Ray(transform.position, direction);
-        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, LayerMask.GetMask("Ground", "Pushable"));
+        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
         if (results.Length > 0)
         {
             if (isHorizontal)
                 Array.Sort(results, (x,y)=>
                 {
-                    if(x.point.x == y.point.x)
+                    var xValue = GetHorizontalValue(x.point);
+                    var yValue = GetHorizontalValue(y.point);
+                    if (xValue == yValue)
                         return 0;
                     else
-                        return x.point.x < y.point.x ? (int)Mathf.Sign(-direction.x) : (int)Mathf.Sign(direction.x);
-                    
+                        return xValue < yValue ? (int)Mathf.Sign(-horizontalValue) : (int)Mathf.Sign(horizontalValue);
+
                 });
             else
             {
@@ -400,9 +480,9 @@ public class PartnerController : MonoBehaviour, IPushable
             if (!hasGround)
                 return true;
 
-            Debug.Log($"partner IsCanMove {boxCount} {groundPos}");
+            Debug.Log($"partner IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos) - GetHorizontalValue(transform.position))}");
             if (isHorizontal)
-                return Mathf.Abs(groundPos.x - transform.position.x) - boxCount >= 1 - Mathf.Epsilon;
+                return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
             else
                 return Mathf.Abs(groundPos.y - transform.position.y) - boxCount >= 1 - Mathf.Epsilon;
         }
@@ -412,13 +492,13 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void TryMoveNearby()
     {
-        if (Physics.Raycast(transform.position, moveDirection, out hitInfo, size.x / 2 + 0.2f, LayerMask.GetMask("Ground", "Pushable")))
+        if (Physics.Raycast(transform.position, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.2f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
-            var otherBox = hitInfo.transform.GetComponent<IPushable>();
+            var otherBox = m_hitInfo.transform.GetComponent<IPushable>();
             Debug.Log($"partner TryMoveNearby {otherBox}");
             if (otherBox != null)
             {
-                otherBox.DoMove(moveDirection);
+                otherBox.DoMove(m_moveDirection);
             }
         }
     }

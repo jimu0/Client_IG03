@@ -5,31 +5,30 @@ using System;
 
 public class Box : MonoBehaviour, IPushable
 {
-    public float moveDistance = 1f;
-    public float moveSpeed = 3f;
-    public float gravityValue = -9.8f;
+    private float m_moveDistance => PlayerManager.instance.BoxMoveDistance;
+    private float m_moveSpeed => PlayerManager.instance.BoxMoveSpeed;
+    private float m_gravityValue => PlayerManager.instance.GravityValue;
 
-    private Rigidbody rigidbody;
-    private bool isMove;
-    private Vector3 targetPos;
-    private Vector3 moveDirection;
-    private Vector3 curPos;
-    
+    private Rigidbody m_rigidbody;
+    private Collider m_collider;
+    private Vector3 m_targetPos;
+    private Vector3 m_moveDirection;
+    private Vector3 m_curPos;
+    private bool m_isMove;
+    private bool m_isGrounded;
 
-    private Vector3 size;
-    private RaycastHit hitInfo;
-    private bool isGrounded;
-    private Vector3 rigidVelocity;
+    private Vector3 m_size;
+    private RaycastHit m_hitInfo;
+    private Vector3 m_rigidVelocity;
 
     [SerializeField]
-    private IPushable linkedBox;
+    private IPushable m_linkedBox;
     
-
-    void Start()
+    void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        size = new Vector3(1, 1, 1);
-        CheckGround();
+        m_collider = GetComponent<Collider>();
+        m_rigidbody = GetComponent<Rigidbody>();
+        m_size = new Vector3(1, 1, 1);
     }
 
     void Update()
@@ -38,40 +37,46 @@ public class Box : MonoBehaviour, IPushable
         UpdateGravity();
     }
 
+    public void SetPostion(Vector3 vector3)
+    {
+        m_rigidbody.position = vector3;
+        CheckGround();
+    }
+
     private void UpdateMove()
     {
-        if(isMove)
+        if(m_isMove)
         {
-            curPos = Vector3.MoveTowards(curPos, targetPos, Time.deltaTime * moveSpeed);
-            if(curPos == targetPos)
+            m_curPos = Vector3.MoveTowards(m_curPos, m_targetPos, Time.deltaTime * m_moveSpeed);
+            if(m_curPos == m_targetPos)
             {
-                isMove = false;
-                rigidbody.MovePosition(targetPos);
+                m_isMove = false;
+                m_rigidbody.MovePosition(m_targetPos);
             }
             else
             {
-                rigidbody.MovePosition(curPos);
+                m_rigidbody.MovePosition(m_curPos);
             }
         }
     }
 
     private void UpdateGravity()
     {
-        if (isGrounded || GetLink() != null)
+        if (m_isGrounded || GetLink() != null)
         {
-            rigidVelocity = rigidbody.velocity;
-            rigidVelocity.y = 0;
-            rigidbody.velocity = rigidVelocity;
+            m_rigidVelocity = m_rigidbody.velocity;
+            m_rigidVelocity.y = 0;
+            m_rigidbody.velocity = m_rigidVelocity;
         }
         else
         {
-            rigidbody.AddForce(0, gravityValue, 0, ForceMode.Acceleration);
+            m_rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
         }
     }
 
     private void CheckGround()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, size.y/2+0.01f);
+        m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition));
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -101,20 +106,46 @@ public class Box : MonoBehaviour, IPushable
     //    return false;
     //}
 
+    private float GetHorizontalValue(Vector3 v3)
+    {
+        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
+            return v3.z;
+
+        //if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
+        //    return v3.y;
+
+        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
+            return v3.x;
+
+        return 0;
+    }
+
+    private void AlignPosition(ref Vector3 pos)
+    {
+        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
+            pos.x = Mathf.Round(m_targetPos.x / 0.5f) * 0.5f;
+
+        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
+            pos.y = Mathf.Round(m_targetPos.y / 0.5f) * 0.5f;
+
+        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
+            pos.z = Mathf.Round(m_targetPos.z / 0.5f) * 0.5f;
+    }
+
     #region IPushable
     public IPushable GetLink()
     {
-        return linkedBox;
+        return m_linkedBox;
     }
 
     public void SetLink(IPushable other)
     {
-        linkedBox = other;
+        m_linkedBox = other;
     }
 
     public void DoMove(Vector3 direction)
     {
-        if (isMove)
+        if (m_isMove)
             return;
 
         if (!IsCanMove(direction))
@@ -129,12 +160,11 @@ public class Box : MonoBehaviour, IPushable
             return;
         }
 
-        moveDirection = direction;
-        targetPos = transform.position + direction * moveDistance;
-        targetPos.x = Mathf.Round(targetPos.x / 0.5f) * 0.5f;
-        targetPos.y = Mathf.Round(targetPos.y / 0.5f) * 0.5f;
-        curPos = transform.position;
-        isMove = true;
+        m_moveDirection = direction;
+        m_targetPos = transform.position + direction * m_moveDistance;
+        AlignPosition(ref m_targetPos);
+        m_curPos = transform.position;
+        m_isMove = true;
 
         GetLink()?.DoMove(direction);
         TryMoveNearby();
@@ -150,19 +180,22 @@ public class Box : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
-        bool isHorizontal = direction.x != 0;
+        float horizontalValue = GetHorizontalValue(direction);
+        bool isHorizontal = GetHorizontalValue(direction) != 0;
         Ray ray = new Ray(transform.position, direction);
-        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, LayerMask.GetMask("Ground", "Pushable"));
+        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
         if (results.Length > 0)
         {
             if (isHorizontal)
-                Array.Sort(results, (x,y)=>
+                Array.Sort(results, (x, y) =>
                 {
-                    if(x.point.x == y.point.x)
+                    var xValue = GetHorizontalValue(x.point);
+                    var yValue = GetHorizontalValue(y.point);
+                    if (xValue == yValue)
                         return 0;
                     else
-                        return x.point.x < y.point.x ? (int)Mathf.Sign(-direction.x) : (int)Mathf.Sign(direction.x);
-                    
+                        return xValue < yValue ? (int)Mathf.Sign(-horizontalValue) : (int)Mathf.Sign(horizontalValue);
+
                 });
             else
             {
@@ -194,9 +227,9 @@ public class Box : MonoBehaviour, IPushable
 
             if (!hasGround)
                 return true;
-            Debug.Log($"box IsCanMove {boxCount} {groundPos} {Mathf.Abs(groundPos.x - transform.position.x)}");
+            Debug.Log($"box IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos - transform.position))}");
             if (isHorizontal)
-                return Mathf.Abs(groundPos.x - transform.position.x) - boxCount >= 1 - Mathf.Epsilon;
+                return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
             else
                 return Mathf.Abs(groundPos.y - transform.position.y) - boxCount >= 1 - Mathf.Epsilon;
         }
@@ -206,14 +239,14 @@ public class Box : MonoBehaviour, IPushable
 
     public void TryMoveNearby()
     {
-        // todo bug : box 没办法推着伙伴走
-        if (Physics.Raycast(transform.position, moveDirection, out hitInfo, size.x / 2 + 0.2f, LayerMask.GetMask("Ground", "Pushable") ))
+        //Debug.Log($"box TryMoveNearby 11  pos {transform.position + collider.bounds.center}  dir {moveDirection} distance { size.x / 2 + 0.2f}");
+        if (Physics.Raycast(m_collider.bounds.center, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.1f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
-            var otherBox = hitInfo.transform.GetComponent<IPushable>();
-            Debug.Log($"box TryMoveNearby {otherBox}");
+            var otherBox = m_hitInfo.transform.GetComponent<IPushable>();
+            //Debug.Log($"box TryMoveNearby 22 {otherBox}");
             if (otherBox != null)
             {
-                otherBox.DoMove(moveDirection);
+                otherBox.DoMove(m_moveDirection);
             }
         }
     }

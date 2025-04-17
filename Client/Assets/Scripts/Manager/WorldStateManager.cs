@@ -20,6 +20,16 @@ public static class WorldStateManager
         State = new WorldState();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    public static void SetValue(string key, string value)
+    {
+        State.SetValue(key, value);
+    }
+
     public static void SetValues(List<WorldStateKV> list)
     {
         foreach (var item in list)

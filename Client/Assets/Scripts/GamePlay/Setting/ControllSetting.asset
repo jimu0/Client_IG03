@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b1d643510be1a4f9570ba98d6fdc31, type: 3}
+  m_Name: ControllSetting
+  m_EditorClassIdentifier: 
+  settingList:
+  - type: 0
+    keyCode: 32
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0
+  - type: 1
+    keyCode: 106
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0
+  - type: 2
+    keyCode: 107
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0
+  - type: 3
+    keyCode: 107
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0
+  - type: 4
+    keyCode: 108
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0
+  - type: 5
+    keyCode: 108
+    cd: 0
+    commonCdAffected: 0
+    commonCd: 0
+    commonCdGroup: 0

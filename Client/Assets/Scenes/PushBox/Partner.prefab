@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3765382953860712743}
   - component: {fileID: 3765382953860712738}
   - component: {fileID: 3765382953860712737}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Partner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,12 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
-  moveDistance: 1
-  moveSpeed: 3
-  followSpeed: 100
-  gravityValue: -9.8
-  flyMaxDistance: 20
-  flySpeed: 20
+  rigidbody: {fileID: 0}
   meshTran: {fileID: 3765382954388336851}
 --- !u!65 &3765382953860712738
 BoxCollider:
@@ -95,7 +90,7 @@ GameObject:
   - component: {fileID: 3765382954388336851}
   - component: {fileID: 3765382954388336878}
   - component: {fileID: 3765382954388336877}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

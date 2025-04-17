@@ -2,13 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EGameState
+{
+    Menu,
+    Play,
+    Pause,
+}
+
 /// <summary>
 /// 挂到启动场景内gameObject上
 /// </summary>
 public class TmpGameManager : MonoBehaviour
 {
+    public TmpGameManager instance;
+    public EGameState gameState;
+
     void Start()
     {
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         // 各个模块的初始化
@@ -28,14 +39,33 @@ public class TmpGameManager : MonoBehaviour
         TimerManager.Register(1f, 
             () => 
             {
-                //Debug.Log("Change Scene");
-                //AudioManager.StopAllSounds();//关闭声音总线
-                //ResourceManger.LoadSceneAsync("Scene_UIScene", null);
+                Debug.Log("Change Scene");
+                AudioManager.StopAllSounds();//关闭声音总线
+                StartPlay();
 
-                Debug.Log("Start Story");
-                StoryManager.StartStory(10000);
-                StoryManager.StartStory(10002);
+                //Debug.Log("Start Story");
+                //StoryManager.StartStory(10000);
+                //StoryManager.StartStory(10002);
             });
+    }
+
+    public void StartPlay()
+    {
+        gameState = EGameState.Play;
+        ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
+        {
+            LevelManager.instance.EnterLevel("Level_1");
+        });
+    }
+
+    public void Resume()
+    {
+        gameState = EGameState.Play;
+    }
+
+    public void PauseOrNot()
+    {
+        gameState = EGameState.Pause;
     }
 
     private IEnumerator InitAndStart()
@@ -53,7 +83,19 @@ public class TmpGameManager : MonoBehaviour
 
     void Update()
     {
+        if (gameState != EGameState.Play)
+            return;
+
         // 游戏循环
-        // 建议玩法循环由这里控制
+        PlayerManager.instance.PlayerUpdate();
+    }
+
+    void FixedUpdate()
+    {
+        if (gameState != EGameState.Play)
+            return;
+
+        // 游戏循环
+        PlayerManager.instance.PlayerFixedUpdate();
     }
 }

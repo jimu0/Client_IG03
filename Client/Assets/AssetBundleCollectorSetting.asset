@@ -27,8 +27,8 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/Plugins/Qookie Games/UI Template/UIScenes
-        CollectorGUID: 131a6b21c8605f84396be9f6751fb6e3
+      - CollectPath: Assets/Scenes
+        CollectorGUID: e980e8ee518845046961567c2f31988e
         CollectorType: 0
         AddressRuleName: AddressByGroupAndFileName
         PackRuleName: PackDirectory
@@ -99,5 +99,18 @@ MonoBehaviour:
         AddressRuleName: AddressByGroupAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: UI
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/BundleResources/UI
+        CollectorGUID: 5930c849d54ca9e408b17dc10dd5cd86
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 

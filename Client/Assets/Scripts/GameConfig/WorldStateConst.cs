@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class WorldStateConst
 {
-    public const string OpenDoorA = "OpenDoorA";
+    public const string LevelComplete = "LevelComplete";
+    public const string StoryComplete = "StoryComplete";
 }
