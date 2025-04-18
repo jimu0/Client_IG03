@@ -18,10 +18,10 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.6
   clamp:
     m_OverrideState: 1
     m_Value: 65472
@@ -62,7 +62,7 @@ MonoBehaviour:
     m_Value: 0
   outlineColor:
     m_OverrideState: 1
-    m_Value: {r: 0.12482702, g: 0.036311843, b: 0.18867922, a: 1}
+    m_Value: {r: 0.03100377, g: 0.009594156, b: 0.066037714, a: 1}
   outlineThickness:
     m_OverrideState: 1
     m_Value: 1
@@ -113,13 +113,13 @@ MonoBehaviour:
     m_Value: 1
   normalCheckDirection:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   normalMultiplier:
     m_OverrideState: 1
-    m_Value: 11
+    m_Value: 4
   normalBias:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 2
   normalThreshold:
     m_OverrideState: 1
     m_Value: 0
