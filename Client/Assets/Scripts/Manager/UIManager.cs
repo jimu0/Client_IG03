@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
         Instance = this;
         Pool.gameObject.SetActive(false);
         dicPool = new Dictionary<string, List<UIBase>>();
+        hashShowingUI = new HashSet<UIBase>();
     }
 
     /// <summary>
@@ -66,6 +67,18 @@ public class UIManager : MonoBehaviour
         CloseByLayer(EUILayer.Low);
         CloseByLayer(EUILayer.Mid);
         CloseByLayer(EUILayer.Height);
+    }
+
+    public void CloseByName(string UIName)
+    {
+        foreach (var item in hashShowingUI)
+        {
+            if (item.Name.Equals(UIName))
+            {
+                Close(item);
+                break;
+            }
+        }
     }
 
     public void CloseByLayer(EUILayer layer)
@@ -127,7 +140,7 @@ public class UIManager : MonoBehaviour
             default:
                 break;
         }
-
+        hashShowingUI.Add(uiBase);
         uiBase.OnShow(param);
     }
 
@@ -142,5 +155,6 @@ public class UIManager : MonoBehaviour
             dicPool.Add(uiBase.Name, list);
         }
         list.Add(uiBase);
+        hashShowingUI.Remove(uiBase);
     }
 }

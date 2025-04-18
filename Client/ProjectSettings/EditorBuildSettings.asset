@@ -24,7 +24,13 @@ EditorBuildSettings:
     path: Assets/Plugins/Qookie Games/UI Template/UIScenes/Mini Games/World_Area1_1.unity
     guid: 68f239243decbb943be767aaa69093f5
   - enabled: 1
-    path: Assets/Plugins/Qookie Games/UI Template/UIScenes/Mini Games/Test_HorizontalRPG.unity
+    path: Assets/Scenes/TestGamePlayScene.unity
     guid: 93f54c89ae4b20642ae82c466060d08c
+  - enabled: 1
+    path: Assets/Scenes/Level/Level_1.unity
+    guid: 57e6d3a6d2ab9fa43ba673486a44a104
+  - enabled: 1
+    path: Assets/Scenes/Level/Level_2.unity
+    guid: 708abfadf0c059b428ffa197cfda211d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

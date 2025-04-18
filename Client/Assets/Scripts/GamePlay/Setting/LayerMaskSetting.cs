@@ -28,6 +28,11 @@ public enum ELayerMaskUsage
     PartnerLink,
 
     /// <summary>
+    /// »ï°é¼¤»î
+    /// </summary>
+    PartnerActive,
+
+    /// <summary>
     /// Íæ¼Ò´¥·¢Æ÷
     /// </summary>
     TriggerForPlayer,

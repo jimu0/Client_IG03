@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IController
     {
         Move();
         MoveWithPath();
+        DoJump();
         UpdateGravity();
     }
 
@@ -46,32 +47,24 @@ public class PlayerController : MonoBehaviour, IController
         CheckGround();
         if (m_isGrounded)
         {
-            m_playerVelocity.y = -0.1f;
+            m_playerVelocity.y = 0;
         }
-        else
-        {
-            m_playerVelocity.y += gravityValue * Time.deltaTime;
-        }
-        Debug.Log("dojump " + m_playerVelocity.y);
-        //if (m_playerVelocity.y != 0)
-        m_controller.Move(m_playerVelocity * Time.deltaTime);
     }
 
     private void CheckGround()
     {
-        //m_isGrounded = m_controller.isGrounded;
-        m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f + 0.05f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PlayerCollition));
-        //m_isGrounded = ground1 || ground2;
+        m_isGrounded = m_controller.isGrounded;
+        //m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f + 0.05f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PlayerCollition));
     }
 
     bool DoJump()
     {
-        if (!m_isGrounded)
-            return false;
-
-        m_playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
+        if (Input.GetButtonDown("Jump") && m_isGrounded)
+        {
+            m_playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
+        }
+        m_playerVelocity.y += gravityValue * Time.deltaTime;
         m_controller.Move(m_playerVelocity * Time.deltaTime);
-        Debug.Log("dojump " + m_playerVelocity.y);
         return true;
     }
 
@@ -92,7 +85,6 @@ public class PlayerController : MonoBehaviour, IController
 
     public void SetPosition(Vector3 position)
     {
-        //m_controller.Move(position);
         m_controller.enabled = false;
         transform.position = position;
         m_controller.enabled = true;
@@ -158,41 +150,33 @@ public class PlayerController : MonoBehaviour, IController
 #region IController
     bool IController.TryDoAction(EControlType type)
     {
-        switch (type)
-        {
-            case EControlType.Jump:
-                return DoJump();
-                break;
-            case EControlType.PushBox:
-                if (IsJumping())
-                    return false;
-                return DoPushBox();
-                break;
-            case EControlType.ShootPartner:
-                if (IsJumping())
-                    return false;
-                return partner.DoShoot(transform.forward);
-                break;
-            case EControlType.BackPartener:
-                if (IsJumping())
-                    return false;
-                return partner.DoFollow();
-                break;
-            case EControlType.ActivePartner:
-                if (IsJumping())
-                    return false;
-                return partner.DoActive();
-                break;
-            case EControlType.InacitvePartner:
-                if (IsJumping())
-                    return false;
-                return partner.DoInactive();
-                break;
-            default:
-                break;
-        }
+        bool success = false;
+        //if (type == EControlType.Jump)
+        //{
+        //    success = DoJump();
+        //}
 
-        return false;
+        if (type == EControlType.PushBox)
+            if (!IsJumping())
+                success = DoPushBox();
+
+        if (type == EControlType.ShootPartner)
+            if (!IsJumping())
+                success = partner.DoShoot(transform.forward);
+
+        if (type == EControlType.BackPartener)
+            if (!IsJumping())
+                success = partner.DoFollow();
+
+        if (type == EControlType.ActivePartner)
+            if (!IsJumping())
+                success = partner.DoActive();
+
+        if (type == EControlType.InacitvePartner)
+            if (!IsJumping())
+                success = partner.DoInactive();
+
+        return success;
     }
 #endregion
 }

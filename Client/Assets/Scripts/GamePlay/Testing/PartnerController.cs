@@ -85,9 +85,22 @@ public class PartnerController : MonoBehaviour, IPushable
         }
     }
 
+
+    private bool CheckGravityWithState()
+    {
+        if (m_state == EPartnerState.Flying || m_state == EPartnerState.Follow)
+            return true;
+
+        if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
+            return transform.position.y <= m_activePosY;
+
+        return false;
+    }
+
     private void UpdateGravity()
     {
-        if (m_isGrounded || m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink || m_state == EPartnerState.Flying || m_state == EPartnerState.Follow)
+
+        if (m_isGrounded || CheckGravityWithState())
         {
             m_rigidVelocity = rigidbody.velocity;
             m_rigidVelocity.y = 0;
@@ -180,14 +193,21 @@ public class PartnerController : MonoBehaviour, IPushable
     public bool DoActive()
     {
         if (!CanDoAction())
+        {
+            Debug.Log("DoActive 111");
             return false;
+        }
 
         if (m_state != EPartnerState.Box)
+        {
+            Debug.Log("DoActive 222" + m_state);
             return false;
+        }
 
         CheckGround();
         if (!m_isGrounded)
         {
+            Debug.Log("DoActive 333" + m_isGrounded);
             return false;
         }
 

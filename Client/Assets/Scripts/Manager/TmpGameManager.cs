@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public enum EGameState
 /// </summary>
 public class TmpGameManager : MonoBehaviour
 {
-    public TmpGameManager instance;
+    public static TmpGameManager instance;
     public EGameState gameState;
 
     void Start()
@@ -35,18 +36,25 @@ public class TmpGameManager : MonoBehaviour
         // 游戏开始的逻辑 显示主菜单等  
 
         //test
-        AudioManager.PlayOneShot(AudioConst.Test);
-        TimerManager.Register(1f, 
-            () => 
-            {
-                Debug.Log("Change Scene");
-                AudioManager.StopAllSounds();//关闭声音总线
-                StartPlay();
+        //AudioManager.PlayOneShot(AudioConst.Test);
+        //TimerManager.Register(1f, 
+        //    () => 
+        //    {
+                //Debug.Log("Change Scene");
+                //AudioManager.StopAllSounds();//关闭声音总线
+  
+
+                UIManager.Instance.Show("UIMainMenu");
 
                 //Debug.Log("Start Story");
                 //StoryManager.StartStory(10000);
                 //StoryManager.StartStory(10002);
-            });
+            //});
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public void StartPlay()
@@ -54,17 +62,27 @@ public class TmpGameManager : MonoBehaviour
         gameState = EGameState.Play;
         ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
         {
+            UIManager.Instance.CloseByName("UIMainMenu");
+            UIManager.Instance.Show("UIGame");
             LevelManager.instance.EnterLevel("Level_1");
         });
     }
 
+    public void BackToMenu()
+    {
+        UIManager.Instance.CloseByName("UIGame");
+        UIManager.Instance.Show("UIMainMenu");
+    }
+
     public void Resume()
     {
+        UIManager.Instance.CloseByName("UIGamePause");
         gameState = EGameState.Play;
     }
 
-    public void PauseOrNot()
+    public void Pause()
     {
+        UIManager.Instance.Show("UIGamePause");
         gameState = EGameState.Pause;
     }
 
@@ -85,6 +103,9 @@ public class TmpGameManager : MonoBehaviour
     {
         if (gameState != EGameState.Play)
             return;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            LevelManager.instance.ResetLevel();
 
         // 游戏循环
         PlayerManager.instance.PlayerUpdate();

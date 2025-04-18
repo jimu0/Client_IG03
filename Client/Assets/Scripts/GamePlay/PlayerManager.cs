@@ -104,19 +104,19 @@ public class PlayerManager : MonoBehaviour
                 if (!CheckCD(item))
                 {
                     Debug.Log($"CheckCD {item.type} cd{item.cd}");
-                    return;
+                    continue;
                 }
                 
                 if (!CheckCommonCD(item))
                 {
                     Debug.Log($"CheckCommonCD {item.type} cd{item.commonCd}");
-                    return;
+                    continue;
                 }
 
                 if (!playerControler.TryDoAction(item.type))
                 {
                     Debug.Log($"TryDoAction {item.type}");
-                    return;
+                    continue;
                 }
                 
                 RecordCD(item);
