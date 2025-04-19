@@ -63,8 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3487a9f46d284b744b7307d161e1b0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationComponent: {fileID: 5351537599146274892}
+  animationClips:
+  - {fileID: 7400000, guid: ed70add0cb70fe14b91e06a83b1ee787, type: 2}
+  - {fileID: 7400000, guid: 70dcfc4389d7a1b44878250e4efd5db6, type: 2}
   KwhOwn: 0
-  kwhCondition: 2
+  kwhCondition: 1
   linkedDevices: []
 --- !u!1 &7556915697892482712
 GameObject:
