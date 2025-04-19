@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbc47814ff925e4493c1cd48a160fdd, type: 3}
   m_Name: CleanOutline
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   standaloneActive:
     m_OverrideState: 1
     m_Value: 1
