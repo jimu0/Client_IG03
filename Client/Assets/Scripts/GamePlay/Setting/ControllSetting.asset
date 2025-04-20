@@ -22,30 +22,30 @@ MonoBehaviour:
   - type: 1
     keyCode: 106
     cd: 0
-    commonCdAffected: 0
-    commonCd: 0
+    commonCdAffected: 1
+    commonCd: 0.05
     commonCdGroup: 0
   - type: 2
     keyCode: 107
     cd: 0
-    commonCdAffected: 0
-    commonCd: 0
-    commonCdGroup: 0
+    commonCdAffected: 1
+    commonCd: 0.05
+    commonCdGroup: 1
   - type: 3
     keyCode: 107
     cd: 0
-    commonCdAffected: 0
-    commonCd: 0
-    commonCdGroup: 0
+    commonCdAffected: 1
+    commonCd: 0.05
+    commonCdGroup: 1
   - type: 4
     keyCode: 108
     cd: 0
-    commonCdAffected: 0
-    commonCd: 0
-    commonCdGroup: 0
+    commonCdAffected: 1
+    commonCd: 0.05
+    commonCdGroup: 1
   - type: 5
     keyCode: 108
     cd: 0
-    commonCdAffected: 0
-    commonCd: 0
-    commonCdGroup: 0
+    commonCdAffected: 1
+    commonCd: 0.05
+    commonCdGroup: 1

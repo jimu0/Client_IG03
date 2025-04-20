@@ -26,8 +26,7 @@ public class UIGamePause : UIBase
 
         BtnRestart.onClick.AddListener(() =>
         {
-            LevelManager.instance.ResetLevel();
-            Close();
+            TmpGameManager.instance.ResetLevel();
         });
 
         BtnExit.onClick.AddListener(() =>

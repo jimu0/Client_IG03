@@ -5,8 +5,10 @@ using System;
 
 public enum EPartnerState
 {
+    None,
     Follow,
     Flying,
+    FlyAndBack,
     Box,
     BoxActive,
     BoxActiveWithLink,
@@ -16,7 +18,9 @@ public class PartnerController : MonoBehaviour, IPushable
     public Transform followTarget;
     private float m_moveDistance => PlayerManager.instance.BoxMoveDistance;
     private float m_moveSpeed => PlayerManager.instance.BoxMoveSpeed;
-    private float m_followSpeed => 10f;
+    private float m_backTime => PlayerManager.instance.PartnerGoBackTime;
+    private AnimationCurve m_backCurve => PlayerManager.instance.PartnerGoBackCurve;
+    private AnimationCurve m_goAndBackCurve => PlayerManager.instance.PartnerFlyAndGoBackCurve;
     private float m_gravityValue => PlayerManager.instance.GravityValue;
 
     private float m_flyMaxDistance => PlayerManager.instance.PartnerFlyMaxDistance;
@@ -30,9 +34,13 @@ public class PartnerController : MonoBehaviour, IPushable
     private Collider m_colider;
 
     public Rigidbody rigidbody;
-    private Vector3 m_targetPos;
     private Vector3 m_moveDirection;
+
+    private Vector3 m_targetPos;
+    private Vector3 m_moveStartPos;
     private Vector3 m_curPos;
+
+    private float m_actionPassTime;
     private float m_activePosY;
     private bool m_isMoving;
     private bool m_isGrounded;
@@ -42,12 +50,14 @@ public class PartnerController : MonoBehaviour, IPushable
     private Vector3 m_rigidVelocity;
     
     public Transform meshTran;
+    
 
     void Start()
     {
         m_colider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         m_size = new Vector3(1,1,1);
+        DoFollow();
     }
 
     public void DoUpdate()
@@ -67,9 +77,9 @@ public class PartnerController : MonoBehaviour, IPushable
                 rigidbody.MovePosition(m_targetPos);
                 if (m_state == EPartnerState.Flying)
                 {
-                    if (m_flyEndBack)
-                        DoFollow();
-                    else
+                    //if (m_flyEndBack)
+                    //    DoFollow();
+                    //else
                         BeBox();
                 }
             }
@@ -80,15 +90,26 @@ public class PartnerController : MonoBehaviour, IPushable
         }
         else if (m_state == EPartnerState.Follow)
         {
-            m_curPos = Vector3.MoveTowards(m_curPos, followTarget.position, Time.deltaTime * m_followSpeed);
+            m_actionPassTime += Time.deltaTime;
+            var value = m_backCurve.Evaluate(Mathf.Clamp01(m_actionPassTime / m_backTime));
+            m_curPos = Vector3.Lerp(m_moveStartPos, followTarget.position, value);
             rigidbody.MovePosition(m_curPos);
+        }
+        else if (m_state == EPartnerState.FlyAndBack)
+        {
+            m_actionPassTime += Time.deltaTime;
+            var value = m_goAndBackCurve.Evaluate(Mathf.Clamp01(m_actionPassTime / m_backTime/2));
+            m_curPos = Vector3.Lerp(m_moveStartPos, m_targetPos, value);
+            rigidbody.MovePosition(m_curPos);
+            if (m_actionPassTime > m_backTime / 2)
+                DoFollow();
         }
     }
 
 
     private bool CheckGravityWithState()
     {
-        if (m_state == EPartnerState.Flying || m_state == EPartnerState.Follow)
+        if (m_state == EPartnerState.Flying || m_state == EPartnerState.Follow || m_state == EPartnerState.FlyAndBack)
             return true;
 
         if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
@@ -99,12 +120,14 @@ public class PartnerController : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
-
         if (m_isGrounded || CheckGravityWithState())
         {
             m_rigidVelocity = rigidbody.velocity;
             m_rigidVelocity.y = 0;
             rigidbody.velocity = m_rigidVelocity;
+            var pos = transform.position;
+            AlignPosition(ref pos);
+            transform.position = pos;
         }
         else
         {
@@ -125,20 +148,15 @@ public class PartnerController : MonoBehaviour, IPushable
         return !m_isMoving;
     }
 
-    public bool DoShootOrFollow()
-    {
-        if (m_state == EPartnerState.Follow)
-            return DoShoot(followTarget.forward);
-        else
-            return DoFollow();
-    }
-
     public bool DoShoot(Vector3 direction)
     {   
         if (!CanDoAction())
             return false;
 
         if (m_state != EPartnerState.Follow)
+            return false;
+
+        if (Vector3.Distance(transform.position, followTarget.position) > 0.5f)
             return false;
         
         Ray ray = new Ray(followTarget.position, direction);
@@ -147,15 +165,24 @@ public class PartnerController : MonoBehaviour, IPushable
         bool hit = Physics.Raycast(ray, out result,m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));
         if (hit)
         {
-            flyDistance = Mathf.Abs(GetHorizontalValue(result.point - transform.position)) - m_size.x/2;
+            flyDistance = Mathf.Abs(Mathf.Abs(GetHorizontalValue(result.point - transform.position)) - m_size.x/2);
         }
-
-        if (flyDistance < 1)
+        //Debug.Log("flydistance " + flyDistance);
+        if (flyDistance < 1f)
             return false;
 
-        m_flyEndBack = !hit;
+        if (!hit)
+        {
+            m_state = EPartnerState.FlyAndBack;
+            m_targetPos = followTarget.position + direction * flyDistance;
+            m_moveStartPos = followTarget.position;
+            m_actionPassTime = 0;
+            return true;
+        }
+
         m_moveDirection = direction;
-        m_targetPos = transform.position + direction * flyDistance;
+        m_targetPos = followTarget.position + direction * flyDistance;
+        //Debug.Log($"DoShoot m_targetPos {m_targetPos} curpos {followTarget.position} direction {direction} flyDistance{flyDistance}");
         AlignPosition(ref m_targetPos);
 
         m_curPos = transform.position;
@@ -182,10 +209,18 @@ public class PartnerController : MonoBehaviour, IPushable
         if (m_state == EPartnerState.Follow)
             return false;
 
+        if (m_state == EPartnerState.Flying)
+            return false;
+
         GetLink()?.SetLink(null);
         SetLink(null);
         m_curPos = transform.position;
+        m_targetPos = followTarget.position;
+        m_moveStartPos = m_curPos;
+        m_actionPassTime = 0;
         m_colider.enabled = false;
+        //m_flyEndBack = true;
+
         BeFollow();
         return true;
     }
@@ -194,25 +229,27 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         if (!CanDoAction())
         {
-            Debug.Log("DoActive 111");
             return false;
         }
 
         if (m_state != EPartnerState.Box)
         {
-            Debug.Log("DoActive 222" + m_state);
             return false;
         }
 
-        CheckGround();
-        if (!m_isGrounded)
-        {
-            Debug.Log("DoActive 333" + m_isGrounded);
-            return false;
-        }
-
-        Ray ray = new Ray(transform.position, Vector3.down);
         RaycastHit result;
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if (!Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerActive)))
+        {
+            // todo 判断有问题 
+            return false;
+        }
+        //CheckGround();
+        //if (!m_isGrounded)
+        //{
+        //    return false;
+        //}
+
         bool hit = Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerLink));
         if (hit)
         {
@@ -335,6 +372,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void BeShoot()
     {
+        Debug.Log("BeShoot");
         m_state = EPartnerState.Flying;
         m_colider.enabled = false;
         // todo 模型动画
@@ -342,6 +380,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void BeBox()
     {
+        Debug.Log("BeBox");
         CheckGround();
         m_state = EPartnerState.Box;
         m_colider.enabled = true;
@@ -351,6 +390,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void BeFollow()
     {
+        //Debug.Log("BeFollow");
         m_state = EPartnerState.Follow;
         m_colider.enabled = false;
         // todo 模型动画
@@ -434,6 +474,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
         m_moveDirection = direction;
         m_targetPos = transform.position + direction * m_moveDistance;
+        Debug.Log(" DoMove m_targetPos " + m_targetPos);
         AlignPosition(ref m_targetPos);
         m_curPos = transform.position;
         m_isMoving = true;

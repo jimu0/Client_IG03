@@ -28,7 +28,9 @@ public static class ResourceManger
         yield return package.InitializeAsync(initParameters);
 #endif
 
-        Debug.Log("YooAssets"+ YooAssets.GetPackage(defaultPackageName));
+        //Debug.Log("YooAssets"+ YooAssets.GetPackage(defaultPackageName));
+
+        //LoadAllAssetsSync<Shader>("Shader_Lit");
     }
 
     /// <summary>
@@ -44,7 +46,7 @@ public static class ResourceManger
         var handler = package.LoadSceneAsync(location, sceneMode, suspendLoad, priority);
         handler.Completed += (SceneOperationHandle _handle) =>
         {
-            UnloadUnusedRes();
+            //UnloadUnusedRes();
             callback?.Invoke();
         };
     }

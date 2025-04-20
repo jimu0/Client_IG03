@@ -68,6 +68,13 @@ public class TmpGameManager : MonoBehaviour
         });
     }
 
+    public void ResetLevel()
+    {
+        UIManager.Instance.CloseByName("UIGamePause");
+        LevelManager.instance.ResetLevel();
+        gameState = EGameState.Play;
+    }
+
     public void BackToMenu()
     {
         UIManager.Instance.CloseByName("UIGame");
@@ -104,8 +111,8 @@ public class TmpGameManager : MonoBehaviour
         if (gameState != EGameState.Play)
             return;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            LevelManager.instance.ResetLevel();
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    LevelManager.instance.ResetLevel();
 
         // ”Œœ∑—≠ª∑
         PlayerManager.instance.PlayerUpdate();

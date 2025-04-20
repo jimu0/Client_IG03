@@ -21,7 +21,9 @@ public class PlayerManager : MonoBehaviour
     public float PartnerFlySpeed;
     public float PartnerFlyMaxDistance;
     public float PartnerGoBackTime;
-    
+    public AnimationCurve PartnerGoBackCurve;
+    public AnimationCurve PartnerFlyAndGoBackCurve;
+
     public float BoxMoveSpeed;
     public float BoxMoveDistance;
 

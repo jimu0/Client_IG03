@@ -160,13 +160,13 @@ public class PlayerController : MonoBehaviour, IController
             if (!IsJumping())
                 success = DoPushBox();
 
-        if (type == EControlType.ShootPartner)
-            if (!IsJumping())
-                success = partner.DoShoot(transform.forward);
-
         if (type == EControlType.BackPartener)
             if (!IsJumping())
                 success = partner.DoFollow();
+
+        if (type == EControlType.ShootPartner)
+            if (!IsJumping())
+                success = partner.DoShoot(transform.forward);
 
         if (type == EControlType.ActivePartner)
             if (!IsJumping())
