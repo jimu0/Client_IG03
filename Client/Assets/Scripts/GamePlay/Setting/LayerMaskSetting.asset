@@ -47,3 +47,5 @@ MonoBehaviour:
   - usage: 6
     layerNames:
     - Player
+    - Ground
+    - Pushable

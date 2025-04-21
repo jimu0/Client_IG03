@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
     private Dictionary<int, float> m_lastActionGroupTime = new Dictionary<int, float>();
 
     private Dictionary<ELayerMaskUsage, int> m_layerMaskUsage = new Dictionary<ELayerMaskUsage, int>();
+    private Dictionary<EDamageType, float> m_damageCfg = new Dictionary<EDamageType, float>();
 
     void Awake()
     {
@@ -58,6 +59,12 @@ public class PlayerManager : MonoBehaviour
         foreach (var item in layerMaskSetting.settingList)
         {       
             m_layerMaskUsage.Add(item.usage, LayerMask.GetMask(item.layerNames));
+            Debug.Log($"m_layerMaskUsage {item.usage} {LayerMask.GetMask(item.layerNames)} " );
+        }
+
+        foreach (var item in damageSetting.settingList)
+        {
+            m_damageCfg.Add(item.type, item.value);
         }
     }
 
@@ -77,6 +84,24 @@ public class PlayerManager : MonoBehaviour
     public int GetLayerMask(ELayerMaskUsage usage)
     {
         return m_layerMaskUsage[usage];
+    }
+
+    public void Damage(EDamageType type, float customValue = 0f)
+    {
+        var value = 0f;
+        if (type == EDamageType.CustomValue)
+            value = customValue;
+        else
+            value = m_damageCfg.GetValueOrDefault(type, 0f);
+        playerHp = Mathf.Min(playerHp + value, playerMaxHP);
+        if (playerHp <= 0)
+        {
+            // todo 死亡表现
+        }
+        else
+        {
+            // todo 受伤表现
+        }
     }
 
     public void TeleportPlayerAndReset(Vector3 position, RigidbodyConstraints constraints)

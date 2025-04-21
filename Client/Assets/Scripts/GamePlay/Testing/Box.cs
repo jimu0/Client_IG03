@@ -67,6 +67,10 @@ public class Box : MonoBehaviour, IPushable
             m_rigidVelocity = m_rigidbody.velocity;
             m_rigidVelocity.y = 0;
             m_rigidbody.velocity = m_rigidVelocity;
+
+            var pos = transform.position;
+            AlignPosition(ref pos);
+            transform.position = pos;
         }
         else
         {
@@ -182,7 +186,7 @@ public class Box : MonoBehaviour, IPushable
     {
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = GetHorizontalValue(direction) != 0;
-        Ray ray = new Ray(transform.position, direction);
+        Ray ray = new Ray(m_collider.bounds.center, direction);
         RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
         if (results.Length > 0)
         {
@@ -213,7 +217,11 @@ public class Box : MonoBehaviour, IPushable
             bool hasGround = false;
             for (int i = 0; i < results.Length; i++)
             {
-                if (results[i].collider.gameObject.layer == LayerMask.NameToLayer("Pushable"))
+                Debug.Log($"box IsCanMove results[i].collider.gameObject.Layer {results[i].collider.gameObject.layer} " +
+                    $"name {results[i].collider.gameObject.name} \n" +
+                    $" {1 << results[i].collider.gameObject.layer} \n" +
+                    $" {(1 << results[i].collider.gameObject.layer) & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)}");
+                if ((1<<results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0)
                 {
                     boxCount ++;
                 }

@@ -31,7 +31,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
     [SerializeField]
     private IPushable m_linkedBox;
-    private Collider m_colider;
+    private Collider m_collider;
 
     public Rigidbody rigidbody;
     private Vector3 m_moveDirection;
@@ -54,7 +54,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
     void Start()
     {
-        m_colider = GetComponent<Collider>();
+        m_collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         m_size = new Vector3(1,1,1);
         DoFollow();
@@ -197,7 +197,7 @@ public class PartnerController : MonoBehaviour, IPushable
         GetLink()?.SetLink(null);
         SetLink(null);
         m_curPos = transform.position;
-        m_colider.enabled = false;
+        m_collider.enabled = false;
         BeFollow();
     }
 
@@ -218,7 +218,7 @@ public class PartnerController : MonoBehaviour, IPushable
         m_targetPos = followTarget.position;
         m_moveStartPos = m_curPos;
         m_actionPassTime = 0;
-        m_colider.enabled = false;
+        m_collider.enabled = false;
         //m_flyEndBack = true;
 
         BeFollow();
@@ -229,11 +229,13 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         if (!CanDoAction())
         {
+            Debug.Log("DoActive 11");
             return false;
         }
 
         if (m_state != EPartnerState.Box)
         {
+            Debug.Log("DoActive 222" + m_state);
             return false;
         }
 
@@ -242,6 +244,7 @@ public class PartnerController : MonoBehaviour, IPushable
         if (!Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerActive)))
         {
             // todo 判断有问题 
+            Debug.Log("DoActive 333" + result);
             return false;
         }
         //CheckGround();
@@ -271,10 +274,16 @@ public class PartnerController : MonoBehaviour, IPushable
     public bool DoInactive()
     {
         if (!CanDoAction())
+        {
+            Debug.Log("DoInactive 11");
             return false;
+        }
 
         if (m_state != EPartnerState.BoxActive && m_state != EPartnerState.BoxActiveWithLink)
+        {
+            Debug.Log("DoInactive 22" + m_state);
             return false;
+        }
 
         GetLink()?.SetLink(null);
         SetLink(null);
@@ -374,7 +383,7 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         Debug.Log("BeShoot");
         m_state = EPartnerState.Flying;
-        m_colider.enabled = false;
+        m_collider.enabled = false;
         // todo 模型动画
     }
 
@@ -383,7 +392,7 @@ public class PartnerController : MonoBehaviour, IPushable
         Debug.Log("BeBox");
         CheckGround();
         m_state = EPartnerState.Box;
-        m_colider.enabled = true;
+        m_collider.enabled = true;
         // todo 模型动画
         meshTran.localScale = Vector3.one;
     }
@@ -392,25 +401,27 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         //Debug.Log("BeFollow");
         m_state = EPartnerState.Follow;
-        m_colider.enabled = false;
+        m_collider.enabled = false;
         // todo 模型动画
         meshTran.localScale = Vector3.one * 0.3f;
     }
 
     public void BeActive()
     {
-        CheckGround();
         m_state = GetLink() == null ? EPartnerState.BoxActive : EPartnerState.BoxActiveWithLink;
-        m_colider.enabled = true;
+        m_collider.enabled = true;
+        CheckGround();
         // todo 模型动画
+        meshTran.localScale = Vector3.one * 1f;
     }
 
     public void BeInactive()
     {
-        CheckGround();
         m_state = EPartnerState.Box;
-        m_colider.enabled = true;
+        m_collider.enabled = true;
+        CheckGround();
         // todo 模型动画
+        meshTran.localScale = Vector3.one * 0.9f;
     }
 
     private void OnCollisionExit(Collision collision)
@@ -495,7 +506,7 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = horizontalValue != 0;
-        Ray ray = new Ray(transform.position, direction);
+        Ray ray = new Ray(m_collider.bounds.center, direction);
         RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
         if (results.Length > 0)
         {
@@ -526,7 +537,7 @@ public class PartnerController : MonoBehaviour, IPushable
             bool hasGround = false;
             for (int i = 0; i < results.Length; i++)
             {
-                if (results[i].collider.gameObject.layer == LayerMask.NameToLayer("Pushable"))
+                if ((1 << results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0)
                 {
                     boxCount++;
                 }
@@ -541,7 +552,7 @@ public class PartnerController : MonoBehaviour, IPushable
             if (!hasGround)
                 return true;
 
-            Debug.Log($"partner IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos) - GetHorizontalValue(transform.position))}");
+            //Debug.Log($"partner IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos) - GetHorizontalValue(transform.position))}");
             if (isHorizontal)
                 return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
             else
@@ -556,7 +567,7 @@ public class PartnerController : MonoBehaviour, IPushable
         if (Physics.Raycast(transform.position, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.2f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
             var otherBox = m_hitInfo.transform.GetComponent<IPushable>();
-            Debug.Log($"partner TryMoveNearby {otherBox}");
+            //Debug.Log($"partner TryMoveNearby {otherBox}");
             if (otherBox != null)
             {
                 otherBox.DoMove(m_moveDirection);
