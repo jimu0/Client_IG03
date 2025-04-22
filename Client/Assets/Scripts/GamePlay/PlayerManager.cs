@@ -94,6 +94,8 @@ public class PlayerManager : MonoBehaviour
         else
             value = m_damageCfg.GetValueOrDefault(type, 0f);
         playerHp = Mathf.Min(playerHp + value, playerMaxHP);
+
+        Debug.Log($"Damage  { type} {value}");
         if (playerHp <= 0)
         {
             // todo ËÀÍö±íÏÖ

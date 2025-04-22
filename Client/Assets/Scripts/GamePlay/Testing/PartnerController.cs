@@ -125,6 +125,7 @@ public class PartnerController : MonoBehaviour, IPushable
             m_rigidVelocity = rigidbody.velocity;
             m_rigidVelocity.y = 0;
             rigidbody.velocity = m_rigidVelocity;
+
             var pos = transform.position;
             AlignPosition(ref pos);
             transform.position = pos;
@@ -138,9 +139,10 @@ public class PartnerController : MonoBehaviour, IPushable
     private void CheckGround()
     {
         m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * (m_size.y / 2 + 0.01f));
         if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
             m_isGrounded = transform.position.y < m_activePosY;
-        //Debug.Log("isGrounded" + isGrounded);
+        //Debug.Log("isGrounded " + m_isGrounded);
     }
 
     public bool CanDoAction()

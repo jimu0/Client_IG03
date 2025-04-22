@@ -500,11 +500,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4094582834030626369}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3487a9f46d284b744b7307d161e1b0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationComponent: {fileID: 0}
+  animationClips: []
   KwhOwn: 0
   kwhCondition: 1
   linkedDevices: []
@@ -586,6 +588,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Condition: []
   Effect: []
+  CollisionOrTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6667248505095620601}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionOrTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6667248505095620601}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionOrTriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
   CollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -4023,6 +4058,8 @@ GameObject:
   - component: {fileID: 564875906207565540}
   - component: {fileID: 6667248505095620599}
   - component: {fileID: 160139293197031446}
+  - component: {fileID: 6667248505095620601}
+  - component: {fileID: 6667248505095620600}
   m_Layer: 13
   m_Name: Functional_Door
   m_TagString: Untagged
@@ -6252,7 +6289,7 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4094582834030626369}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 0}
   m_Animations:
@@ -6262,6 +6299,45 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!95 &6667248505095620600
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094582834030626369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8eb9c833f5d3f8a47b80551b6d4b7866, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6667248505095620601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094582834030626369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4cc665d01f94048bd599aa410e54f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 68281958163368452}
+  shouldBeState: 0
+  realState: 0
+  DoorAnimators:
+  - {fileID: 6667248505095620600}
+  AnimOpenName: Base Layer.Functional_Door_SwitchON
+  AnimCloseName: Base Layer.Functional_Door_SwitchOFF
 --- !u!23 &6684353754824459743
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6812,6 +6888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3487a9f46d284b744b7307d161e1b0f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationComponent: {fileID: 0}
+  animationClips: []
   KwhOwn: 1
   kwhCondition: 1
   linkedDevices:

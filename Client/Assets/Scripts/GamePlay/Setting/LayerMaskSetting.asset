@@ -49,3 +49,6 @@ MonoBehaviour:
     - Player
     - Ground
     - Pushable
+  - usage: 7
+    layerNames:
+    - Player

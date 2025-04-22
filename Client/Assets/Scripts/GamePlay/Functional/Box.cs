@@ -28,7 +28,7 @@ public class Box : MonoBehaviour, IPushable
     {
         m_collider = GetComponent<Collider>();
         m_rigidbody = GetComponent<Rigidbody>();
-        m_size = new Vector3(1, 1, 1);
+        m_size = m_collider.bounds.size;
     }
 
     void Update()
@@ -62,6 +62,7 @@ public class Box : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
+        CheckGround();
         if (m_isGrounded || GetLink() != null)
         {
             m_rigidVelocity = m_rigidbody.velocity;
@@ -80,7 +81,7 @@ public class Box : MonoBehaviour, IPushable
 
     private void CheckGround()
     {
-        m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition));
+        m_isGrounded = Physics.Raycast(m_collider.bounds.center, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition));
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -154,13 +155,13 @@ public class Box : MonoBehaviour, IPushable
 
         if (!IsCanMove(direction))
         {
-            Debug.Log("DoMove box 111");
+            //Debug.Log("DoMove box 111");
             return;
         }
 
         if (!IsLinkedBoxCanMove(direction))
         {
-            Debug.Log("DoMove box 222");
+            //Debug.Log("DoMove box 222");
             return;
         }
 
@@ -217,10 +218,6 @@ public class Box : MonoBehaviour, IPushable
             bool hasGround = false;
             for (int i = 0; i < results.Length; i++)
             {
-                Debug.Log($"box IsCanMove results[i].collider.gameObject.Layer {results[i].collider.gameObject.layer} " +
-                    $"name {results[i].collider.gameObject.name} \n" +
-                    $" {1 << results[i].collider.gameObject.layer} \n" +
-                    $" {(1 << results[i].collider.gameObject.layer) & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)}");
                 if ((1<<results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0)
                 {
                     boxCount ++;
@@ -235,7 +232,7 @@ public class Box : MonoBehaviour, IPushable
 
             if (!hasGround)
                 return true;
-            Debug.Log($"box IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos - transform.position))}");
+            //Debug.Log($"box IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos - transform.position))}");
             if (isHorizontal)
                 return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
             else

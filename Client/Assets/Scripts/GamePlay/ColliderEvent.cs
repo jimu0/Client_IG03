@@ -29,82 +29,108 @@ public class ColliderEvent : MonoBehaviour
     [Header("触发事件后改变状态")]
     public List<WorldStateKV> Effect;
 
-    [Header("碰撞进入事件")]
+    [Header("触发器或碰撞进入事件")]
+    public UnityEvent CollisionOrTriggerEnterEvent;
+    [Header("触发器或碰撞离开事件")]
+    public UnityEvent CollisionOrTriggerExitEvent;
+    [Header("触发器或碰撞持续事件")]
+    public UnityEvent CollisionOrTriggerStayEvent;
+
+
+    [Header("弃用 碰撞进入事件")]
     public UnityEvent CollisionEnterEvent;
-    [Header("碰撞离开事件")]
+    [Header("弃用 碰撞离开事件")]
     public UnityEvent CollisionExitEvent;
-    [Header("碰撞持续事件")]
+    [Header("弃用碰撞持续事件")]
     public UnityEvent CollisionStayEvent;
-    [Header("触发器进入事件")]
+    [Header("弃用触发器进入事件")]
     public UnityEvent TriggerEnterEvent;
-    [Header("触发器离开事件")]
+    [Header("弃用触发器离开事件")]
     public UnityEvent TriggerExitEvent;
-    [Header("触发器持续事件")]
+    [Header("弃用触发器持续事件")]
     public UnityEvent TriggerStayEvent;
 
-    void OnCollisionEnter(Collision collision)
+    void TryInvoke(ref UnityEvent unityEvent)
     {
-        if (CollisionEnterEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        if (unityEvent == null || unityEvent.GetPersistentEventCount() == 0)
             return;
 
         if (!WorldStateManager.Check(Condition))
             return;
-        CollisionEnterEvent?.Invoke();
+
+        unityEvent?.Invoke();
         WorldStateManager.SetValues(Condition);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        TryInvoke(ref CollisionOrTriggerEnterEvent);
+        //if (CollisionEnterEvent == null || CollisionEnterEvent.GetPersistentEventCount() == 0)
+        //    return;
+
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //CollisionEnterEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (CollisionExitEvent == null || CollisionExitEvent.GetPersistentEventCount() == 0)
-            return;
+        TryInvoke(ref CollisionOrTriggerExitEvent);
+        //if (CollisionExitEvent == null || CollisionExitEvent.GetPersistentEventCount() == 0)
+        //    return;
 
-        if (!WorldStateManager.Check(Condition))
-            return;
-        CollisionExitEvent?.Invoke();
-        WorldStateManager.SetValues(Condition);
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //CollisionExitEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 
     void OnCollisionStay(Collision collision)
     {
-        if (CollisionStayEvent == null || CollisionStayEvent.GetPersistentEventCount() == 0)
-            return;
+        TryInvoke(ref CollisionOrTriggerStayEvent);
+        //if (CollisionStayEvent == null || CollisionStayEvent.GetPersistentEventCount() == 0)
+        //    return;
 
-        if (!WorldStateManager.Check(Condition))
-            return;
-        CollisionStayEvent?.Invoke();
-        WorldStateManager.SetValues(Condition);
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //CollisionStayEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (TriggerEnterEvent == null || TriggerEnterEvent.GetPersistentEventCount() == 0)
-            return;
+        TryInvoke(ref CollisionOrTriggerEnterEvent);
+        //if (TriggerEnterEvent == null || TriggerEnterEvent.GetPersistentEventCount() == 0)
+        //    return;
 
-        if (!WorldStateManager.Check(Condition))
-            return;
-        TriggerEnterEvent?.Invoke();
-        WorldStateManager.SetValues(Condition);
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //TriggerEnterEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (TriggerExitEvent == null || TriggerExitEvent.GetPersistentEventCount() == 0)
-            return;
+        TryInvoke(ref CollisionOrTriggerExitEvent);
+        //if (TriggerExitEvent == null || TriggerExitEvent.GetPersistentEventCount() == 0)
+        //    return;
 
-        if (!WorldStateManager.Check(Condition))
-            return;
-        TriggerExitEvent?.Invoke();
-        WorldStateManager.SetValues(Condition);
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //TriggerExitEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (TriggerStayEvent == null || TriggerStayEvent.GetPersistentEventCount() == 0)
-            return;
+        TryInvoke(ref CollisionOrTriggerStayEvent);
+        //if (TriggerStayEvent == null || TriggerStayEvent.GetPersistentEventCount() == 0)
+        //    return;
 
-        if (!WorldStateManager.Check(Condition))
-            return;
-        TriggerStayEvent?.Invoke();
-        WorldStateManager.SetValues(Condition);
+        //if (!WorldStateManager.Check(Condition))
+        //    return;
+        //TriggerStayEvent?.Invoke();
+        //WorldStateManager.SetValues(Condition);
     }
 }
