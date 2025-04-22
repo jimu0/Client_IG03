@@ -23,7 +23,6 @@ public class Door : MonoBehaviour
 
     void Start()
     {
-        collider = GetComponent<BoxCollider>();    
     }
 
     public void OpenDoor()
@@ -72,7 +71,7 @@ public class Door : MonoBehaviour
         // 动画
         foreach (var item in DoorAnimators)
         {
-            item.Play(AnimCloseName, -1, 0);
+            item.Play(AnimCloseName, 0, 0);
         }
     }
 
@@ -83,7 +82,7 @@ public class Door : MonoBehaviour
         // 动画
         foreach (var item in DoorAnimators)
         {
-            item.Play(AnimOpenName, -1, 0);
+            item.Play(AnimOpenName, 0, 0);
         }
     }
 }
