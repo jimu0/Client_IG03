@@ -23,24 +23,30 @@ MonoBehaviour:
     - Partner
     - Ground
     - Interactable
+    - Default
   - usage: 2
     layerNames:
     - Pushable
     - Partner
     - Ground
     - Interactable
+    - Default
   - usage: 3
     layerNames:
     - Pushable
     - Partner
     - Ground
     - Interactable
+    - Default
+    - Player
   - usage: 4
     layerNames:
     - Pushable
     - Partner
     - Ground
     - Interactable
+    - Default
+    - Player
   - usage: 5
     layerNames:
     - Pushable
@@ -49,6 +55,7 @@ MonoBehaviour:
     - Player
     - Ground
     - Pushable
+    - Default
   - usage: 7
     layerNames:
     - Player

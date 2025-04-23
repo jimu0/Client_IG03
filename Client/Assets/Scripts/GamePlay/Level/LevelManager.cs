@@ -37,18 +37,29 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void EnterLevel(int index)
+    {
+        SetSceneIndex(index);
+    }
+
     public void EnterLevel(string levelName)
     {
         int index = GetSceneIndex(levelName);
         if (index < 0)
             return;
-        
+
         SetSceneIndex(index);
     }
 
     public void NextLevel()
     {
         SetSceneIndex(m_curSceneIndex + 1);
+    }
+
+    public int GetPlayLevelIndex()
+    {
+        int levelIndex = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete);
+        return Mathf.Clamp(levelIndex + 1, 0, sceneNameArray.Length - 1);
     }
 
     public void CompleteLevel(string levelSceneName)

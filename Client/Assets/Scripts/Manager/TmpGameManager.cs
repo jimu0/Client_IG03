@@ -57,6 +57,9 @@ public class TmpGameManager : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// 进入游戏
+    /// </summary>
     public void StartPlay()
     {
         gameState = EGameState.Play;
@@ -64,29 +67,53 @@ public class TmpGameManager : MonoBehaviour
         {
             UIManager.Instance.CloseByName("UIMainMenu");
             UIManager.Instance.Show("UIGame");
-            LevelManager.instance.EnterLevel("Level_1");
+      
+            LevelManager.instance.EnterLevel(LevelManager.instance.GetPlayLevelIndex());
         });
     }
 
+    /// <summary>
+    /// 死亡
+    /// </summary>
+    public void GameOver()
+    {
+        UIManager.Instance.Show("UIGameOver");
+        gameState = EGameState.Pause;
+    }
+
+    /// <summary>
+    /// 重置关卡
+    /// </summary>
     public void ResetLevel()
     {
         UIManager.Instance.CloseByName("UIGamePause");
+        PlayerManager.instance.Damage(EDamageType.CustomValue, Mathf.Infinity);
         LevelManager.instance.ResetLevel();
         gameState = EGameState.Play;
     }
 
+    /// <summary>
+    /// 返回主界面
+    /// </summary>
     public void BackToMenu()
     {
         UIManager.Instance.CloseByName("UIGame");
         UIManager.Instance.Show("UIMainMenu");
+        gameState = EGameState.Menu;
     }
 
+    /// <summary>
+    /// （从暂停）回到游戏
+    /// </summary>
     public void Resume()
     {
         UIManager.Instance.CloseByName("UIGamePause");
         gameState = EGameState.Play;
     }
 
+    /// <summary>
+    /// 游戏暂停
+    /// </summary>
     public void Pause()
     {
         UIManager.Instance.Show("UIGamePause");

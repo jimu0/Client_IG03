@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1134223277056282311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   Name: 
   layer: 0
   BtnPause: {fileID: 7484634133569334632}
+  TextHp: {fileID: 1134223277056282309}
 --- !u!1 &7484634133569334628
 GameObject:
   m_ObjectHideFlags: 0

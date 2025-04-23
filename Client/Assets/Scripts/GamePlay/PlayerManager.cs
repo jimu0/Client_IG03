@@ -29,6 +29,8 @@ public class PlayerManager : MonoBehaviour
 
     public float playerMaxHP;
     public float playerHp;
+
+    public float score;
     
     private IController playerControler;
     private Dictionary<EControlType, float> m_lastActionTime = new Dictionary<EControlType, float>(); 
@@ -93,12 +95,14 @@ public class PlayerManager : MonoBehaviour
             value = customValue;
         else
             value = m_damageCfg.GetValueOrDefault(type, 0f);
-        playerHp = Mathf.Min(playerHp + value, playerMaxHP);
+        playerHp = Mathf.Clamp(playerHp + value, 0, playerMaxHP);
 
-        Debug.Log($"Damage  { type} {value}");
+        UIManager.Instance.SendEvent(EUIEvent.PlayerHpChange);
+
+        Debug.Log($"Damage  type { type} value {value} hp {playerHp}");
         if (playerHp <= 0)
         {
-            // todo ËÀÍö±íÏÖ
+            TmpGameManager.instance.GameOver();
         }
         else
         {
