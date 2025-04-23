@@ -18,28 +18,28 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 2.5
   scatter:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.5
   clamp:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 65472
   tint:
     m_OverrideState: 1
     m_Value: {r: 0.6763301, g: 0.61512995, b: 0.6981132, a: 1}
   highQualityFiltering:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   skipIterations:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   dirtTexture:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-4086831356692365228
 MonoBehaviour:
@@ -55,16 +55,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   standaloneActive:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   debugMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   outlineColor:
-    m_OverrideState: 1
-    m_Value: {r: 0.03100377, g: 0.009594156, b: 0.066037714, a: 1}
+    m_OverrideState: 0
+    m_Value: {r: 0.01918832, g: 0.056325506, b: 0.13207549, a: 1}
   outlineThickness:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   enableClosenessBoost:
     m_OverrideState: 0
@@ -79,52 +79,52 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.7
   enableDistanceFade:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   distanceFadeNear:
-    m_OverrideState: 1
-    m_Value: 0.202
-  distanceFadeFar:
-    m_OverrideState: 1
-    m_Value: 0.6
-  depthSampleType:
     m_OverrideState: 0
     m_Value: 0
+  distanceFadeFar:
+    m_OverrideState: 0
+    m_Value: 0.6
+  depthSampleType:
+    m_OverrideState: 1
+    m_Value: 1
   depthThickness:
     m_OverrideState: 1
     m_Value: 1
   depthMultiplier:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 5.2
   depthBias:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2.47
   depthThreshold:
-    m_OverrideState: 1
-    m_Value: 0.087
+    m_OverrideState: 0
+    m_Value: 0.1
   depth9TilesThreshold:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.364
   depth9TilesBottomFix:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.005
   normalThickness:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   normalCheckDirection:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1
   normalMultiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 4
   normalBias:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   normalThreshold:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   enableNormalOutline:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:

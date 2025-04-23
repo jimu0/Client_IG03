@@ -759,7 +759,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -861,8 +861,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNameArray:
+  - Level_cg1
+  - Level_run1
   - Level_1
+  - Level_cg2
   - Level_2
+  - Level_3
+  - Level_4
+  - Level_5
+  - Level_6
+  - Level_cg3
+  - Level_7
+  - Level_8
+  - Level_cg4
   preLoadLevelCount: 0
 --- !u!1 &1890882845
 GameObject:
