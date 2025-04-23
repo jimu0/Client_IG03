@@ -54,14 +54,18 @@ public class PartnerController : MonoBehaviour, IPushable
 
     void Start()
     {
+        gameObject.layer = LayerMask.NameToLayer("Partner");
         m_collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
+        rigidbody.isKinematic = true;
         m_size = new Vector3(1,1,1);
         DoFollow();
     }
 
     public void DoUpdate()
     {
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * (m_size.y / 2 + 0.01f));
+
         UpdateMove();
         UpdateGravity();
     }
@@ -120,11 +124,12 @@ public class PartnerController : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
+        CheckGround();
         if (m_isGrounded || CheckGravityWithState())
         {
-            m_rigidVelocity = rigidbody.velocity;
+            //m_rigidVelocity = rigidbody.velocity;
             m_rigidVelocity.y = 0;
-            rigidbody.velocity = m_rigidVelocity;
+            //rigidbody.velocity = m_rigidVelocity;
 
             var pos = transform.position;
             AlignPosition(ref pos);
@@ -132,16 +137,18 @@ public class PartnerController : MonoBehaviour, IPushable
         }
         else
         {
-            rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
+            //rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
+            m_rigidVelocity.y += m_gravityValue * Time.deltaTime;
+            rigidbody.MovePosition(transform.position + m_rigidVelocity * Time.deltaTime);
         }
     }
 
     private void CheckGround()
     {
-        m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * (m_size.y / 2 + 0.01f));
         if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
             m_isGrounded = transform.position.y < m_activePosY;
+        else
+            m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));   
         //Debug.Log("isGrounded " + m_isGrounded);
     }
 
@@ -177,6 +184,7 @@ public class PartnerController : MonoBehaviour, IPushable
         {
             m_state = EPartnerState.FlyAndBack;
             m_targetPos = followTarget.position + direction * flyDistance;
+            AlignPosition(ref m_targetPos);
             m_moveStartPos = followTarget.position;
             m_actionPassTime = 0;
             return true;
@@ -231,13 +239,13 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         if (!CanDoAction())
         {
-            Debug.Log("DoActive 11");
+            //Debug.Log("DoActive 11");
             return false;
         }
 
         if (m_state != EPartnerState.Box)
         {
-            Debug.Log("DoActive 222" + m_state);
+            //Debug.Log("DoActive 222" + m_state);
             return false;
         }
 
@@ -246,7 +254,7 @@ public class PartnerController : MonoBehaviour, IPushable
         if (!Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerActive)))
         {
             // todo 判断有问题 
-            Debug.Log("DoActive 333" + result);
+            //Debug.Log("DoActive 333" + result);
             return false;
         }
         //CheckGround();
@@ -404,6 +412,8 @@ public class PartnerController : MonoBehaviour, IPushable
         //Debug.Log("BeFollow");
         m_state = EPartnerState.Follow;
         m_collider.enabled = false;
+        // todo 手动触发triggerexit事件？
+
         // todo 模型动画
         meshTran.localScale = Vector3.one * 0.3f;
     }
@@ -448,10 +458,10 @@ public class PartnerController : MonoBehaviour, IPushable
     private void AlignPosition(ref Vector3 pos)
     {
         if((rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
-            pos.x = Mathf.Round(m_targetPos.x / 0.5f) * 0.5f;
+            pos.x = Mathf.Round(m_targetPos.x / 0.5f + 1) * 0.5f;
 
         if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
-            pos.y = Mathf.Round(m_targetPos.y / 0.5f) * 0.5f;
+            pos.y = Mathf.Round(m_targetPos.y / 0.5f  + 1) * 0.5f;
 
         if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
             pos.z = Mathf.Round(m_targetPos.z / 0.5f) * 0.5f;

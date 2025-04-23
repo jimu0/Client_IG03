@@ -26,9 +26,11 @@ public class Box : MonoBehaviour, IPushable
     
     void Awake()
     {
+        gameObject.layer = LayerMask.NameToLayer("Pushable");
         m_collider = GetComponent<Collider>();
         m_rigidbody = GetComponent<Rigidbody>();
         m_size = m_collider.bounds.size;
+        m_rigidbody.isKinematic = true;
     }
 
     void Update()
@@ -39,7 +41,7 @@ public class Box : MonoBehaviour, IPushable
 
     public void SetPostion(Vector3 vector3)
     {
-        m_rigidbody.position = vector3;
+        transform.position = vector3;
         CheckGround();
     }
 
@@ -65,9 +67,9 @@ public class Box : MonoBehaviour, IPushable
         CheckGround();
         if (m_isGrounded || GetLink() != null)
         {
-            m_rigidVelocity = m_rigidbody.velocity;
+            //m_rigidVelocity = m_rigidbody.velocity;
             m_rigidVelocity.y = 0;
-            m_rigidbody.velocity = m_rigidVelocity;
+            //m_rigidbody.velocity = m_rigidVelocity;
 
             var pos = transform.position;
             AlignPosition(ref pos);
@@ -75,7 +77,10 @@ public class Box : MonoBehaviour, IPushable
         }
         else
         {
-            m_rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
+            //m_rigidbody.AddForce(0, m_gravityValue, 0, ForceMode.Acceleration);
+
+            m_rigidVelocity.y += m_gravityValue * Time.deltaTime;
+            m_rigidbody.MovePosition(transform.position + m_rigidVelocity * Time.deltaTime);
         }
     }
 
