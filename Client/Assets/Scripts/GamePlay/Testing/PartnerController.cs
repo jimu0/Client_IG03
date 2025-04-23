@@ -148,7 +148,7 @@ public class PartnerController : MonoBehaviour, IPushable
         if (m_state == EPartnerState.BoxActive || m_state == EPartnerState.BoxActiveWithLink)
             m_isGrounded = transform.position.y < m_activePosY;
         else
-            m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition));   
+            m_isGrounded = Physics.Raycast(transform.position, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition), QueryTriggerInteraction.Collide);   
         //Debug.Log("isGrounded " + m_isGrounded);
     }
 
@@ -458,10 +458,10 @@ public class PartnerController : MonoBehaviour, IPushable
     private void AlignPosition(ref Vector3 pos)
     {
         if((rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
-            pos.x = Mathf.Round(m_targetPos.x / 0.5f + 1) * 0.5f;
+            pos.x = Mathf.Round(m_targetPos.x / 0.5f) * 0.5f;
 
         if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
-            pos.y = Mathf.Round(m_targetPos.y / 0.5f  + 1) * 0.5f;
+            pos.y = Mathf.Round(m_targetPos.y / 0.5f) * 0.5f;
 
         if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
             pos.z = Mathf.Round(m_targetPos.z / 0.5f) * 0.5f;
@@ -485,19 +485,19 @@ public class PartnerController : MonoBehaviour, IPushable
 
         if (!IsCanMove(direction))
         {
-            Debug.Log("DoMove partner 111");
+            //Debug.Log("DoMove partner 111");
             return;
         }
           
         if (!IsLinkedBoxCanMove(direction))
         {
-            Debug.Log("DoMove partner 222");
+            //Debug.Log("DoMove partner 222");
             return;
         }
 
         m_moveDirection = direction;
         m_targetPos = transform.position + direction * m_moveDistance;
-        Debug.Log(" DoMove m_targetPos " + m_targetPos);
+        //Debug.Log(" DoMove m_targetPos " + m_targetPos);
         AlignPosition(ref m_targetPos);
         m_curPos = transform.position;
         m_isMoving = true;

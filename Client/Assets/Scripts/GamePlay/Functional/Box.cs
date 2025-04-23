@@ -86,7 +86,7 @@ public class Box : MonoBehaviour, IPushable
 
     private void CheckGround()
     {
-        m_isGrounded = Physics.Raycast(m_collider.bounds.center, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition));
+        m_isGrounded = Physics.Raycast(m_collider.bounds.center, Vector3.down, m_size.y/2+0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition), QueryTriggerInteraction.Collide);
     }
 
     //private void OnCollisionEnter(Collision collision)
