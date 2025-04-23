@@ -13,6 +13,7 @@ public class UIGame : UIBase
 {
     //public TextMeshProUGUI text_title;
     public Button BtnPause;
+    public TextMeshProUGUI TextHp;
 
     public override void OnShow(object param)
     {
@@ -20,10 +21,20 @@ public class UIGame : UIBase
         {
             TmpGameManager.instance.Pause();
         });
+
+        TextHp.text = $"HP : {PlayerManager.instance.playerHp}/{PlayerManager.instance.playerMaxHP}";
     }
 
     public override void OnClose()
     {
         BtnPause.onClick.RemoveAllListeners();
+    }
+
+    public override void OnEvent(EUIEvent eventType, object param)
+    {
+        if (eventType != EUIEvent.PlayerHpChange)
+            return;
+
+        TextHp.text = $"HP : {PlayerManager.instance.playerHp}/{PlayerManager.instance.playerMaxHP}";
     }
 }

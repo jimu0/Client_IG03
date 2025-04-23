@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,16 @@ public class UIBase : MonoBehaviour
     public virtual void OnClose()
     {
 
+    }
+
+    /// <summary>
+    /// ÊÂ¼þ
+    /// </summary>
+    /// <param name="eventType"></param>
+    /// <param name="param"></param>
+    public virtual void OnEvent(EUIEvent eventType, object param)
+    {
+        
     }
 
     /// <summary>

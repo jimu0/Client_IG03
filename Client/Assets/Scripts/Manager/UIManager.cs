@@ -12,6 +12,14 @@ public enum EUILayer
     Height,
 }
 
+/// <summary>
+/// 简单UI事件，所有注册的UI能收到所有事件
+/// </summary>
+public enum EUIEvent
+{
+    PlayerHpChange,
+}
+
 public class UIManager : MonoBehaviour
 { 
     public static UIManager Instance;
@@ -23,6 +31,8 @@ public class UIManager : MonoBehaviour
     private Dictionary<string, List<UIBase>> dicPool;
     private HashSet<UIBase> hashShowingUI;
 
+    private HashSet<UIBase> m_dicRegistEventUI;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -30,6 +40,7 @@ public class UIManager : MonoBehaviour
         Pool.gameObject.SetActive(false);
         dicPool = new Dictionary<string, List<UIBase>>();
         hashShowingUI = new HashSet<UIBase>();
+        m_dicRegistEventUI = new HashSet<UIBase>();
     }
 
     /// <summary>
@@ -91,6 +102,24 @@ public class UIManager : MonoBehaviour
         DoClose(uiBase);
     }
 
+    public void RegistEvent(UIBase uIBase)
+    {
+        m_dicRegistEventUI.Add(uIBase);
+    }
+
+    public void UnRegistEvent(UIBase uiBase)
+    {
+        m_dicRegistEventUI.Remove(uiBase);
+    }
+
+    public void SendEvent(EUIEvent eventType, object param = null )
+    {
+        foreach (var item in m_dicRegistEventUI)
+        {
+            item.OnEvent(eventType, param);
+        }
+    }
+
     /// <summary>
     /// 清理池子
     /// </summary>
@@ -146,6 +175,7 @@ public class UIManager : MonoBehaviour
 
     private void DoClose(UIBase uiBase)
     {
+        UnRegistEvent(uiBase);
         uiBase.OnClose();
         uiBase.transform.SetParent(Pool, false);
         List<UIBase> list;
