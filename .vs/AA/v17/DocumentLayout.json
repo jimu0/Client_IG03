@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Git\\AA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Json\\proptable.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Luban\\DataTables\\output_Json\\proptable.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PawnTable.cs",
+              "DocumentMoniker": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs",
+              "RelativeDocumentMoniker": "Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs",
+              "ToolTip": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs",
+              "RelativeToolTip": "Client\\Luban\\DataTables\\output_Gen\\PawnTable.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T07:47:54.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "proptable.json",
+              "DocumentMoniker": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Json\\proptable.json",
+              "RelativeDocumentMoniker": "Client\\Luban\\DataTables\\output_Json\\proptable.json",
+              "ToolTip": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Json\\proptable.json",
+              "RelativeToolTip": "Client\\Luban\\DataTables\\output_Json\\proptable.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-30T06:13:21.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PropCfg.cs",
+              "DocumentMoniker": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs",
+              "RelativeDocumentMoniker": "Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs",
+              "ToolTip": "D:\\Git\\AA\\Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs",
+              "RelativeToolTip": "Client\\Luban\\DataTables\\output_Gen\\PropCfg.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAACsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T06:10:24.78Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
