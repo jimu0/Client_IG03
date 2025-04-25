@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230748801943597407}
-  - component: {fileID: 5351537599146274892}
-  - component: {fileID: 1511597530044919725}
+  - component: {fileID: -1009077001373752280}
+  - component: {fileID: -7360434749702130414}
   m_Layer: 0
   m_Name: Functional_door2a_up
   m_TagString: Untagged
@@ -34,24 +34,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &5351537599146274892
-Animation:
+--- !u!95 &-1009077001373752280
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3319233481073422842}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: ed70add0cb70fe14b91e06a83b1ee787, type: 2}
-  - {fileID: 7400000, guid: 70dcfc4389d7a1b44878250e4efd5db6, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &1511597530044919725
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8eb9c833f5d3f8a47b80551b6d4b7866, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7360434749702130414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,16 +63,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3319233481073422842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3487a9f46d284b744b7307d161e1b0f3, type: 3}
+  m_Script: {fileID: 11500000, guid: eb4cc665d01f94048bd599aa410e54f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationComponent: {fileID: 5351537599146274892}
-  animationClips:
-  - {fileID: 7400000, guid: ed70add0cb70fe14b91e06a83b1ee787, type: 2}
-  - {fileID: 7400000, guid: 70dcfc4389d7a1b44878250e4efd5db6, type: 2}
-  KwhOwn: 0
-  kwhCondition: 1
-  linkedDevices: []
+  collider: {fileID: 0}
+  shouldBeState: 0
+  realState: 0
+  DoorAnimators:
+  - {fileID: -1009077001373752280}
+  AnimOpenName: Base Layer.Functional_Door_SwitchON
+  AnimCloseName: Base Layer.Functional_Door_SwitchOFF
 --- !u!1 &7556915697892482712
 GameObject:
   m_ObjectHideFlags: 0

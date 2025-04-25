@@ -9,10 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1862694275647678722}
-  - component: {fileID: 4794532633804892177}
-  - component: {fileID: 2033275044248467440}
-  - component: {fileID: 8752850257340778891}
   - component: {fileID: 1362595443}
+  - component: {fileID: 5893577441916756048}
   m_Layer: 0
   m_Name: Functional_Switch1
   m_TagString: Untagged
@@ -36,99 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &4794532633804892177
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800579619059739047}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 514722ef57bf0a0409d6950ced430c18, type: 2}
-  - {fileID: 7400000, guid: e8b90653dcb408d4f8a4010d96ae1e30, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &2033275044248467440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800579619059739047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3487a9f46d284b744b7307d161e1b0f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationComponent: {fileID: 4794532633804892177}
-  animationClips:
-  - {fileID: 7400000, guid: 514722ef57bf0a0409d6950ced430c18, type: 2}
-  - {fileID: 7400000, guid: e8b90653dcb408d4f8a4010d96ae1e30, type: 2}
-  KwhOwn: 10
-  kwhCondition: 1
-  linkedDevices:
-  - {fileID: 0}
---- !u!114 &8752850257340778891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800579619059739047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45674db66d5471346940ba69a96f7b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Condition: []
-  Effect: []
-  CollisionEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  CollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  CollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  TriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2033275044248467440}
-        m_TargetAssemblyTypeName: FunctionalSwitch, Assembly-CSharp
-        m_MethodName: ON
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  TriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2033275044248467440}
-        m_TargetAssemblyTypeName: FunctionalSwitch, Assembly-CSharp
-        m_MethodName: OFF
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  TriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!65 &1362595443
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -142,6 +47,71 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.2, z: 0.8}
   m_Center: {x: 0.5, y: 1, z: 0}
+--- !u!114 &5893577441916756048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800579619059739047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45674db66d5471346940ba69a96f7b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Condition: []
+  Effect: []
+  CollisionOrTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionOrTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CollisionOrTriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  CollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  TriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5297516676804348153
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class SceneChangeSignalReceiver : MonoBehaviour, INotificationReceiver
     private void LoadTargetScene(string sceneName)
     {
         Debug.Log($"{sceneName}");
-        LevelManager.instance.CompleteLevel(sceneName); 
+        LevelManager.instance.EnterLevel(sceneName);
         LevelManager.instance.NextLevel();
     }
 }
