@@ -2,28 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
-    public PlayerController player;
-    public PartnerController partner;
-
+    [Header("全局")]
     public ControlSetting playerControlSetting;
     public DamageSetting damageSetting;
     public LayerMaskSetting layerMaskSetting;
-
     public float GravityValue = -9.81f;
+
+    [Header("角色控制相关")]
+    public PlayerController player;
     public float PlayerMoveSpeed;
     public float PlayerJumpHeight;
 
+    [Header("伙伴控制相关")]
+    public PartnerController partner;
     public float PartnerFlySpeed;
     public float PartnerFlyMaxDistance;
     public float PartnerGoBackTime;
     public AnimationCurve PartnerGoBackCurve;
     public AnimationCurve PartnerFlyAndGoBackCurve;
 
+    [Header("箱子控制相关")]
     public float BoxMoveSpeed;
     public float BoxMoveDistance;
 
@@ -31,7 +35,17 @@ public class PlayerManager : MonoBehaviour
     public float playerHp;
 
     public float score;
-    
+
+    [Header("相机控制相关"), Range(0, 1)]
+    public CinemachineVirtualCamera camera;
+    public float cameraScreenYDown;
+    [Range(0, 1)]
+    public float cameraScreenYUp;
+    public float cameraDistanceWhenLookUpDown;
+    private float m_cameraDefaultScreenY;
+    private float m_cameraDefaultDistance;
+    private CinemachineFramingTransposer m_framingTransposer;
+
     private IController playerControler;
     private Dictionary<EControlType, float> m_lastActionTime = new Dictionary<EControlType, float>(); 
     private Dictionary<int, float> m_lastActionGroupTime = new Dictionary<int, float>();
@@ -47,6 +61,10 @@ public class PlayerManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(partner.gameObject);
+
+        m_framingTransposer = camera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        m_cameraDefaultScreenY = m_framingTransposer.m_ScreenY;
+        m_cameraDefaultDistance = m_framingTransposer.m_CameraDistance;
 
         foreach (var item in playerControlSetting.settingList)
         {
@@ -81,6 +99,7 @@ public class PlayerManager : MonoBehaviour
         player.DoUpdate();
         partner.DoUpdate();
         PlayerControl();
+        CameraControl();
     }
 
     public int GetLayerMask(ELayerMaskUsage usage)
@@ -174,5 +193,22 @@ public class PlayerManager : MonoBehaviour
         m_lastActionTime[settingItem.type] = Time.time;
         if (settingItem.commonCdAffected)
             m_lastActionGroupTime[settingItem.commonCdGroup] = Time.time;
+    }
+
+
+    void CameraControl()
+    {
+        var value = Input.GetAxis("Vertical");
+        if (value != 0)
+        {
+            m_framingTransposer.m_ScreenY = value < 0 ? cameraScreenYUp : cameraScreenYDown;
+            m_framingTransposer.m_CameraDistance = cameraDistanceWhenLookUpDown;
+        }
+        else
+        {
+            // 复位
+            m_framingTransposer.m_ScreenY = m_cameraDefaultScreenY;
+            m_framingTransposer.m_CameraDistance = m_cameraDefaultDistance;
+        }
     }
 }

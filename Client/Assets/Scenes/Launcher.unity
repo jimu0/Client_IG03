@@ -325,8 +325,8 @@ MonoBehaviour:
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
   m_XDamping: 5
-  m_YDamping: 5
-  m_ZDamping: 5
+  m_YDamping: 2.6
+  m_ZDamping: 2.6
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.6
@@ -335,8 +335,8 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 1
+  m_SoftZoneHeight: 2
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -514,14 +514,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba128948a64cb444a27c3dcc3830199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1382515127}
-  partner: {fileID: 268734243}
   playerControlSetting: {fileID: 11400000, guid: aa76c45380576b6409a56d1c293b3576, type: 2}
   damageSetting: {fileID: 11400000, guid: afd7727afe0b9d0458f899de46978bc4, type: 2}
   layerMaskSetting: {fileID: 11400000, guid: eafec1e4a35afc14a868e2e20a3affe7, type: 2}
   GravityValue: -9.81
+  player: {fileID: 1382515127}
   PlayerMoveSpeed: 2
   PlayerJumpHeight: 1.1
+  partner: {fileID: 268734243}
   PartnerFlySpeed: 10
   PartnerFlyMaxDistance: 20
   PartnerGoBackTime: 0.2
@@ -596,6 +596,10 @@ MonoBehaviour:
   playerMaxHP: 10
   playerHp: 10
   score: 0
+  camera: {fileID: 274811262}
+  cameraScreenYDown: 0.8
+  cameraScreenYUp: 0.4
+  cameraDistanceWhenLookUpDown: 13
 --- !u!4 &1410160403
 Transform:
   m_ObjectHideFlags: 0

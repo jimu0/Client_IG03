@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   player: {fileID: 0}
+  ForceShootAfterBack: 0
   rigidbody: {fileID: 0}
   meshTran: {fileID: 3765382954388336851}
 --- !u!65 &3765382953860712738

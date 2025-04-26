@@ -53,7 +53,8 @@ public class Box : MonoBehaviour, IPushable
             if(m_curPos == m_targetPos)
             {
                 m_isMove = false;
-                m_rigidbody.MovePosition(m_targetPos);
+                //m_rigidbody.MovePosition(m_targetPos);
+                transform.position = m_targetPos;
             }
             else
             {
@@ -64,6 +65,9 @@ public class Box : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
+        if (m_isMove)
+            return;
+
         var pre = m_isGrounded;
         CheckGround();
         if (m_isGrounded || GetLink() != null)
@@ -173,8 +177,7 @@ public class Box : MonoBehaviour, IPushable
         }
         direction = direction.normalized;
         m_moveDirection = direction;
-        m_targetPos = transform.position + direction * m_moveDistance;
-        m_targetPos = AlignPosition(m_targetPos);
+        m_targetPos = AlignPosition(transform.position + direction * m_moveDistance);
         m_curPos = transform.position;
         m_isMove = true;
 
