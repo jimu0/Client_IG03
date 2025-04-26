@@ -56,15 +56,17 @@ public class UIMainMenu : UIBase
         BtnStart.onClick.RemoveAllListeners();
         BtnCloseLevel.onClick.RemoveAllListeners();
 
-        LevelItem.SetActive(false);
+        UILevel.SetActive(false);
         foreach (var item in m_levelItems)
         {
-            Destroy(item);
+            GameObject.Destroy(item);
         }
+        m_levelItems.Clear();
     }
 
     public void UpdateLevel()
     {
+        LevelItem.SetActive(false);
         foreach (var levelName in LevelManager.instance.sceneNameArray)
         {
             var item = GameObject.Instantiate(LevelItem);
@@ -72,12 +74,13 @@ public class UIMainMenu : UIBase
             item.SetActive(true);
             var text = item.GetComponentInChildren<TextMeshProUGUI>();
             text.text = levelName;
-
             var btn = item.GetComponent<Button>();
             btn.onClick.AddListener(() =>
             {
                 TmpGameManager.instance.StartPlay(levelName);
             });
+
+            m_levelItems.Add(item);
         }
     }
 }

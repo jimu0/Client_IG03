@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void EnterLevel(int index)
@@ -84,6 +84,16 @@ public class LevelManager : MonoBehaviour
             m_dicLevelDirector[m_curSceneIndex].ResetLevel();
             m_dicLevelDirector[m_curSceneIndex].LevelStart();
         }
+    }
+
+    public void UnloadAllLevel()
+    {
+        foreach (var index in m_loadedScene)
+        {
+            SceneManager.UnloadSceneAsync(sceneNameArray[index]);
+        }
+        m_loadedScene.Clear();
+        m_curSceneIndex = -1;
     }
 
     private int GetSceneIndex(string levelName)
