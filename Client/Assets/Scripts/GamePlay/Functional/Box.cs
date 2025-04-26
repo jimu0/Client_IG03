@@ -64,6 +64,7 @@ public class Box : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
+        var pre = m_isGrounded || GetLink() != null;
         CheckGround();
         if (m_isGrounded || GetLink() != null)
         {
@@ -71,9 +72,8 @@ public class Box : MonoBehaviour, IPushable
             m_rigidVelocity.y = 0;
             //m_rigidbody.velocity = m_rigidVelocity;
 
-            var pos = transform.position;
-            AlignPosition(ref pos);
-            transform.position = pos;
+            //if (m_isGrounded)
+            //    transform.position = AlignPosition(transform.position);
         }
         else
         {
@@ -130,16 +130,18 @@ public class Box : MonoBehaviour, IPushable
         return 0;
     }
 
-    private void AlignPosition(ref Vector3 pos)
+    private Vector3 AlignPosition(Vector3 pos)
     {
-        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
-            pos.x = Mathf.Round(m_targetPos.x / 0.5f) * 0.5f;
+        int constraints = (int)m_rigidbody.constraints;
+        if ((constraints & (int)RigidbodyConstraints.FreezePositionX) == 0)
+            pos.x = Mathf.Round(pos.x / 0.5f) * 0.5f;
 
-        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionY) != 0)
-            pos.y = Mathf.Round(m_targetPos.y / 0.5f) * 0.5f;
+        if ((constraints & (int)RigidbodyConstraints.FreezePositionY) == 0)
+            pos.y = Mathf.Round(pos.y / 0.5f) * 0.5f;
 
-        if ((m_rigidbody.constraints & RigidbodyConstraints.FreezePositionZ) != 0)
-            pos.z = Mathf.Round(m_targetPos.z / 0.5f) * 0.5f;
+        if ((constraints & (int)RigidbodyConstraints.FreezePositionZ) == 0)
+            pos.z = Mathf.Round(pos.z / 0.5f) * 0.5f;
+        return pos;
     }
 
     #region IPushable
@@ -169,10 +171,10 @@ public class Box : MonoBehaviour, IPushable
             //Debug.Log("DoMove box 222");
             return;
         }
-
+        direction = direction.normalized;
         m_moveDirection = direction;
         m_targetPos = transform.position + direction * m_moveDistance;
-        AlignPosition(ref m_targetPos);
+        m_targetPos = AlignPosition(m_targetPos);
         m_curPos = transform.position;
         m_isMove = true;
 
@@ -190,6 +192,7 @@ public class Box : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
+        direction = direction.normalized;
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = GetHorizontalValue(direction) != 0;
         Ray ray = new Ray(m_collider.bounds.center, direction);

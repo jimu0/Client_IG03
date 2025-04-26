@@ -55,16 +55,16 @@ public class UIMainMenu : UIBase
         BtnExit.onClick.RemoveAllListeners();
         BtnStart.onClick.RemoveAllListeners();
         BtnCloseLevel.onClick.RemoveAllListeners();
-    }
 
-    public void UpdateLevel()
-    {
         LevelItem.SetActive(false);
         foreach (var item in m_levelItems)
         {
             Destroy(item);
         }
+    }
 
+    public void UpdateLevel()
+    {
         foreach (var levelName in LevelManager.instance.sceneNameArray)
         {
             var item = GameObject.Instantiate(LevelItem);

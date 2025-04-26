@@ -58,7 +58,7 @@ public class Door : MonoBehaviour
 
     private bool IsCanClose()
     {
-        if(Physics.BoxCast(collider.bounds.center, collider.bounds.extents, Vector3.up, default,  PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition)))
+        if(Physics.BoxCast(collider.bounds.center, collider.bounds.extents, Vector3.up, default, 0f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition)))
             return false;
         
         return true;

@@ -22,16 +22,19 @@ public class UIGamePause : UIBase
         BtnResume.onClick.AddListener(() =>
         {
             TmpGameManager.instance.Resume();
+            Close();
         });
 
         BtnRestart.onClick.AddListener(() =>
         {
             TmpGameManager.instance.ResetLevel();
+            Close();
         });
 
         BtnExit.onClick.AddListener(() =>
         {
             TmpGameManager.instance.BackToMenu();
+            Close();
         });
     }
 

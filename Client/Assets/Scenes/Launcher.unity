@@ -524,7 +524,7 @@ MonoBehaviour:
   PlayerJumpHeight: 1.1
   PartnerFlySpeed: 10
   PartnerFlyMaxDistance: 20
-  PartnerGoBackTime: 1
+  PartnerGoBackTime: 0.2
   PartnerGoBackCurve:
     serializedVersion: 2
     m_Curve:

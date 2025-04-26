@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour, IController
         if (moveWithPath)
             return;
 
+        if (partner.IsPlayerNeedStand())
+            return;
+
         Vector3 move = GetHorizontalDirection(Input.GetAxis("Horizontal"));
         if (move != Vector3.zero)
         {
@@ -95,6 +98,9 @@ public class PlayerController : MonoBehaviour, IController
         if (!moveWithPath)
             return;
 
+        if (partner.IsPlayerNeedStand())
+            return;
+
         float moveValue = Input.GetAxis("Horizontal");
         if (moveValue == 0)
             return;
@@ -113,7 +119,7 @@ public class PlayerController : MonoBehaviour, IController
         transform.rotation = quaternion;
     }
 
-    bool IsJumping()
+    public bool IsJumping()
     {
         return !m_isGrounded || m_playerVelocity.y > 0;
     }
@@ -162,7 +168,7 @@ public class PlayerController : MonoBehaviour, IController
 
         if (type == EControlType.BackPartener)
             if (!IsJumping())
-                success = partner.DoFollow();
+                success = partner.DoBackAndShoot();
 
         if (type == EControlType.ShootPartner)
             if (!IsJumping())
