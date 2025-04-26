@@ -46,7 +46,8 @@ public class PlayerManager : MonoBehaviour
     private float m_cameraDefaultDistance;
     private CinemachineFramingTransposer m_framingTransposer;
 
-    private IController playerControler;
+    private IController m_playerControler;
+    private ControlSettingItem m_playerJumpSetting; // 跳跃控制特殊处理
     private Dictionary<EControlType, float> m_lastActionTime = new Dictionary<EControlType, float>(); 
     private Dictionary<int, float> m_lastActionGroupTime = new Dictionary<int, float>();
 
@@ -57,7 +58,7 @@ public class PlayerManager : MonoBehaviour
     {
         instance = this;
         //HidePlayer();
-        playerControler = player as IController;
+        m_playerControler = player as IController;
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(player.gameObject);
         DontDestroyOnLoad(partner.gameObject);
@@ -74,12 +75,15 @@ public class PlayerManager : MonoBehaviour
             if (item.commonCdAffected)
                 if(!m_lastActionGroupTime.ContainsKey(item.commonCdGroup))
                     m_lastActionGroupTime.Add(item.commonCdGroup, 0f);
+
+            if (item.type == EControlType.Jump)
+                player.JumpSetting = item;
         }
 
         foreach (var item in layerMaskSetting.settingList)
         {       
             m_layerMaskUsage.Add(item.usage, LayerMask.GetMask(item.layerNames));
-            Debug.Log($"m_layerMaskUsage {item.usage} {LayerMask.GetMask(item.layerNames)} " );
+            //Debug.Log($"m_layerMaskUsage {item.usage} {LayerMask.GetMask(item.layerNames)} " );
         }
 
         foreach (var item in damageSetting.settingList)
@@ -151,7 +155,7 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (var item in playerControlSetting.settingList)
         {
-            if (Input.GetKeyDown(item.keyCode))
+            if (Input.GetKeyDown(item.keyCode) || Input.GetKeyDown(item.keyCode2))
             {
                 if (!CheckCD(item))
                 {
@@ -165,7 +169,7 @@ public class PlayerManager : MonoBehaviour
                     continue;
                 }
 
-                if (!playerControler.TryDoAction(item.type))
+                if (!m_playerControler.TryDoAction(item.type))
                 {
                     Debug.Log($"TryDoAction {item.type}");
                     continue;
