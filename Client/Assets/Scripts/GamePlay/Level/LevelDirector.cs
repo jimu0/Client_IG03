@@ -21,10 +21,12 @@ public class LevelDirector : MonoBehaviour
             item.levelSceneName = levelSceneName;
         }
 
-        foreach (var item in constraints)
-        {
-            m_constraints |= item;
-        }
+        //foreach (var item in constraints)
+        //{
+        //    m_constraints |= item;
+        //}
+        // 先写死
+        m_constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         Debug.Log($"LevelDirector {levelSceneName} m_constraints {m_constraints}");
         LevelManager.instance.RegistLevelDirector(this);
     }

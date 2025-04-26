@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
 
     public int GetPlayLevelIndex()
     {
-        int levelIndex = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete);
+        int levelIndex = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete, -1);
         return Mathf.Clamp(levelIndex + 1, 0, sceneNameArray.Length - 1);
     }
 

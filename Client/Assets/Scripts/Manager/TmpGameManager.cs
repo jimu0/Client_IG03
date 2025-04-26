@@ -72,6 +72,18 @@ public class TmpGameManager : MonoBehaviour
         });
     }
 
+    public void StartPlay(string levelName)
+    {
+        gameState = EGameState.Play;
+        ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
+        {
+            UIManager.Instance.CloseByName("UIMainMenu");
+            UIManager.Instance.Show("UIGame");
+
+            LevelManager.instance.EnterLevel(levelName);
+        });
+    }
+
     /// <summary>
     /// ËÀÍö
     /// </summary>

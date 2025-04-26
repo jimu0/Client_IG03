@@ -13,7 +13,16 @@ public class UIMainMenu : UIBase
 {
     //public TextMeshProUGUI text_title;
     public Button BtnStart;
+    public Button BtnLevel;
     public Button BtnExit;
+
+    public GameObject UILevel;
+
+    public Button BtnCloseLevel;
+    public GameObject LevelItem;
+    public Transform ScrollViewContent;
+
+    private List<GameObject> m_levelItems = new List<GameObject>();
 
     public override void OnShow(object param)
     {
@@ -22,15 +31,53 @@ public class UIMainMenu : UIBase
             TmpGameManager.instance.StartPlay();
         });
 
+        BtnLevel.onClick.AddListener(() =>
+        {
+            UILevel.SetActive(true);
+        });
+
         BtnExit.onClick.AddListener(() =>
         {
             TmpGameManager.instance.Exit();
         });
+
+        BtnCloseLevel.onClick.AddListener(() =>
+        {
+            UILevel.SetActive(false);
+        });
+
+        UpdateLevel();
     }
 
     public override void OnClose()
     {
         BtnStart.onClick.RemoveAllListeners();
         BtnExit.onClick.RemoveAllListeners();
+        BtnStart.onClick.RemoveAllListeners();
+        BtnCloseLevel.onClick.RemoveAllListeners();
+    }
+
+    public void UpdateLevel()
+    {
+        LevelItem.SetActive(false);
+        foreach (var item in m_levelItems)
+        {
+            Destroy(item);
+        }
+
+        foreach (var levelName in LevelManager.instance.sceneNameArray)
+        {
+            var item = GameObject.Instantiate(LevelItem);
+            item.transform.SetParent(ScrollViewContent, false);
+            item.SetActive(true);
+            var text = item.GetComponentInChildren<TextMeshProUGUI>();
+            text.text = levelName;
+
+            var btn = item.GetComponent<Button>();
+            btn.onClick.AddListener(() =>
+            {
+                TmpGameManager.instance.StartPlay(levelName);
+            });
+        }
     }
 }

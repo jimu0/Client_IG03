@@ -17,6 +17,7 @@ public class UIGame : UIBase
 
     public override void OnShow(object param)
     {
+        UIManager.Instance.RegistEvent(this);
         BtnPause.onClick.AddListener(() =>
         {
             TmpGameManager.instance.Pause();
