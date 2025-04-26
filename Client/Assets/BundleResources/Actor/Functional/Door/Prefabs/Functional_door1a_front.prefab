@@ -66,9 +66,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4cc665d01f94048bd599aa410e54f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
-  shouldBeState: 0
-  realState: 0
+  collider: {fileID: 2466190628210443233}
+  defaultState: 0
   DoorAnimators:
   - {fileID: 6200894086176718833}
   AnimOpenName: Base Layer.Functional_Door_SwitchON
