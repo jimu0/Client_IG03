@@ -64,7 +64,7 @@ public class Box : MonoBehaviour, IPushable
 
     private void UpdateGravity()
     {
-        var pre = m_isGrounded || GetLink() != null;
+        var pre = m_isGrounded;
         CheckGround();
         if (m_isGrounded || GetLink() != null)
         {
@@ -72,8 +72,8 @@ public class Box : MonoBehaviour, IPushable
             m_rigidVelocity.y = 0;
             //m_rigidbody.velocity = m_rigidVelocity;
 
-            //if (m_isGrounded)
-            //    transform.position = AlignPosition(transform.position);
+            if (pre ^ m_isGrounded)
+                transform.position = AlignPosition(transform.position);
         }
         else
         {

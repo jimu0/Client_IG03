@@ -13,27 +13,29 @@ public class Door : MonoBehaviour
 {
     public BoxCollider collider;
 
-    public EDoorState shouldBeState;
-    public EDoorState realState;
-
+    public EDoorState defaultState;
     public Animator[] DoorAnimators;
 
     public string AnimOpenName = "";
     public string AnimCloseName = "";
 
+    private EDoorState m_shouldBeState;
+    private EDoorState m_realState;
+
     void Start()
     {
+        m_shouldBeState = defaultState;
     }
 
     public void OpenDoor()
     {
-        shouldBeState = EDoorState.Open;
+        m_shouldBeState = EDoorState.Open;
         Debug.Log("OpenDoor");
     }
 
     public void CloseDoor()
     {
-        shouldBeState = EDoorState.Close;
+        m_shouldBeState = EDoorState.Close;
         Debug.Log("CloseDoor");
     }
 
@@ -44,10 +46,10 @@ public class Door : MonoBehaviour
 
     private void UpdateState()
     {
-        if (shouldBeState == realState)
+        if (m_shouldBeState == m_realState)
             return;
 
-        if (shouldBeState == EDoorState.Close)
+        if (m_shouldBeState == EDoorState.Close)
         {
             if (IsCanClose())
                 BeClose();
@@ -66,7 +68,7 @@ public class Door : MonoBehaviour
 
     private void BeClose()
     {
-        realState = EDoorState.Close;
+        m_realState = EDoorState.Close;
         collider.enabled = true;
         // 动画
         foreach (var item in DoorAnimators)
@@ -77,7 +79,7 @@ public class Door : MonoBehaviour
 
     private void BeOpen()
     {
-        realState = EDoorState.Open;
+        m_realState = EDoorState.Open;
         collider.enabled = false;
         // 动画
         foreach (var item in DoorAnimators)
