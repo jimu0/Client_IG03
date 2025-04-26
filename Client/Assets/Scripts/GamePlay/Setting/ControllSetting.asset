@@ -15,36 +15,42 @@ MonoBehaviour:
   settingList:
   - type: 0
     keyCode: 32
+    keyCode2: 106
     cd: 0
     commonCdAffected: 0
     commonCd: 0
     commonCdGroup: 0
   - type: 1
-    keyCode: 106
+    keyCode: 104
+    keyCode2: 304
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05
     commonCdGroup: 0
   - type: 2
-    keyCode: 107
+    keyCode: 121
+    keyCode2: 113
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05
     commonCdGroup: 1
   - type: 3
-    keyCode: 107
+    keyCode: 121
+    keyCode2: 101
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05
     commonCdGroup: 1
   - type: 4
-    keyCode: 108
+    keyCode: 107
+    keyCode2: 306
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05
     commonCdGroup: 1
   - type: 5
-    keyCode: 108
+    keyCode: 107
+    keyCode2: 306
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05

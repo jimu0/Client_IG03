@@ -742,7 +742,7 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         foreach (var item in m_StayTriggers)
         {
-            item.SendMessage("OnTriggerExit", m_collider);
+            item.SendMessage("OnTriggerExit", m_collider, SendMessageOptions.DontRequireReceiver);
         }
     }
 

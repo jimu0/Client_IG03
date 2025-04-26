@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour, IController
     private CharacterController m_controller;
     private RigidbodyConstraints m_constraintsValue;
 
+    private ControlSettingItem m_jumpSetting;
+    public ControlSettingItem JumpSetting
+    {
+        set { m_jumpSetting = value;   }
+    }
+
     void Start()
     {
         m_controller = GetComponent<CharacterController>();
@@ -59,7 +65,7 @@ public class PlayerController : MonoBehaviour, IController
 
     bool DoJump()
     {
-        if (Input.GetButtonDown("Jump") && m_isGrounded)
+        if ((Input.GetKeyDown(m_jumpSetting.keyCode) || Input.GetKeyDown(m_jumpSetting.keyCode2)) && m_isGrounded)
         {
             m_playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
         }

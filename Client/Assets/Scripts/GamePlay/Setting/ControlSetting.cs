@@ -21,6 +21,8 @@ public struct ControlSettingItem
     public EControlType type;
     [Header("控制键盘")]
     public KeyCode keyCode;
+    [Header("控制键盘 2")]
+    public KeyCode keyCode2;
     [Header("动作cd")]
     public float cd;
     [Header("此动作是否影响和被影响公共cd")]
@@ -33,6 +35,7 @@ public struct ControlSettingItem
     {
         this.type = type;
         this.keyCode = default;
+        this.keyCode2 = default;
         this.cd = default;
         this.commonCd = default;
         this.commonCdAffected = default;
