@@ -24,6 +24,7 @@ MonoBehaviour:
     - Ground
     - Interactable
     - Default
+    - Player
   - usage: 2
     layerNames:
     - Pushable

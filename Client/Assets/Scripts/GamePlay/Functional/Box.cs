@@ -199,7 +199,7 @@ public class Box : MonoBehaviour, IPushable
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = GetHorizontalValue(direction) != 0;
         Ray ray = new Ray(m_collider.bounds.center, direction);
-        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
+        RaycastHit[] results = Physics.RaycastAll(ray, 1000f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck), QueryTriggerInteraction.Collide);
         if (results.Length > 0)
         {
             if (isHorizontal)

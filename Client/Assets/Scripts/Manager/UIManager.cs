@@ -82,19 +82,37 @@ public class UIManager : MonoBehaviour
 
     public void CloseByName(string UIName)
     {
+        List<UIBase> closeUIList = new List<UIBase>();
         foreach (var item in hashShowingUI)
         {
             if (item.Name.Equals(UIName))
             {
-                Close(item);
+                closeUIList.Add(item);
                 break;
             }
+        }
+
+        foreach (var item in closeUIList)
+        {
+            Close(item);
         }
     }
 
     public void CloseByLayer(EUILayer layer)
     {
-        // todo
+        List<UIBase> closeUIList = new List<UIBase>();
+        foreach (var item in hashShowingUI)
+        {
+            if (item.layer == layer)
+            {
+                closeUIList.Add(item);
+            }
+        }
+
+        foreach (var item in closeUIList)
+        {
+            Close(item);
+        }
     }
 
     public void Close(UIBase uiBase)
