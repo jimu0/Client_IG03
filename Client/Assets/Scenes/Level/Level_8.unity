@@ -1389,7 +1389,7 @@ MonoBehaviour:
   levelSceneName: Level_8
   checkPoints:
   - {fileID: 468722666}
-  playerPosition: {x: 4, y: 10, z: 0}
+  playerPosition: {x: 1, y: 2, z: 0}
   boxes:
   - {fileID: 965217601}
   - {fileID: 732988629}
