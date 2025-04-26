@@ -2494,7 +2494,7 @@ MonoBehaviour:
   levelSceneName: Level_5
   checkPoints:
   - {fileID: 468722666}
-  playerPosition: {x: 2, y: 2, z: 0}
+  playerPosition: {x: 1, y: 1, z: 0}
   boxes:
   - {fileID: 965217601}
   - {fileID: 732988629}

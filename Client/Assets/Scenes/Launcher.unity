@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1382515130}
+    - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+      propertyPath: ForceShootAfterBack
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
 --- !u!114 &268734243 stripped
@@ -517,14 +521,14 @@ MonoBehaviour:
   playerControlSetting: {fileID: 11400000, guid: aa76c45380576b6409a56d1c293b3576, type: 2}
   damageSetting: {fileID: 11400000, guid: afd7727afe0b9d0458f899de46978bc4, type: 2}
   layerMaskSetting: {fileID: 11400000, guid: eafec1e4a35afc14a868e2e20a3affe7, type: 2}
-  GravityValue: -9.81
+  GravityValue: -10
   player: {fileID: 1382515127}
   PlayerMoveSpeed: 2
   PlayerJumpHeight: 1.1
   partner: {fileID: 268734243}
-  PartnerFlySpeed: 10
+  PartnerFlySpeed: 15
   PartnerFlyMaxDistance: 20
-  PartnerGoBackTime: 0.2
+  PartnerGoBackTime: 0.4
   PartnerGoBackCurve:
     serializedVersion: 2
     m_Curve:
