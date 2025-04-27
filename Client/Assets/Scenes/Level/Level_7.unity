@@ -1002,7 +1002,7 @@ Transform:
   m_Children:
   - {fileID: 1041547104}
   m_Father: {fileID: 276171596077932162}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &301938183
 MonoBehaviour:
@@ -1384,8 +1384,8 @@ MonoBehaviour:
   playerPosition: {x: 10, y: 2, z: 0}
   boxes:
   - {fileID: 965217601}
-  - {fileID: 0}
   - {fileID: 1199957452}
+  - {fileID: 301938183}
   boxPositionList:
   - {x: 4, y: 1, z: 0}
   - {x: 6, y: 1, z: 0}
@@ -6391,8 +6391,8 @@ Transform:
   - {fileID: 585294269356313023}
   - {fileID: 2269804290433939172}
   - {fileID: 1199957451}
-  - {fileID: 41589513}
   - {fileID: 301938182}
+  - {fileID: 41589513}
   - {fileID: 114294957}
   - {fileID: 1563898590}
   m_Father: {fileID: 8819630328856287819}
