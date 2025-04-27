@@ -360,13 +360,13 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         if (!CanDoAction())
         {
-            //Debug.Log("DoActive 11");
+            Debug.Log("DoActive 11");
             return false;
         }
 
         if (m_state != EPartnerState.Box)
         {
-            //Debug.Log("DoActive 222" + m_state);
+            Debug.Log("DoActive 222" + m_state);
             return false;
         }
 
@@ -374,7 +374,7 @@ public class PartnerController : MonoBehaviour, IPushable
         Ray ray = new Ray(transform.position, Vector3.down);
         if (!Physics.Raycast(ray, out result, m_size.y / 2 + 0.01f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerActive)))
         {
-            //Debug.Log("DoActive 333" + result);
+            Debug.Log("DoActive 333" + result);
             return false;
         }
 
@@ -676,7 +676,8 @@ public class PartnerController : MonoBehaviour, IPushable
             bool hasGround = false;
             for (int i = 0; i < results.Length; i++)
             {
-                if ((1 << results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0)
+                if ((1 << results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0 ||
+                    (results[i].collider.gameObject.layer == LayerMask.NameToLayer("Player")))
                 {
                     boxCount++;
                 }

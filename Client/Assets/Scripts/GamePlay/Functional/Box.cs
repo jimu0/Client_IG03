@@ -229,7 +229,8 @@ public class Box : MonoBehaviour, IPushable
             bool hasGround = false;
             for (int i = 0; i < results.Length; i++)
             {
-                if ((1<<results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0)
+                if ((1<<results[i].collider.gameObject.layer & PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)) != 0 ||
+                    (results[i].collider.gameObject.layer == LayerMask.NameToLayer("Player")))
                 {
                     boxCount ++;
                 }
