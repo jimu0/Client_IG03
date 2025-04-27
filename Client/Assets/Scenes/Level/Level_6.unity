@@ -2887,6 +2887,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Functional_Switch2
       objectReference: {fileID: 0}
+    - target: {fileID: 8647884478409979687, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8752850257340778891, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
       propertyPath: CollisionOrTriggerExitEvent.m_PersistentCalls.m_Calls.Array.size
       value: 4
