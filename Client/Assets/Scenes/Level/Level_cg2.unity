@@ -496,7 +496,7 @@ MonoBehaviour:
   levelSceneName: Level_cg2
   checkPoints:
   - {fileID: 468722666}
-  playerPosition: {x: 4, y: 10, z: 0}
+  playerPosition: {x: 0, y: 0, z: 0}
   LevelOrigin: {fileID: 585294269356313023}
   boxes:
   - {fileID: 0}
