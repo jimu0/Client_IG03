@@ -840,6 +840,8 @@ MonoBehaviour:
   sceneNameArray:
   - Level_cg1
   - Level_run1
+  - LevelTutoria_1
+  - LevelTutoria_2
   - Level_1
   - Level_cg2
   - Level_2
@@ -852,7 +854,6 @@ MonoBehaviour:
   - Level_8
   - Level_cg4
   - Level_9
-  - Level_10
   preLoadLevelCount: 0
 --- !u!1 &1890882845
 GameObject:
