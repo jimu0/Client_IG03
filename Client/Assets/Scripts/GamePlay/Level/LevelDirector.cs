@@ -7,6 +7,7 @@ public class LevelDirector : MonoBehaviour
     public string levelSceneName;
     public List<LevelCheckPoint> checkPoints;
     public Vector3 playerPosition;
+    public Transform LevelOrigin;
     public List<Box> boxes;
     public List<Vector3> boxPositionList;
 
@@ -48,10 +49,10 @@ public class LevelDirector : MonoBehaviour
 
     public void ResetLevel()
     {
-        PlayerManager.instance.TeleportPlayerAndReset(playerPosition + new Vector3(0.5f, 0.5f, 0), m_constraints);
+        PlayerManager.instance.TeleportPlayerAndReset(playerPosition + new Vector3(0.5f, 0.5f, 0) + LevelOrigin.position, m_constraints);
         for (int i = 0; i < boxes.Count; i++)
         {
-            boxes[i].SetPostion(boxPositionList[i]);
+            boxes[i].SetPostion(boxPositionList[i] + LevelOrigin.position);
         }
     }
 
