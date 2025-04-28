@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[CreateAssetMenu(fileName = "SceneChangeSignal", menuName = "Signals/SceneChangeSignal")]
-public class SceneChangeSignal : Marker, INotification
+namespace Scripts.TimelineControl.Signal
 {
-    public PropertyName id => new PropertyName("SceneChangeSignal");
-    public string TargetSceneName; // 暴露给Timeline编辑器的字段
+    [CreateAssetMenu(fileName = "SceneChangeSignal", menuName = "Signals/SceneChangeSignal")]
+    public class SceneChangeSignal : Marker, INotification
+    {
+        public PropertyName id => new PropertyName("SceneChangeSignal");
+        public string TargetSceneName; // 暴露给Timeline编辑器的字段
+    }
 }
+

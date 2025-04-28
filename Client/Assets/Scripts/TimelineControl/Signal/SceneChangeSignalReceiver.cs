@@ -1,26 +1,16 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
-using UnityEngine.SceneManagement;
 
-public class SceneChangeSignalReceiver : MonoBehaviour, INotificationReceiver
+namespace Scripts.TimelineControl.Signal
 {
-    // 实现INotificationReceiver接口
-    public void OnNotify(Playable origin, INotification notification, object context)
+    public class SceneChangeSignalReceiver : MonoBehaviour, INotificationReceiver
     {
-        // 检查信号类型
-        if (notification is SceneChangeSignal sceneChangeSignal)
+        public void OnNotify(Playable origin, INotification notification, object context)
         {
-            // 触发关卡切换
-            LoadTargetScene(sceneChangeSignal.TargetSceneName);
+            if (notification is SceneChangeSignal sceneChangeSignal)
+            {
+                LevelManager.instance.EnterLevel(sceneChangeSignal.TargetSceneName);
+            }
         }
-    }
-
-    private void LoadTargetScene(string sceneName)
-    {
-        Debug.Log($"{sceneName}");
-        LevelManager.instance.CompleteLevel(sceneName); 
-        //LevelManager.instance.EnterLevel(sceneName);
-        LevelManager.instance.NextLevel();
     }
 }
