@@ -33,6 +33,11 @@ public enum ELayerMaskUsage
     PartnerActive,
 
     /// <summary>
+    /// 伙伴发射判定
+    /// </summary>
+    PartnerShootCheck,
+
+    /// <summary>
     /// 玩家触发器
     /// </summary>
     TriggerForPlayer,

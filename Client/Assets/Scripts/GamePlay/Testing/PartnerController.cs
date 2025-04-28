@@ -75,9 +75,13 @@ public class PartnerController : MonoBehaviour, IPushable
     private Vector3 m_rigidVelocity;
 
     private HashSet<GameObject> m_StayTriggers = new HashSet<GameObject>();
-
     public Transform meshTran;
-    
+
+    private BoxCollider m_triggerPlaceholder;
+    private Transform m_tranPlaceholder;
+
+    private Ray m_ray;
+    private int m_timer;
 
     void Start()
     {
@@ -86,12 +90,20 @@ public class PartnerController : MonoBehaviour, IPushable
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.isKinematic = true;
         m_size = new Vector3(1,1,1);
-        
+
+        var obj = new GameObject();
+        obj.layer = gameObject.layer;
+        m_tranPlaceholder = obj.transform;
+        m_tranPlaceholder.SetParent(transform.parent, false);
+        m_triggerPlaceholder = obj.AddComponent<BoxCollider>();
+        m_triggerPlaceholder.bounds.SetMinMax(Vector3.zero, Vector3.one);
+
+        m_ray = new Ray();
     }
 
     public void DoUpdate()
     {
-        Debug.DrawLine(followTarget.position, followTarget.position + followTarget.forward * m_flyMaxDistance);
+        //Debug.DrawLine(followTarget.position, followTarget.position + followTarget.forward * m_flyMaxDistance);
 
         UpdateMove();
         UpdateGravity();
@@ -105,7 +117,8 @@ public class PartnerController : MonoBehaviour, IPushable
             if (m_curPos == m_targetPos)
             {
                 m_isMoving = false;
-                //rigidbody.MovePosition(m_targetPos);
+                SetPlaceholder(false);
+
                 transform.position = m_targetPos;
                 if (m_state == EPartnerState.Flying)
                     BeBox();
@@ -113,6 +126,22 @@ public class PartnerController : MonoBehaviour, IPushable
             else
             {
                 rigidbody.MovePosition(m_curPos);
+            }
+
+            if (m_state == EPartnerState.Flying)
+            {
+                var distance = Mathf.Abs(m_targetPos.x - m_curPos.x);
+                if (distance > 1f)
+                {
+                    m_ray.origin = m_curPos;
+                    m_ray.direction = m_moveDirection;
+                    if (Physics.Raycast(m_ray, out m_hitInfo, distance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerShootCheck)))
+                    {
+                        //Debug.Log($" hit distance {Vector3.Distance(m_hitInfo.point, m_curPos)}  name {m_hitInfo.transform.name} distance {distance}  point {m_hitInfo.point}  cur {m_curPos}  target {m_targetPos}");
+                        if (Vector3.Distance(m_hitInfo.point, m_curPos) < distance)
+                            m_targetPos = AlignPosition(m_targetPos - m_moveDirection * 1f);
+                    }
+                }
             }
         }
         else if (m_state == EPartnerState.Follow)
@@ -217,7 +246,7 @@ public class PartnerController : MonoBehaviour, IPushable
         Ray ray = new Ray(followTarget.position, direction);
         RaycastHit result;
         float flyDistance = m_flyMaxDistance;
-        bool hit = Physics.Raycast(ray, out result, m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
+        bool hit = Physics.Raycast(ray, out result, m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerShootCheck));
         if (!hit)
             return false;
 
@@ -253,7 +282,7 @@ public class PartnerController : MonoBehaviour, IPushable
         Ray ray = new Ray(followTarget.position, direction);
         RaycastHit result;
         float flyDistance = m_flyMaxDistance;
-        bool hit = Physics.Raycast(ray, out result,m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.MoveSpaceCheck));
+        bool hit = Physics.Raycast(ray, out result,m_flyMaxDistance, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerShootCheck));
         if (hit)
         {
             flyDistance = Mathf.Abs(Mathf.Abs(GetHorizontalValue(result.point - followTarget.position)) - m_size.x/2);
@@ -265,19 +294,18 @@ public class PartnerController : MonoBehaviour, IPushable
         }
 
         transform.position = followTarget.position;
+        m_targetPos = AlignPosition(followTarget.position + direction * flyDistance);
+        SetPlaceholder(true, AlignPosition(followTarget.position + direction * (flyDistance%1f + 1f)));
+
         if (!hit)
         {
             m_state = EPartnerState.FlyAndBack;
-            m_targetPos = AlignPosition(followTarget.position + direction * flyDistance);
             m_moveStartPos = followTarget.position;
             m_actionPassTime = 0;
             return true;
         }
 
         m_moveDirection = direction;
-        m_targetPos = AlignPosition(followTarget.position + direction * flyDistance);
- 
-
         m_curPos = transform.position;
         m_isMoving = true;
 
@@ -559,11 +587,6 @@ public class PartnerController : MonoBehaviour, IPushable
         meshTran.localScale = Vector3.one * 0.9f;
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        CheckGround();
-    }
-
     private float GetHorizontalValue(Vector3 v3)
     {
         if ((rigidbody.constraints & RigidbodyConstraints.FreezePositionX) != 0)
@@ -592,6 +615,24 @@ public class PartnerController : MonoBehaviour, IPushable
 
         return pos;
     }
+
+    private void SetPlaceholder(bool active, Vector3 position = default)
+    {
+        TimerManager.Cancel(m_timer);
+        if (active)
+        {
+            m_tranPlaceholder.position = position;
+            m_triggerPlaceholder.enabled = active;
+        }
+        else
+        {
+            m_timer = TimerManager.Register(0.5f, () =>
+            {
+                m_triggerPlaceholder.enabled = active;
+            });
+        }
+    }
+
 
     #region IPushable
     public IPushable GetLink()
