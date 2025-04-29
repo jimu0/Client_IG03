@@ -14,27 +14,39 @@ public class Door : MonoBehaviour
     public BoxCollider collider;
 
     public EDoorState defaultState;
+
     public Animator[] DoorAnimators;
 
     public string AnimOpenName = "";
     public string AnimCloseName = "";
 
+    public int StateChangeDelayFrame = 0;
+
     private EDoorState m_shouldBeState;
     private EDoorState m_realState;
 
+    private Vector3 m_colliderCenter;
+    private Vector3 m_colliderExtents;
+
+    public int m_stateChangeFrame;
+
     void Start()
     {
+        m_colliderCenter = collider.bounds.center;
+        m_colliderExtents = collider.bounds.extents;
         m_shouldBeState = defaultState;
     }
 
     public void OpenDoor()
     {
+        m_stateChangeFrame = 0;
         m_shouldBeState = EDoorState.Open;
         Debug.Log("OpenDoor");
     }
 
     public void CloseDoor()
     {
+        m_stateChangeFrame = 0;
         m_shouldBeState = EDoorState.Close;
         Debug.Log("CloseDoor");
     }
@@ -49,6 +61,10 @@ public class Door : MonoBehaviour
         if (m_shouldBeState == m_realState)
             return;
 
+        m_stateChangeFrame++;
+        if (m_stateChangeFrame < StateChangeDelayFrame)
+            return;
+
         if (m_shouldBeState == EDoorState.Close)
         {
             if (IsCanClose())
@@ -60,10 +76,8 @@ public class Door : MonoBehaviour
 
     private bool IsCanClose()
     {
-        if(Physics.BoxCast(collider.bounds.center, collider.bounds.extents, Vector3.up, default, 0f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition)))
-            return false;
-        
-        return true;
+        var results = Physics.OverlapBox(m_colliderCenter, m_colliderExtents*0.9f, Quaternion.identity, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.BoxCollition), QueryTriggerInteraction.Collide);
+        return results.Length == 0;
     }
 
     private void BeClose()

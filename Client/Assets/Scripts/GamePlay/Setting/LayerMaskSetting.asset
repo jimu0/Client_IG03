@@ -59,4 +59,10 @@ MonoBehaviour:
     - Default
   - usage: 7
     layerNames:
+    - Pushable
+    - Ground
+    - Interactable
+    - Default
+  - usage: 8
+    layerNames:
     - Player
