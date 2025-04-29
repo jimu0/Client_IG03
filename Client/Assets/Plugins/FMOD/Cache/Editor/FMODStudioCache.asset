@@ -92,10 +92,10 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u4E3B\u754C\u9762\u80CC\u666F.bank"
   Name: "\u4E3B\u754C\u9762\u80CC\u666F"
   StudioPath: "bank:/\u4E3B\u754C\u9762\u80CC\u666F"
-  lastModified: 638797437739710976
+  lastModified: 638813740978871306
   FileSizes:
   - Name: Desktop
-    Value: 2280736
+    Value: 3422496
   - Name: Mobile
     Value: 1274624
   Exists: 1
@@ -196,6 +196,33 @@ MonoBehaviour:
   - Name: Mobile
     Value: 4576
   Exists: 1
+--- !u!114 &-132327933327921165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u5F00\u573Atimeline"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u5F00\u573Atimeline"
+  Guid:
+    Data1: 1101358232
+    Data2: 1186777979
+    Data3: -1842817869
+    Data4: 279700661
+  Banks:
+  - {fileID: -7676878511461849324}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +248,9 @@ MonoBehaviour:
   - {fileID: 5161741008288463386}
   - {fileID: -7043687357187075087}
   - {fileID: 609912715838986780}
+  - {fileID: 6800982940846234541}
+  - {fileID: -132327933327921165}
+  - {fileID: 4040482849488634548}
   EditorParameters:
   - {fileID: 1687164050968434774}
   - {fileID: 1531786801914800405}
@@ -229,7 +259,7 @@ MonoBehaviour:
   - {fileID: 5018280972016655682}
   StringsBanks:
   - {fileID: 811740939546395592}
-  cacheTime: 638797437739919909
+  cacheTime: 638813740978871306
   cacheVersion: 131616
 --- !u!114 &369285304447063890
 MonoBehaviour:
@@ -299,12 +329,12 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638797437739359123
+  lastModified: 638813740969476807
   FileSizes:
   - Name: Desktop
-    Value: 1458
+    Value: 1608
   - Name: Mobile
-    Value: 1458
+    Value: 1608
   Exists: 1
 --- !u!114 &1531786801914800405
 MonoBehaviour:
@@ -360,6 +390,33 @@ MonoBehaviour:
   - level2
   - level3
   Exists: 1
+--- !u!114 &4040482849488634548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u7D27\u5F20 G2"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u7D27\u5F20 G2"
+  Guid:
+    Data1: 972163055
+    Data2: 1149142035
+    Data3: -908956260
+    Data4: -1417575673
+  Banks:
+  - {fileID: -7676878511461849324}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &4291830053369992818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,10 +458,10 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638797437739348983
+  lastModified: 638813740969445402
   FileSizes:
   - Name: Desktop
-    Value: 2272
+    Value: 560672
   - Name: Mobile
     Value: 2272
   Exists: 1
@@ -428,6 +485,33 @@ MonoBehaviour:
     Data4: 1298255000
   Banks:
   - {fileID: -7676878511461849324}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6800982940846234541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u5E9F\u571F\u73AF\u5883"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u5E9F\u571F\u73AF\u5883"
+  Guid:
+    Data1: -1691472298
+    Data2: 1230167251
+    Data3: 1138214799
+    Data4: 1071862127
+  Banks:
+  - {fileID: 5018280972016655682}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1

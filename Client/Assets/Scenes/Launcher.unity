@@ -839,21 +839,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneNameArray:
   - Level_cg1
-  - Level_run1
-  - LevelTutoria_1
-  - LevelTutoria_2
+  - Level_0
   - Level_1
-  - Level_cg2
   - Level_2
   - Level_3
   - Level_4
   - Level_5
   - Level_6
-  - Level_cg3
   - Level_7
   - Level_8
-  - Level_cg4
-  - Level_9
+  - Level_cg2
   preLoadLevelCount: 0
 --- !u!1 &1890882845
 GameObject:
