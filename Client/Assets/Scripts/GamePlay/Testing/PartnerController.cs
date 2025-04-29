@@ -39,6 +39,7 @@ public class PartnerController : MonoBehaviour, IPushable
 {
     public Transform followTarget;
     public PlayerController player;
+    public Animator animator;
 
     [Header("回收伙伴马上发射")]
     public bool ForceShootAfterBack = false;
@@ -200,7 +201,13 @@ public class PartnerController : MonoBehaviour, IPushable
             //rigidbody.velocity = m_rigidVelocity;
 
             if (pre ^ m_isGrounded)
+            {
                 transform.position = AlignPosition(transform.position);
+                if (m_isGrounded)
+                    animator.SetTrigger("Ground");
+                else
+                    animator.ResetTrigger("Ground");
+            }
         }
         else
         {
@@ -538,6 +545,7 @@ public class PartnerController : MonoBehaviour, IPushable
         m_state = EPartnerState.Flying;
         DisableCollider();
         // todo 模型动画
+        animator.SetFloat("Speed", m_flySpeed);
     }
 
     public void BeBox()
@@ -546,6 +554,7 @@ public class PartnerController : MonoBehaviour, IPushable
         m_state = EPartnerState.Box;
         EnableCollider();
         // todo 模型动画
+        
         meshTran.localScale = Vector3.one;
     }
 
@@ -555,6 +564,7 @@ public class PartnerController : MonoBehaviour, IPushable
         DisableCollider();
 
         // todo 模型动画
+        animator.SetFloat("Speed", m_flySpeed);
         meshTran.localScale = Vector3.one * 0.3f;
     }
 
@@ -582,7 +592,7 @@ public class PartnerController : MonoBehaviour, IPushable
     {
         m_state = EPartnerState.Box;
         EnableCollider();
-        CheckGround();
+        
         // todo 模型动画
         meshTran.localScale = Vector3.one * 0.9f;
     }
@@ -668,6 +678,8 @@ public class PartnerController : MonoBehaviour, IPushable
         m_targetPos = AlignPosition(m_targetPos);
         m_curPos = transform.position;
         m_isMoving = true;
+
+        animator.SetFloat("Speed", m_moveSpeed);
 
         GetLink()?.DoMove(direction);
         TryMoveNearby();
@@ -783,9 +795,16 @@ public class PartnerController : MonoBehaviour, IPushable
 
     private void SendTriggerExitEvent()
     {
-        foreach (var item in m_StayTriggers)
+        try
         {
-            item.SendMessage("OnTriggerExit", m_collider, SendMessageOptions.DontRequireReceiver);
+            foreach (var item in m_StayTriggers)
+            {
+                item.SendMessage("OnTriggerExit", m_collider, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+        catch
+        {
+
         }
     }
 

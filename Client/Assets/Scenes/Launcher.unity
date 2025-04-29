@@ -183,13 +183,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1382515127}
     - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2077915254}
+    - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1382515130}
-    - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
-      propertyPath: ForceShootAfterBack
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
 --- !u!114 &268734243 stripped
@@ -907,6 +907,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121043601058839940, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
   m_PrefabInstance: {fileID: 4121043601607571107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2077915254 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5141712170525493377, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+  m_PrefabInstance: {fileID: 268734242}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4121043601607571107
 PrefabInstance:
