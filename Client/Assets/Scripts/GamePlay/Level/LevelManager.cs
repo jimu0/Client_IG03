@@ -154,9 +154,6 @@ public class LevelManager : MonoBehaviour
         // op.allowSceneActivation = true;
         op.completed += (AsyncOperation _op) =>
         {
-            //  todo 依赖资源手动加载或查bug
-            ResourceManger.LoadResAsync<Material>("Materials_unit_Box_mat", null);
-            ResourceManger.LoadResAsync<Material>("Materials_unit_wall_mat", null);
             callback?.Invoke();
             m_loadedScene.Add(index);
         };

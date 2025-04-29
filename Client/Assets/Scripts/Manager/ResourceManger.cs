@@ -11,9 +11,14 @@ public static class ResourceManger
 
     private static Dictionary<string, AssetOperationHandle> m_dicHandle;
 
+    private static Dictionary<string, Shader> m_dicShaders;
+    private static Dictionary<string, Object> m_dicLevelUnit;
+
     public static IEnumerator Init()
     {
         m_dicHandle = new Dictionary<string, AssetOperationHandle>();
+        m_dicShaders = new Dictionary<string, Shader>();
+        m_dicLevelUnit = new Dictionary<string, Object>();
 
         YooAssets.Initialize();
         package = YooAssets.CreatePackage(defaultPackageName);
@@ -30,7 +35,27 @@ public static class ResourceManger
 
         //Debug.Log("YooAssets"+ YooAssets.GetPackage(defaultPackageName));
 
-        //LoadAllAssetsSync<Shader>("Shader_Lit");
+        // º”‘ÿshader
+        var assetInfos = package.GetAssetInfos("Shader");
+        foreach (var item in assetInfos)
+        {
+            var res = package.LoadAssetSync<Object>(item.Address);
+            if (item.AssetType == typeof(Shader))
+                m_dicShaders.Add(item.Address, res.AssetObject as Shader);
+        }
+
+        // º”‘ÿπÿø®Unit
+        var assetInfos2 = package.GetAssetInfos("LevelUnit");
+        foreach (var item in assetInfos2)
+        {
+            var res = package.LoadAssetSync<Object>(item.Address);
+            m_dicLevelUnit.Add(item.Address, res.AssetObject);
+        }
+
+        //ResourceManger.LoadResAsync<GameObject>("Prefabs_unit_Box", null);
+        //ResourceManger.LoadResAsync<GameObject>("Prefabs_unit_Wall", null);
+        //ResourceManger.LoadResAsync<GameObject>("Prefabs_Functional_Switch1", null);
+        //ResourceManger.LoadResAsync<GameObject>("Prefabs_Functional_Switch2", null);
     }
 
     /// <summary>
