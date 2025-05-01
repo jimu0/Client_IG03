@@ -270,6 +270,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 992122718}
+--- !u!95 &620655397 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3732325535851260784, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+  m_PrefabInstance: {fileID: 1382515126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &894989979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3765382953860712736, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
@@ -462,6 +467,10 @@ PrefabInstance:
       propertyPath: partner
       value: 
       objectReference: {fileID: 268734243}
+    - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 620655397}
     - target: {fileID: 6101741669263721687, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
       propertyPath: m_Name
       value: Player
