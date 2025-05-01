@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour, IController
         set { m_jumpSetting = value;   }
     }
 
+    public Animator animator;
+    
+    
     void Start()
     {
         m_controller = GetComponent<CharacterController>();
@@ -60,11 +63,13 @@ public class PlayerController : MonoBehaviour, IController
     private void CheckGround()
     {
         m_isGrounded = m_controller.isGrounded;
+        animator.SetBool("IsGround", m_isGrounded);//控制动画:腾空
         //m_isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f + 0.05f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PlayerCollition));
     }
 
     bool DoJump()
     {
+        
         if ((Input.GetKeyDown(m_jumpSetting.keyCode) || Input.GetKeyDown(m_jumpSetting.keyCode2)) && m_isGrounded)
         {
             m_playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
@@ -88,8 +93,9 @@ public class PlayerController : MonoBehaviour, IController
             gameObject.transform.forward = move;
             CheckGround();
         }
-
         m_controller.Move(move * Time.deltaTime * playerSpeed);
+        animator.SetFloat("Speed", Math.Abs(move.x));// 控制动画:移动
+
     }
 
     public void SetPosition(Vector3 position)
