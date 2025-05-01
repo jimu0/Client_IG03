@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7915260963402976453, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -7152640534649108358, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: de9239cee335eef4ab4b7b1d21778bda, type: 2}
     - target: {fileID: 3968949977844662903, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
