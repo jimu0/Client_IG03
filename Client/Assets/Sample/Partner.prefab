@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   player: {fileID: 0}
+  animator: {fileID: 5141712170525493377}
   ForceShootAfterBack: 1
   rigidbody: {fileID: 0}
   meshTran: {fileID: 3765382954388336851}
@@ -222,12 +223,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7915260963402976453, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -7152640534649108358, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
       propertyPath: m_Name
       value: Partner_mesh
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681625601750737972, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
+      propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2681625601750737972, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
@@ -254,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: de9239cee335eef4ab4b7b1d21778bda, type: 2}
+    - target: {fileID: 3968949977844662903, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14826fab2bbe1e54fa3f8b37803db761, type: 3}
 --- !u!1 &8216182159544136628 stripped

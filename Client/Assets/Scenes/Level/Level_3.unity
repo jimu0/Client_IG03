@@ -919,6 +919,14 @@ PrefabInstance:
       propertyPath: m_ScaleInLightmap
       value: 0.589592
       objectReference: {fileID: 0}
+    - target: {fileID: 7911016080622858131, guid: 8467f88d21538994697e0e72720847be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7911016080622858131, guid: 8467f88d21538994697e0e72720847be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.21
+      objectReference: {fileID: 0}
     - target: {fileID: 8237310527023226671, guid: 8467f88d21538994697e0e72720847be, type: 3}
       propertyPath: m_ScaleInLightmap
       value: 0.48876286
