@@ -99,43 +99,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.184
+      value: 18.037264
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.993
+      value: -5.908
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.382
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.59559005
+      value: -0.65867597
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000048517
+      value: 0.019297129
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8032886
+      value: 0.7519893
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000065436225
+      value: 0.016902564
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -2.914
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 106.891
+      value: 262.421
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.388
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -144,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
       propertyPath: m_Name
       value: sc_mesh_skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a821d7e8ead12774fb2633a3807d476d, type: 3}
@@ -215,6 +223,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_banzi7
       objectReference: {fileID: 0}
+    - target: {fileID: 3184590035031539681, guid: 4cd1829a32fc906429ef19edfded9956, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976981608013110836, guid: 4cd1829a32fc906429ef19edfded9956, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5842447
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd1829a32fc906429ef19edfded9956, type: 3}
 --- !u!4 &4500889740090775771 stripped
@@ -229,9 +245,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3203330846151927637}
     m_Modifications:
+    - target: {fileID: 3455839271407877711, guid: 7334f2868f53cb445b9596e58c67652b, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.584194
+      objectReference: {fileID: 0}
     - target: {fileID: 3816070547737141146, guid: 7334f2868f53cb445b9596e58c67652b, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_guandao3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816070547737141146, guid: 7334f2868f53cb445b9596e58c67652b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4593310281115075872, guid: 7334f2868f53cb445b9596e58c67652b, type: 3}
       propertyPath: m_RootOrder
@@ -293,7 +317,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -381,6 +405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 705267464770757464, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -437,6 +465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 94.283
       objectReference: {fileID: 0}
+    - target: {fileID: 1838227145253640247, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5843689
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
 --- !u!4 &1208650482873855560 stripped
@@ -451,9 +483,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3203330846151927637}
     m_Modifications:
+    - target: {fileID: 734861722000515010, guid: 2fa48ac2bce5db94f8484d9c50f8b142, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5857468
+      objectReference: {fileID: 0}
     - target: {fileID: 1239119537793728023, guid: 2fa48ac2bce5db94f8484d9c50f8b142, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_kuangjia8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239119537793728023, guid: 2fa48ac2bce5db94f8484d9c50f8b142, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1907815449538634925, guid: 2fa48ac2bce5db94f8484d9c50f8b142, type: 3}
       propertyPath: m_RootOrder
@@ -577,6 +617,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_banzi8
       objectReference: {fileID: 0}
+    - target: {fileID: 7832491704460550073, guid: b354a2779bedadb4a9baa5afce75b0ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8625068132081286764, guid: b354a2779bedadb4a9baa5afce75b0ec, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5843285
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b354a2779bedadb4a9baa5afce75b0ec, type: 3}
 --- !u!4 &9148263471050239066 stripped
@@ -651,6 +699,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan2
       objectReference: {fileID: 0}
+    - target: {fileID: 3342279696469480461, guid: 04ae565250b88b34a923e21cea94b192, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846872177810863576, guid: 04ae565250b88b34a923e21cea94b192, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5844705
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ae565250b88b34a923e21cea94b192, type: 3}
 --- !u!4 &4334038655119003523 stripped
@@ -668,6 +724,10 @@ PrefabInstance:
     - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 705267464770757464, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_RootOrder
@@ -725,6 +785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 94.283
       objectReference: {fileID: 0}
+    - target: {fileID: 1838227145253640247, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5843689
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
 --- !u!4 &1208650483135775997 stripped
@@ -741,7 +805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.5987864
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -825,6 +889,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3203330846151927637}
     m_Modifications:
+    - target: {fileID: 562546737790646022, guid: af7deb268f6354a45aaa7bbb9627437c, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5842306
+      objectReference: {fileID: 0}
     - target: {fileID: 1694969311003610217, guid: af7deb268f6354a45aaa7bbb9627437c, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -885,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_kuangjia6
       objectReference: {fileID: 0}
+    - target: {fileID: 2075716562282567379, guid: af7deb268f6354a45aaa7bbb9627437c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7deb268f6354a45aaa7bbb9627437c, type: 3}
 --- !u!4 &1047612117499987316 stripped
@@ -901,7 +973,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41879895
+      value: 0.6133591
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -987,7 +1059,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41879895
+      value: 0.61863387
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1073,7 +1145,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.6010252
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1223,7 +1295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40707377
+      value: 0.58442473
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1243,9 +1315,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3203330846151927637}
     m_Modifications:
+    - target: {fileID: 3123012269893938489, guid: c679b9805976a1f40bb6751983e21945, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5841795
+      objectReference: {fileID: 0}
     - target: {fileID: 3483489698982743276, guid: c679b9805976a1f40bb6751983e21945, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483489698982743276, guid: c679b9805976a1f40bb6751983e21945, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4259287870346958422, guid: c679b9805976a1f40bb6751983e21945, type: 3}
       propertyPath: m_RootOrder
@@ -1321,6 +1401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 705267464770757464, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -1377,6 +1461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 94.283
       objectReference: {fileID: 0}
+    - target: {fileID: 1838227145253640247, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5843689
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
 --- !u!4 &1208650481410466931 stripped
@@ -1393,7 +1481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41879895
+      value: 0.60070264
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1539,7 +1627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40707377
+      value: 0.5844144
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1561,7 +1649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1649,6 +1737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zawu4
       objectReference: {fileID: 0}
+    - target: {fileID: 6964953710494988105, guid: c9f7b16f73df694448abcfc86db06a27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7774247408131108339, guid: c9f7b16f73df694448abcfc86db06a27, type: 3}
       propertyPath: m_RootOrder
       value: 46
@@ -1693,6 +1785,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -129.447
       objectReference: {fileID: 0}
+    - target: {fileID: 8910512666170627740, guid: c9f7b16f73df694448abcfc86db06a27, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58416164
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9f7b16f73df694448abcfc86db06a27, type: 3}
 --- !u!4 &8282063517607734706 stripped
@@ -1709,7 +1805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.5987864
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -1841,6 +1937,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zawu6
       objectReference: {fileID: 0}
+    - target: {fileID: 882486422571202236, guid: b17814ddb0d316048a3fadd300c32b08, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675273958248257385, guid: b17814ddb0d316048a3fadd300c32b08, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5841609
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b17814ddb0d316048a3fadd300c32b08, type: 3}
 --- !u!4 &2195654511738811477 stripped
@@ -1914,6 +2018,14 @@ PrefabInstance:
     - target: {fileID: 7971224803648335732, guid: c0383cea11b1f364fbbfc6b0ae56948e, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_fengche_zhizhu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971224803648335732, guid: c0383cea11b1f364fbbfc6b0ae56948e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8475641223872401057, guid: c0383cea11b1f364fbbfc6b0ae56948e, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58480513
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0383cea11b1f364fbbfc6b0ae56948e, type: 3}
@@ -1995,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40707377
+      value: 0.5844144
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2017,7 +2129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40699914
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2103,7 +2215,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4663392686324977123, guid: 55a44c36014acc84c89305d221bc1ea1, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40931234
+      value: 0.587588
       objectReference: {fileID: 0}
     - target: {fileID: 4663392686324977123, guid: 55a44c36014acc84c89305d221bc1ea1, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2191,6 +2303,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 705267464770757464, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -2247,6 +2363,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 94.283
       objectReference: {fileID: 0}
+    - target: {fileID: 1838227145253640247, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.5843689
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
 --- !u!4 &1208650481947117579 stripped
@@ -2261,6 +2381,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3203330846151927637}
     m_Modifications:
+    - target: {fileID: 2340215192899341106, guid: b2d1b7dd64c6fe04f862e0a27312da38, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58464813
+      objectReference: {fileID: 0}
     - target: {fileID: 3472611269517979741, guid: b2d1b7dd64c6fe04f862e0a27312da38, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -2321,6 +2445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_banzi13
       objectReference: {fileID: 0}
+    - target: {fileID: 4285985529663810279, guid: b2d1b7dd64c6fe04f862e0a27312da38, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2d1b7dd64c6fe04f862e0a27312da38, type: 3}
 --- !u!4 &2971621203374824585 stripped
@@ -2337,7 +2465,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41879895
+      value: 0.60401547
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2425,6 +2553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_zhalan1
       objectReference: {fileID: 0}
+    - target: {fileID: 180792324903500258, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 705267464770757464, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
       propertyPath: m_RootOrder
       value: 48
@@ -2481,6 +2613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.086
       objectReference: {fileID: 0}
+    - target: {fileID: 1838227145253640247, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58489335
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f640fd2fc5ef3408794fa17b4b03eb, type: 3}
 --- !u!4 &1208650482073384661 stripped
@@ -2497,7 +2633,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41993323
+      value: 0.60232484
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2579,7 +2715,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4072223
+      value: 0.5845856
       objectReference: {fileID: 0}
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2720,6 +2856,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8518503514047160891, guid: 4cddf8f419a85994b95aee7102917f4b, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.6117375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8518503514047160891, guid: 4cddf8f419a85994b95aee7102917f4b, type: 3}
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
@@ -2739,7 +2879,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40699914
+      value: 0.58434105
       objectReference: {fileID: 0}
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2825,7 +2965,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41993323
+      value: 0.60232484
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2907,7 +3047,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41471052
+      value: 0.5915976
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -2993,7 +3133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4072223
+      value: 0.5845856
       objectReference: {fileID: 0}
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3071,7 +3211,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4072223
+      value: 0.5845856
       objectReference: {fileID: 0}
     - target: {fileID: 574081211044352699, guid: 003ebf003a581d548bdc6d1b132e7d20, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3149,7 +3289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4663392686324977123, guid: 55a44c36014acc84c89305d221bc1ea1, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40931234
+      value: 0.5877813
       objectReference: {fileID: 0}
     - target: {fileID: 4663392686324977123, guid: 55a44c36014acc84c89305d221bc1ea1, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3235,7 +3375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7704606133089121777, guid: 761ff53928da71249b25da527e959de9, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40720877
+      value: 0.58456784
       objectReference: {fileID: 0}
     - target: {fileID: 7704606133089121777, guid: 761ff53928da71249b25da527e959de9, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3313,7 +3453,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4171208
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3463,7 +3603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122033285869453310, guid: fd065b9b3c27ee547a21a07253a2062e, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.4070317
+      value: 0.5843875
       objectReference: {fileID: 0}
     - target: {fileID: 6122033285869453310, guid: fd065b9b3c27ee547a21a07253a2062e, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3485,7 +3625,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.41879895
+      value: 0.60070264
       objectReference: {fileID: 0}
     - target: {fileID: 7269424394307679295, guid: 524ea3265e4f53e429e23de79bcdcb18, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3613,6 +3753,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_FeiTu_mesh_guandao1
       objectReference: {fileID: 0}
+    - target: {fileID: 3252132805233070285, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900427333087031576, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58445877
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
 --- !u!4 &7485486651339588586 stripped
@@ -3693,7 +3841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688604
+      value: 0.58414793
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3779,7 +3927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688604
+      value: 0.58414793
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3801,7 +3949,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40699914
+      value: 0.5843193
       objectReference: {fileID: 0}
     - target: {fileID: 5161852099959980115, guid: 3fdd6384bd324574abcbc82cf9056366, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -3951,7 +4099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688187
+      value: 0.5841416
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4037,7 +4185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688187
+      value: 0.5841416
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4123,7 +4271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688187
+      value: 0.5841416
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4209,7 +4357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40688187
+      value: 0.5841416
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4295,7 +4443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40689334
+      value: 0.5841603
       objectReference: {fileID: 0}
     - target: {fileID: 8893487877839134270, guid: 061dd1bfaf5fc3e45ad1916e42403832, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4381,7 +4529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.40707377
+      value: 0.5843903
       objectReference: {fileID: 0}
     - target: {fileID: 2277288420503493840, guid: de04ba8de5bbdf44c8de9b7829c0a363, type: 3}
       propertyPath: m_StaticShadowCaster
@@ -4448,6 +4596,14 @@ PrefabInstance:
     - target: {fileID: 3252132805233070285, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
       propertyPath: m_Name
       value: sc_FeiTu_mesh_guandao1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252132805233070285, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900427333087031576, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.58445877
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d8bbd0228f54d4db268ffed1dc0e67, type: 3}
