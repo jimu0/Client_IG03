@@ -30,7 +30,7 @@ MonoBehaviour:
       - CollectPath: Assets/Scenes
         CollectorGUID: e980e8ee518845046961567c2f31988e
         CollectorType: 0
-        AddressRuleName: AddressByGroupAndFileName
+        AddressRuleName: AddressByFolderAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectScene
         AssetTags: 
