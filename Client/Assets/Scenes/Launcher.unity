@@ -270,11 +270,32 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 992122718}
+--- !u!4 &412053425 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8067090601395034125, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+  m_PrefabInstance: {fileID: 1382515126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &412053426 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3732325535851260784, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+  m_PrefabInstance: {fileID: 1382515126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &894989979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3765382953860712736, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
   m_PrefabInstance: {fileID: 268734242}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &939844306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6494949699234500716, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+  m_PrefabInstance: {fileID: 4121043601607571107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409f7a37f3a03114fa11c419ee352da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992122717
 GameObject:
   m_ObjectHideFlags: 3
@@ -459,9 +480,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 412053425}
+    - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
       propertyPath: partner
       value: 
       objectReference: {fileID: 268734243}
+    - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 412053426}
     - target: {fileID: 6101741669263721687, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -878,6 +907,7 @@ MonoBehaviour:
     levelName: 
     showInLevelUI: 0
   preLoadLevelCount: 0
+  SetSceneFx: {fileID: 939844306}
 --- !u!1 &1890882845
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +973,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1890882847}
     m_Modifications:
+    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4121043600736358395, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -994,6 +1044,14 @@ PrefabInstance:
     - target: {fileID: 4121043601058839942, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494949699234500716, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: fadeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494949699234500716, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
+      propertyPath: startWithBlackScreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}

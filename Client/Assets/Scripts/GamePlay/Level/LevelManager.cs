@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Numerics;
+using Scripts.TimelineControl.SceneFX;
 
 [Serializable]
 public struct LevelCfg
@@ -53,6 +54,8 @@ public class LevelManager : MonoBehaviour
     private int m_curSceneIndex = -1;
     private HashSet<int> m_loadedScene = new HashSet<int>();
     private Dictionary<int, LevelDirector> m_dicLevelDirector = new Dictionary<int, LevelDirector>();
+    public SceneFXController SetSceneFx;// ³¡¾°ÇÐ»»Ð§¹û
+
 
     void Start()
     {
@@ -278,4 +281,5 @@ public class LevelManager : MonoBehaviour
             m_loadedScene.Add(index);
         };
     }
+    
 }

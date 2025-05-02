@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts.TimelineControl.SceneFX;
 using UnityEngine;
 
 public class LevelDirector : MonoBehaviour
@@ -18,8 +19,11 @@ public class LevelDirector : MonoBehaviour
     public List<Collection> collections;
 
     public RigidbodyConstraints[] constraints;
+    
+    private SceneFXController sceneFX;
     // todo 其他机关状态等
 
+    
     private RigidbodyConstraints m_constraints;
     private void Awake()
     {
@@ -37,6 +41,7 @@ public class LevelDirector : MonoBehaviour
         m_constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         Debug.Log($"LevelDirector {levelSceneName} m_constraints {m_constraints}");
         LevelManager.instance.RegistLevelDirector(this);
+
     }
 
     private void OnEnable()
@@ -71,7 +76,12 @@ public class LevelDirector : MonoBehaviour
     public void LevelStart()
     {
         // 剧情表现等
+        SceneFXController.Instance.FadeInFX(() =>
+        {
+            
+        });
         // todo 根据存档进度做一次性的播放
+        
     }
 
     

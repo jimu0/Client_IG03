@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts.TimelineControl.SceneFX;
 using UnityEngine;
 
 
@@ -36,9 +37,15 @@ public class LevelCheckPoint : MonoBehaviour
         }
         else if(type == ECheckPointType.LevelComplete)
         {
-            LevelManager.instance.CompleteLevel(levelSceneName); 
-            LevelManager.instance.NextLevel();
+
+            SceneFXController.Instance.FadeOutFX(() =>
+            {
+                LevelManager.instance.CompleteLevel(levelSceneName); 
+                LevelManager.instance.NextLevel();
+            });
+
         }
+        
 
     }
 }

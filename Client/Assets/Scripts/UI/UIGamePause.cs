@@ -5,9 +5,10 @@ using TMPro;
 using cfg;
 using UnityEngine.UI;
 using DG.Tweening;
+    using Scripts.TimelineControl.SceneFX;
 
-/// <summary>
-/// UI»ùÀà
+    /// <summary>
+/// UI????
 /// </summary>
 public class UIGamePause : UIBase
 {
@@ -27,13 +28,20 @@ public class UIGamePause : UIBase
 
         BtnRestart.onClick.AddListener(() =>
         {
-            TmpGameManager.instance.ResetLevel();
+            SceneFXController.Instance.FadeOutFX(() =>
+            {
+                TmpGameManager.instance.ResetLevel();
+            });
             Close();
         });
 
         BtnExit.onClick.AddListener(() =>
         {
-            TmpGameManager.instance.BackToMenu();
+            SceneFXController.Instance.FadeOutFX(() =>
+            {
+                TmpGameManager.instance.BackToMenu();
+            });
+
             Close();
         });
     }
