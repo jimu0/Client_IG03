@@ -73,6 +73,9 @@ public static class WorldStateManager
     public static void ReadFromFile()
     {
         string path = Path.Combine(saveFilePath, saveFileName);
+        if (!File.Exists(path))
+            return;
+
         using (StreamReader sr = new StreamReader(path))
         {
             string jsonStr = sr.ReadToEnd();
