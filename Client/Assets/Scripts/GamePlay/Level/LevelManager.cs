@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Numerics;
 
 /// <summary>
 /// 备注：
@@ -20,6 +21,11 @@ public class LevelManager : MonoBehaviour
     /// 配置所有关卡场景
     /// </summary>
     public string[] sceneNameArray;
+
+    /// <summary>
+    /// 关卡进入需要的积分
+    /// </summary>
+    public int[] levelScoreNeed;
 
     /// <summary>
     /// 预加载关卡数量 n
@@ -44,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
     public void EnterLevel(string levelName)
     {
-        int index = GetSceneIndex(levelName);
+        int index = GetLevelIndex(levelName);
         if (index < 0)
             return;
 
@@ -56,25 +62,64 @@ public class LevelManager : MonoBehaviour
         SetSceneIndex(m_curSceneIndex + 1);
     }
 
+    /// <summary>
+    /// 最近未通关的关卡
+    /// </summary>
+    /// <returns></returns>
     public int GetPlayLevelIndex()
     {
-        int levelIndex = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete, -1);
-        return Mathf.Clamp(levelIndex + 1, 0, sceneNameArray.Length - 1);
+        int data = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete, 0);
+        string bitStr = Convert.ToString(data, 2);
+        char[] charArray = bitStr.ToCharArray();
+        int levelIndex = 0;
+        bool find = false;
+        for (int i = 0; i < charArray.Length; i++)
+        {
+            if (charArray[i] == 0)
+            {
+                levelIndex = i;
+                find = true;
+                break;
+            }
+        }
+        if (!find)
+            levelIndex = charArray.Length;
+
+        return Mathf.Clamp(levelIndex, 0, sceneNameArray.Length - 1);
     }
 
     public void CompleteLevel(string levelSceneName)
     {
-        WorldStateManager.SetValue(WorldStateConst.LevelComplete, GetSceneIndex(levelSceneName).ToString());
+        var index = GetLevelIndex(levelSceneName);
+        var data = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete);
+        data |= 1 << index;
+        WorldStateManager.State.SetValue(WorldStateConst.LevelComplete, data);
+        WorldStateManager.SaveToFile();
+    }
+
+    public void GatherCollect(int levelIndex, int number)
+    {
+        string key = $"{WorldStateConst.LevelCollect}_{levelIndex}";
+        int value = WorldStateManager.State.GetInt(key, 0);
+        value |= 1 << number;
+        WorldStateManager.State.SetValue(key, value.ToString());
+    }
+
+    public bool GetCollectShow(int levelIndex, int number)
+    {
+        string key = $"{WorldStateConst.LevelCollect}_{levelIndex}";
+        int value = WorldStateManager.State.GetInt(key, 0);
+        return (value & (1 << number)) == 0;
     }
 
     public void RegistLevelDirector(LevelDirector director)
     {
-        m_dicLevelDirector.TryAdd(GetSceneIndex(director.levelSceneName), director);
+        m_dicLevelDirector.TryAdd(GetLevelIndex(director.levelSceneName), director);
     }
 
     public void UnregistLevelDirector(LevelDirector director)
     {
-        m_dicLevelDirector.Remove(GetSceneIndex(director.levelSceneName));
+        m_dicLevelDirector.Remove(GetLevelIndex(director.levelSceneName));
     }
 
     public void ResetLevel()
@@ -96,7 +141,7 @@ public class LevelManager : MonoBehaviour
         m_curSceneIndex = -1;
     }
 
-    private int GetSceneIndex(string levelName)
+    public int GetLevelIndex(string levelName)
     {
         return Array.IndexOf(sceneNameArray, levelName);
     }

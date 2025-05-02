@@ -34,8 +34,6 @@ public class PlayerManager : MonoBehaviour
     public float playerMaxHP;
     public float playerHp;
 
-    public float score;
-
     [Header("相机控制相关"), Range(0, 1)]
     public CinemachineVirtualCamera camera;
     public float cameraScreenYDown;
@@ -149,6 +147,12 @@ public class PlayerManager : MonoBehaviour
     {
         player.gameObject.SetActive(false);
         partner.gameObject.SetActive(false);
+    }
+
+    public void Collecte(int levelIndex, int number)
+    {
+        var score = WorldStateManager.State.GetInt(WorldStateConst.Score, 0) + 1;
+        WorldStateManager.State.SetValue(WorldStateConst.Score, score.ToString());
     }
 
     void PlayerControl()

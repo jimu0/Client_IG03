@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public enum EOperation
@@ -10,24 +12,76 @@ public enum EOperation
     Lagger,
 }
 
+[Serializable]
+public struct KVList
+{
+    public List<KeyValue> list;
+}
+
+[Serializable]
+public struct KeyValue
+{
+    public string key;
+    public string value;
+
+    public KeyValue(string key, string value)
+    {
+        this.key = key;
+        this.value = value;
+    }
+}
+
 public static class WorldStateManager
 {
     public static WorldState State;
 
+    public static string saveFileName = "save.txt";
+    public static string saveFilePath = Path.Combine(Application.persistentDataPath, "Save");
     public static void Init()
     {
-        // todo ¶Áµµ
         State = new WorldState();
+        ReadFromFile();
+    }
+
+
+    /// <summary>
+    /// ´æµµ
+    /// </summary>
+    public static void SaveToFile()
+    {
+        if (!Directory.Exists(saveFilePath))
+            Directory.CreateDirectory(saveFilePath);
+
+        string path = Path.Combine(saveFilePath, saveFileName);
+        KVList data = new KVList();
+        data.list = new List<KeyValue>();
+        foreach (var item in State.DicState)
+        {
+            data.list.Add(new KeyValue(item.Key, item.Value));
+        }
+
+        string jsonStr = JsonUtility.ToJson(data);
+        using (StreamWriter sw = new StreamWriter(path, append: false))
+        {
+            sw.Write(jsonStr);
+        }
     }
 
     /// <summary>
-    /// 
+    /// ¶Áµµ
     /// </summary>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    public static void SetValue(string key, string value)
+    public static void ReadFromFile()
     {
-        State.SetValue(key, value);
+        string path = Path.Combine(saveFilePath, saveFileName);
+        using (StreamReader sr = new StreamReader(path))
+        {
+            string jsonStr = sr.ReadToEnd();
+            KVList data = JsonUtility.FromJson<KVList>(jsonStr);
+            foreach (var item in data.list)
+            {
+                State.SetValue(item.key, item.value);
+            }
+        }
     }
 
     public static void SetValues(List<WorldStateKV> list)
@@ -36,6 +90,7 @@ public static class WorldStateManager
         {
             State.SetValue(item.key, item.value);
         }
+        SaveToFile();
     }
 
     public static bool Check(List<WorldStateKV> list)

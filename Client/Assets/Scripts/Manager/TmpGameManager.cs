@@ -43,6 +43,9 @@ public class TmpGameManager : MonoBehaviour
         //Debug.Log("Change Scene");
         //AudioManager.StopAllSounds();//¹Ø±ÕÉùÒô×ÜÏß
 
+        //WorldStateManager.State.SetValue("test", "2");
+        //WorldStateManager.SaveToFile();
+        
         ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
         {
             UIManager.Instance.Show("UIMainMenu");

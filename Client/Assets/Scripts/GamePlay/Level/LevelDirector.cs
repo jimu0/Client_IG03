@@ -5,11 +5,17 @@ using UnityEngine;
 public class LevelDirector : MonoBehaviour
 {
     public string levelSceneName;
+    public int levelIndex;
     public List<LevelCheckPoint> checkPoints;
     public Vector3 playerPosition;
     public Transform LevelOrigin;
+
+    [Header("箱子")]
     public List<Box> boxes;
     public List<Vector3> boxPositionList;
+
+    [Header("收集物")]
+    public List<Collection> collections;
 
     public RigidbodyConstraints[] constraints;
     // todo 其他机关状态等
@@ -22,6 +28,7 @@ public class LevelDirector : MonoBehaviour
             item.levelSceneName = levelSceneName;
         }
 
+        levelIndex = LevelManager.instance.GetLevelIndex(levelSceneName);
         //foreach (var item in constraints)
         //{
         //    m_constraints |= item;
@@ -53,6 +60,11 @@ public class LevelDirector : MonoBehaviour
         for (int i = 0; i < boxes.Count; i++)
         {
             boxes[i].SetPostion(boxPositionList[i] + LevelOrigin.position);
+        }
+
+        for (int i = 0; i < collections.Count; i++)
+        {
+            collections[i].gameObject.SetActive(LevelManager.instance.GetCollectShow(levelIndex, i));
         }
     }
 
