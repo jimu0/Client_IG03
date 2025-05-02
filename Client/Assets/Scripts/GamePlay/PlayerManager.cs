@@ -22,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     [Header("»ï°é¿ØÖÆÏà¹Ø")]
     public PartnerController partner;
     public float PartnerFlySpeed;
+
     public float PartnerFlyMaxDistance;
     public float PartnerGoBackTime;
     public AnimationCurve PartnerGoBackCurve;
@@ -153,6 +154,11 @@ public class PlayerManager : MonoBehaviour
     {
         var score = WorldStateManager.State.GetInt(WorldStateConst.Score, 0) + 1;
         WorldStateManager.State.SetValue(WorldStateConst.Score, score.ToString());
+    }
+
+    public int GetScore()
+    {
+        return WorldStateManager.State.GetInt(WorldStateConst.Score);
     }
 
     void PlayerControl()

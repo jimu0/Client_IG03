@@ -604,7 +604,6 @@ MonoBehaviour:
   BoxMoveDistance: 1
   playerMaxHP: 10
   playerHp: 10
-  score: 0
   camera: {fileID: 274811262}
   cameraScreenYDown: 0.8
   cameraScreenYUp: 0.4
@@ -854,6 +853,7 @@ MonoBehaviour:
   - Level_7
   - Level_8
   - Level_cg2
+  levelScoreNeed: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
   preLoadLevelCount: 0
 --- !u!1 &1890882845
 GameObject:

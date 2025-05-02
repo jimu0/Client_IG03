@@ -195,6 +195,9 @@ public class Box : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
+        if (!m_isGrounded)
+            return false;
+
         direction = direction.normalized;
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = GetHorizontalValue(direction) != 0;

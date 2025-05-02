@@ -23,6 +23,7 @@ public class UIGame : UIBase
             TmpGameManager.instance.Pause();
         });
 
+        TextHp.gameObject.SetActive(false);
         TextHp.text = $"HP : {PlayerManager.instance.playerHp}/{PlayerManager.instance.playerMaxHP}";
     }
 

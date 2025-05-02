@@ -5,9 +5,30 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Numerics;
 
+[Serializable]
+public struct LevelCfg
+{
+    /// <summary>
+    /// 关卡场景名
+    /// </summary>
+    public string sceneName;
+    /// <summary>
+    /// 关卡解锁所需积分
+    /// </summary>
+    public int scoreNeed;
+    /// <summary>
+    /// 关卡名
+    /// </summary>
+    public string levelName;
+    /// <summary>
+    /// 是否展示在选关界面
+    /// </summary>
+    public bool showInLevelUI;
+}
+
 /// <summary>
 /// 备注：
-/// sceneNameArray：在inspector 按顺序配置 所有关卡的场景名
+/// levelCfg：在inspector 按顺序配置 所有关卡的场景名
 /// 如果要做无缝关卡表现 preLoadLevelCount 不能为0，并且关卡之间的地形坐标需要衔接好
 /// 每个关卡场景内需要挂载 
 ///     1.LevelDirector 脚本，配置好出生点和箱子的初始位置（如有复杂机关也需要加上初始状态配置）
@@ -17,15 +38,11 @@ using System.Numerics;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
-    /// <summary>
-    /// 配置所有关卡场景
-    /// </summary>
-    public string[] sceneNameArray;
 
     /// <summary>
-    /// 关卡进入需要的积分
+    /// 关卡设置
     /// </summary>
-    public int[] levelScoreNeed;
+    public LevelCfg[] levelCfg;
 
     /// <summary>
     /// 预加载关卡数量 n
@@ -48,9 +65,9 @@ public class LevelManager : MonoBehaviour
         SetSceneIndex(index);
     }
 
-    public void EnterLevel(string levelName)
+    public void EnterLevel(string sceneName)
     {
-        int index = GetLevelIndex(levelName);
+        int index = GetLevelIndex(sceneName);
         if (index < 0)
             return;
 
@@ -85,9 +102,50 @@ public class LevelManager : MonoBehaviour
         if (!find)
             levelIndex = charArray.Length;
 
-        return Mathf.Clamp(levelIndex, 0, sceneNameArray.Length - 1);
+        return Mathf.Clamp(levelIndex, 0, levelCfg.Length - 1);
     }
 
+    public int GetNeedScore(string sceneName)
+    {
+        int index = GetLevelIndex(sceneName);
+        if (index < 0)
+            return 0;
+
+        if (index >= levelCfg.Length)
+            return 0;
+
+        return levelCfg[index].scoreNeed;
+    }
+
+    public string GetLevelName(string sceneName)
+    {
+        int index = GetLevelIndex(sceneName);
+        if (index < 0)
+            return sceneName;
+
+        if (index >= levelCfg.Length)
+            return sceneName;
+
+        return levelCfg[index].levelName;
+    }
+
+    public bool IsLevelUnlock(string sceneName)
+    {
+        int index = GetLevelIndex(sceneName);
+        if (index < 0)
+            return false;
+
+        int playLevelIndex = GetPlayLevelIndex();
+        if (index <= playLevelIndex)
+            return true;
+
+        return PlayerManager.instance.GetScore() >= GetNeedScore(sceneName);
+    }
+
+    /// <summary>
+    /// 关卡完成
+    /// </summary>
+    /// <param name="levelSceneName"></param>
     public void CompleteLevel(string levelSceneName)
     {
         var index = GetLevelIndex(levelSceneName);
@@ -97,6 +155,11 @@ public class LevelManager : MonoBehaviour
         WorldStateManager.SaveToFile();
     }
 
+    /// <summary>
+    /// 收集物
+    /// </summary>
+    /// <param name="levelIndex"></param>
+    /// <param name="number"></param>
     public void GatherCollect(int levelIndex, int number)
     {
         string key = $"{WorldStateConst.LevelCollect}_{levelIndex}";
@@ -105,6 +168,12 @@ public class LevelManager : MonoBehaviour
         WorldStateManager.State.SetValue(key, value.ToString());
     }
 
+    /// <summary>
+    /// 收集物是否展示
+    /// </summary>
+    /// <param name="levelIndex"></param>
+    /// <param name="number"></param>
+    /// <returns></returns>
     public bool GetCollectShow(int levelIndex, int number)
     {
         string key = $"{WorldStateConst.LevelCollect}_{levelIndex}";
@@ -135,15 +204,21 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var index in m_loadedScene)
         {
-            SceneManager.UnloadSceneAsync(sceneNameArray[index]);
+            SceneManager.UnloadSceneAsync(levelCfg[index].sceneName);
         }
         m_loadedScene.Clear();
         m_curSceneIndex = -1;
     }
 
-    public int GetLevelIndex(string levelName)
+    public int GetLevelIndex(string sceneName)
     {
-        return Array.IndexOf(sceneNameArray, levelName);
+        int index = -1;
+        for (int i = 0; i < levelCfg.Length; i++)
+        {
+            if (levelCfg[i].sceneName.Equals(sceneName))
+                return i;
+        }
+        return index;
     }
 
     private void SetSceneIndex(int index)
@@ -163,7 +238,7 @@ public class LevelManager : MonoBehaviour
 
     private void TryLoadScene(int index, System.Action callback = null)
     {
-        if (index < 0 || index >= sceneNameArray.Length)
+        if (index < 0 || index >= levelCfg.Length)
             return;
 
         if (m_loadedScene.Contains(index))
@@ -185,7 +260,7 @@ public class LevelManager : MonoBehaviour
 
         foreach (var index in unloadIndexes)
         {
-            SceneManager.UnloadSceneAsync(sceneNameArray[index]);
+            SceneManager.UnloadSceneAsync(levelCfg[index].sceneName);
             m_loadedScene.Remove(index);
         }
     }
@@ -195,7 +270,7 @@ public class LevelManager : MonoBehaviour
         if (m_loadedScene.Contains(index))
             return;
 
-        var op = SceneManager.LoadSceneAsync(sceneNameArray[index], LoadSceneMode.Additive);
+        var op = SceneManager.LoadSceneAsync(levelCfg[index].sceneName, LoadSceneMode.Additive);
         // op.allowSceneActivation = true;
         op.completed += (AsyncOperation _op) =>
         {
