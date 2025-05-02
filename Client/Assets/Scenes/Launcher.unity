@@ -464,6 +464,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1783511315}
+    - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
       propertyPath: partner
       value: 
       objectReference: {fileID: 268734243}
@@ -797,6 +801,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &1783511315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8067090601395034125, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+  m_PrefabInstance: {fileID: 1382515126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866214751
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,19 +850,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328dd57c4bf60494e95213f95b05961a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneNameArray:
-  - Level_cg1
-  - Level_0
-  - Level_1
-  - Level_2
-  - Level_3
-  - Level_4
-  - Level_5
-  - Level_6
-  - Level_7
-  - Level_8
-  - Level_cg2
-  levelScoreNeed: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+  levelCfg:
+  - sceneName: Level_cg1
+    scoreNeed: 0
+    levelName: 
+    showInLevelUI: 0
+  - sceneName: Level_0
+    scoreNeed: 0
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_1
+    scoreNeed: 1
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_2
+    scoreNeed: 2
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_3
+    scoreNeed: 3
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_4
+    scoreNeed: 4
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_5
+    scoreNeed: 5
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_6
+    scoreNeed: 6
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_7
+    scoreNeed: 7
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_8
+    scoreNeed: 8
+    levelName: 
+    showInLevelUI: 1
+  - sceneName: Level_cg2
+    scoreNeed: 0
+    levelName: 
+    showInLevelUI: 0
   preLoadLevelCount: 0
 --- !u!1 &1890882845
 GameObject:

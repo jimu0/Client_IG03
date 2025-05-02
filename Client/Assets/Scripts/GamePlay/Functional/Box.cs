@@ -175,14 +175,17 @@ public class Box : MonoBehaviour, IPushable
             //Debug.Log("DoMove box 222");
             return;
         }
+
         direction = direction.normalized;
         m_moveDirection = direction;
+        if (!TryMoveNearby())
+            return;
+
         m_targetPos = AlignPosition(transform.position + direction * m_moveDistance);
         m_curPos = transform.position;
         m_isMove = true;
 
         GetLink()?.DoMove(direction);
-        TryMoveNearby();
     }
 
     public bool IsLinkedBoxCanMove(Vector3 direction)
@@ -195,7 +198,10 @@ public class Box : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
-        if (!m_isGrounded)
+        if (!m_isGrounded && GetLink() == null)
+            return false;
+
+        if (!TryMoveNearby(true))
             return false;
 
         direction = direction.normalized;
@@ -257,18 +263,22 @@ public class Box : MonoBehaviour, IPushable
         return true;
     }
 
-    public void TryMoveNearby()
+    public bool TryMoveNearby(bool check = false)
     {
         //Debug.Log($"box TryMoveNearby 11  pos {transform.position + collider.bounds.center}  dir {moveDirection} distance { size.x / 2 + 0.2f}");
         if (Physics.Raycast(m_collider.bounds.center, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.1f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
             var otherBox = m_hitInfo.transform.GetComponent<IPushable>();
             //Debug.Log($"box TryMoveNearby 22 {otherBox}");
-            if (otherBox != null)
             {
-                otherBox.DoMove(m_moveDirection);
+                if (!otherBox.IsCanMove(m_moveDirection))
+                    return false;
+                if (!check)
+                    otherBox.DoMove(m_moveDirection);
             }
         }
+
+        return true;
     }
 #endregion
 }

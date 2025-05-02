@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, IController
     public float pathPosition;
     public bool moveWithPath;
 
+    public Transform mesh;
+
     private float playerSpeed => PlayerManager.instance.PlayerMoveSpeed;
     private float jumpHeight => PlayerManager.instance.PlayerJumpHeight;
     private float gravityValue => PlayerManager.instance.GravityValue;
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour, IController
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
+            mesh.localEulerAngles = new Vector3(0,30 * move.x, 0);
             CheckGround();
         }
         m_controller.Move(move * Time.deltaTime * playerSpeed);

@@ -671,8 +671,12 @@ public class PartnerController : MonoBehaviour, IPushable
             //Debug.Log("DoMove partner 222");
             return;
         }
+
         direction = direction.normalized;
         m_moveDirection = direction;
+        if (!TryMoveNearby())
+            return;
+
         m_targetPos = transform.position + direction * m_moveDistance;
         //Debug.Log(" DoMove m_targetPos " + m_targetPos);
         m_targetPos = AlignPosition(m_targetPos);
@@ -682,7 +686,6 @@ public class PartnerController : MonoBehaviour, IPushable
         animator.SetFloat("Speed", m_moveSpeed);
 
         GetLink()?.DoMove(direction);
-        TryMoveNearby();
     }
     
     public bool IsLinkedBoxCanMove(Vector3 direction)
@@ -695,6 +698,12 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public bool IsCanMove(Vector3 direction)
     {
+        if (!m_isGrounded && m_state != EPartnerState.BoxActive && m_state != EPartnerState.BoxActiveWithLink)
+            return false;
+
+        if (!TryMoveNearby(true))
+            return false;
+
         direction = direction.normalized;
         float horizontalValue = GetHorizontalValue(direction);
         bool isHorizontal = horizontalValue != 0;
@@ -755,7 +764,7 @@ public class PartnerController : MonoBehaviour, IPushable
         return true;
     }
 
-    public void TryMoveNearby()
+    public bool TryMoveNearby(bool check = false)
     {
         if (Physics.Raycast(transform.position, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.2f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
@@ -763,9 +772,14 @@ public class PartnerController : MonoBehaviour, IPushable
             //Debug.Log($"partner TryMoveNearby {otherBox}");
             if (otherBox != null)
             {
-                otherBox.DoMove(m_moveDirection);
+                if (!otherBox.IsCanMove(m_moveDirection))
+                    return false;
+                if(!check)
+                    otherBox.DoMove(m_moveDirection);
             }
         }
+
+        return true;
     }
     #endregion
 
