@@ -13,7 +13,7 @@ public class Collection : MonoBehaviour
     private void Start()
     {
         m_collider = gameObject.AddComponent<BoxCollider>();
-        m_collider.bounds.SetMinMax(transform.position, transform.position + Vector3.one);
+        m_collider.bounds.SetMinMax(transform.position - Vector3.one * 0.5f, transform.position + Vector3.one * 0.5f);
         m_collider.isTrigger = true;
         gameObject.layer = LayerMask.NameToLayer("CheckPoint");
     }
@@ -25,5 +25,21 @@ public class Collection : MonoBehaviour
 
         PlayerManager.instance.Collecte(levelIndex, number);
         gameObject.SetActive(false);
+
+        
+        ResourceManger.LoadResAsync<GameObject>("FX_Flash_blue_purple", (obj) =>
+        {
+            if (obj == null)
+                return;
+
+            var fxObj = GameObject.Instantiate(obj);
+            //fxObj.transform.SetParent(transform.parent);
+            fxObj.transform.position = transform.position;
+            fxObj.transform.localScale = Vector3.one * 0.05f;
+            TimerManager.Register(1f, () =>
+            {
+                Destroy(fxObj);
+            });
+        });
     }
 }
