@@ -863,57 +863,57 @@ MonoBehaviour:
   levelCfg:
   - sceneName: Level_cg1
     scoreNeed: 0
-    levelName: 
+    levelName: "\u8D2B\u7620\u4E4B\u5730"
     showInLevelUI: 0
     notPlayBGM: 1
   - sceneName: Level_0
     scoreNeed: 0
-    levelName: 
+    levelName: "\u8131\u9669"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_1
-    scoreNeed: 1
-    levelName: 
+    scoreNeed: 0
+    levelName: "23\u533A"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_2
-    scoreNeed: 2
-    levelName: 
+    scoreNeed: 3
+    levelName: "\u4F9B\u8D27\u7AD9"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_3
-    scoreNeed: 3
-    levelName: 
+    scoreNeed: 4
+    levelName: "\u6B64\u8DEF\u4E0D\u901A"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_4
-    scoreNeed: 4
-    levelName: 
+    scoreNeed: 6
+    levelName: "\u7BA1\u9053"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_5
-    scoreNeed: 5
-    levelName: 
+    scoreNeed: 7
+    levelName: "\u5C45\u6C11\u533A"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_6
-    scoreNeed: 6
-    levelName: 
+    scoreNeed: 7
+    levelName: "\u5F15\u64CE"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_7
-    scoreNeed: 7
-    levelName: 
+    scoreNeed: 9
+    levelName: "\u54E8\u7AD9"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_8
-    scoreNeed: 8
-    levelName: 
+    scoreNeed: 11
+    levelName: "\u98CE\u53E3"
     showInLevelUI: 1
     notPlayBGM: 0
   - sceneName: Level_cg2
-    scoreNeed: 0
-    levelName: 
+    scoreNeed: -1
+    levelName: "\u52C7\u6C14"
     showInLevelUI: 0
     notPlayBGM: 1
   preLoadLevelCount: 0

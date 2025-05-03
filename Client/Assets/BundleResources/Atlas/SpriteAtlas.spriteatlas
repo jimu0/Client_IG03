@@ -7,6 +7,7 @@ SpriteAtlas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SpriteAtlas
+  serializedVersion: 2
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -42,6 +43,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 886a94211234d884dbaa62830beda919, type: 3}
   - {fileID: 21300000, guid: e7cc1362f3ce4c240a22c3bac542365e, type: 3}
   - {fileID: 21300000, guid: d05831b455816a743a3045086125a647, type: 3}
+  - {fileID: 21300000, guid: c3998ae4e56db0345967705dd11e8771, type: 3}
   - {fileID: 21300000, guid: 7dc5bf35642e79543bbd89d9ee726d75, type: 3}
   - {fileID: 21300000, guid: 07a5cda7780c0d149b93ad829b344e6e, type: 3}
   - {fileID: 21300000, guid: 944060c7057491848b3ac3dd8da05af0, type: 3}
@@ -55,6 +57,7 @@ SpriteAtlas:
   - img_battery
   - img_level_10
   - img_level_7
+  - img_level_7_2
   - img_level_0
   - img_level_4
   - img_level_2
@@ -66,3 +69,4 @@ SpriteAtlas:
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas
   m_IsVariant: 0
+  m_IsPlaceholder: 0
