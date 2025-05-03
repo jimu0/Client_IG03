@@ -674,7 +674,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
         direction = direction.normalized;
         m_moveDirection = direction;
-        if (!TryMoveNearby())
+        if (!TryMoveNearby(direction))
             return;
 
         m_targetPos = transform.position + direction * m_moveDistance;
@@ -701,7 +701,7 @@ public class PartnerController : MonoBehaviour, IPushable
         if (!m_isGrounded && m_state != EPartnerState.BoxActive && m_state != EPartnerState.BoxActiveWithLink)
             return false;
 
-        if (!TryMoveNearby(true))
+        if (!TryMoveNearby(direction, true))
             return false;
 
         direction = direction.normalized;
@@ -764,18 +764,18 @@ public class PartnerController : MonoBehaviour, IPushable
         return true;
     }
 
-    public bool TryMoveNearby(bool check = false)
+    public bool TryMoveNearby(Vector3 direction, bool check = false)
     {
-        if (Physics.Raycast(transform.position, m_moveDirection, out m_hitInfo, m_size.x / 2 + 0.2f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
+        if (Physics.Raycast(transform.position, direction, out m_hitInfo, m_size.x / 2 + 0.2f, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.Pushable)))
         {
             var otherBox = m_hitInfo.transform.GetComponent<IPushable>();
             //Debug.Log($"partner TryMoveNearby {otherBox}");
             if (otherBox != null)
             {
-                if (!otherBox.IsCanMove(m_moveDirection))
+                if (!otherBox.IsCanMove(direction))
                     return false;
                 if(!check)
-                    otherBox.DoMove(m_moveDirection);
+                    otherBox.DoMove(direction);
             }
         }
 
