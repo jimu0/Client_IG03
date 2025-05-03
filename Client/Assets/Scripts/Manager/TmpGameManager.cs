@@ -133,6 +133,16 @@ public class TmpGameManager : MonoBehaviour
         gameState = EGameState.Pause;
     }
 
+    public void StartTimeLine()
+    {
+        gameState = EGameState.Pause;
+    }
+
+    public void EndTimeLine()
+    {
+        gameState = EGameState.Play;
+    }
+
     private IEnumerator InitAndStart()
     {
         yield return ResourceManger.Init();
