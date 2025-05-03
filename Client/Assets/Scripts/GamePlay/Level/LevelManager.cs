@@ -32,6 +32,9 @@ public struct LevelCfg
 
     [Header("不播放bgm（cg关卡打开）")]
     public bool notPlayBGM;
+
+    [Header("不展示关卡标题（cg关卡打开）")]
+    public bool notShowTitle;
 }
 
 /// <summary>
@@ -336,6 +339,9 @@ public class LevelManager : MonoBehaviour
                     AudioManager.StopLevelBGM();
                 else
                     AudioManager.PlayLevelBGM();
+
+                if (!cfg.notShowTitle)
+                    UIManager.Instance.Show("UITitle", cfg.levelName);
             }
         };
     }
