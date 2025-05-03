@@ -92,6 +92,30 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/BundleResources/Lightingmap
+        CollectorGUID: 09c6a3d810426044090dcdd552f690f2
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/Timeline
+        CollectorGUID: f17bfe8f48269bf4897b857c168a4591
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+      - CollectPath: Assets/BundleResources/LevelPrefab
+        CollectorGUID: 7438a186de9f6f848b4067d62904228e
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
     - GroupName: Pipeline
       GroupDesc: 
       AssetTags: 
