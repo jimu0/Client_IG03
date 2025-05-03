@@ -15,7 +15,7 @@ public class Collection : MonoBehaviour
         m_collider = gameObject.AddComponent<BoxCollider>();
         m_collider.bounds.SetMinMax(transform.position, transform.position + Vector3.one);
         m_collider.isTrigger = true;
-        gameObject.layer = LayerMask.NameToLayer("Checkpoint");
+        gameObject.layer = LayerMask.NameToLayer("CheckPoint");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,5 +24,6 @@ public class Collection : MonoBehaviour
             return;
 
         PlayerManager.instance.Collecte(levelIndex, number);
+        gameObject.SetActive(false);
     }
 }
