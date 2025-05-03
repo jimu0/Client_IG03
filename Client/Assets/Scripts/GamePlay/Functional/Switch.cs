@@ -11,6 +11,7 @@ public class Switch : MonoBehaviour
 
     void Start()
     {
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
     public void DoSwitch(int stayCount)

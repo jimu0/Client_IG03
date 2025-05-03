@@ -788,6 +788,7 @@ public class PartnerController : MonoBehaviour, IPushable
     private void EnableCollider()
     {
         m_collider.enabled = true;
+        SendTriggerEnterEvent();
     }
 
     private void DisableCollider()
@@ -805,6 +806,22 @@ public class PartnerController : MonoBehaviour, IPushable
     private void OnTriggerExit(Collider other)
     {
         m_StayTriggers.Remove(other.gameObject);
+    }
+
+    private void SendTriggerEnterEvent()
+    {
+        try
+        {
+            var results = Physics.OverlapBox(m_collider.bounds.center, m_collider.bounds.extents* 0.9f, Quaternion.identity, PlayerManager.instance.GetLayerMask(ELayerMaskUsage.PartnerCollition), QueryTriggerInteraction.Collide); 
+            foreach (var item in results)
+            {
+                item.SendMessage("OnTriggerEnter", m_collider, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+        catch
+        {
+
+        }
     }
 
     private void SendTriggerExitEvent()
