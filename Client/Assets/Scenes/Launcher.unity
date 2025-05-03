@@ -183,6 +183,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1382515127}
     - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+      propertyPath: tranGrabEff
+      value: 
+      objectReference: {fileID: 1733021583}
+    - target: {fileID: 3765382953860712743, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1382515130}
@@ -807,6 +811,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &1733021583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3325623877038572663, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+  m_PrefabInstance: {fileID: 268734242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866214751
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,8 @@ public class PartnerController : MonoBehaviour, IPushable
     [Header("回收伙伴马上发射")]
     public bool ForceShootAfterBack = false;
 
+    public Transform tranGrabEff;
+
     private float m_moveDistance => PlayerManager.instance.BoxMoveDistance;
     private float m_moveSpeed => PlayerManager.instance.BoxMoveSpeed;
     private float m_backTime => PlayerManager.instance.PartnerGoBackTime;
@@ -544,6 +546,8 @@ public class PartnerController : MonoBehaviour, IPushable
 
         if (m_state == EPartnerState.Flying || m_state == EPartnerState.BackAndShoot)
             animator.SetFloat("Speed", m_flySpeed);
+
+        tranGrabEff.gameObject.SetActive(m_state == EPartnerState.BoxActiveWithLink);
     }
 
     public void BeShoot()
