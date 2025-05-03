@@ -20,6 +20,7 @@ public class UIGame : UIBase
         UIManager.Instance.RegistEvent(this);
         BtnPause.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             TmpGameManager.instance.Pause();
         });
 

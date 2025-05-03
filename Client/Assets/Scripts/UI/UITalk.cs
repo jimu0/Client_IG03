@@ -55,6 +55,7 @@ public class UITalk : UIBase
 
     public void ClickBtnNext()
     {
+        AudioManager.PlayBtnClick();
         if (m_curIndex < m_storyList.Count)
             ShowContent();
         else

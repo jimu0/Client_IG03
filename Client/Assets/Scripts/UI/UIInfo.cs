@@ -9,23 +9,21 @@ using DG.Tweening;
 /// <summary>
 /// UI»ùÀà
 /// </summary>
-public class UIGameOver : UIBase
+public class UIInfo : UIBase
 {
-    public Text text_title;
-    public Button BtnResume;
+    public Button BtnClose;
 
     public override void OnShow(object param)
     {
-        BtnResume.onClick.AddListener(() =>
+        BtnClose.onClick.AddListener(() =>
         {
             AudioManager.PlayBtnClick();
-            TmpGameManager.instance.Resume();
             Close();
         });
     }
 
     public override void OnClose()
     {
-        
+        BtnClose.onClick.RemoveAllListeners();
     }
 }

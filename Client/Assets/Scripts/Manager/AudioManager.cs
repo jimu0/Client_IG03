@@ -8,6 +8,8 @@ public static class AudioManager
 {
     private static FMOD.Studio.System m_studioSystem;
     private static FMOD.System m_coreSystem;
+
+    private static EventInstance levelBgmInstance;
     public static void Init()
     {
         //FMODUnity.RuntimeManager.LoadBank("Master");
@@ -17,6 +19,27 @@ public static class AudioManager
         m_coreSystem = FMODUnity.RuntimeManager.CoreSystem;
 
         //InitEventParameter();
+
+        levelBgmInstance = FMODUnity.RuntimeManager.CreateInstance(AudioConst.LevelBGM);
+    }
+
+    public static void PlayLevelBGM()
+    {
+        PLAYBACK_STATE state;
+        levelBgmInstance.getPlaybackState(out state);
+        if (state == PLAYBACK_STATE.PLAYING)
+            return;
+        levelBgmInstance.start();
+    }
+
+    public static void StopLevelBGM()
+    {
+        levelBgmInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+
+    public static void PlayBtnClick()
+    {
+        PlayOneShot(AudioConst.BtnClick);
     }
 
     /// <summary>

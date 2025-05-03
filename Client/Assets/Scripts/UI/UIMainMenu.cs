@@ -16,6 +16,7 @@ public class UIMainMenu : UIBase
     public Button BtnContinue;
     public Button BtnLevel;
     public Button BtnExit;
+    public Button BtnInfo;
 
     public GameObject UILevel;
 
@@ -29,29 +30,41 @@ public class UIMainMenu : UIBase
     {
         BtnStart.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             WorldStateManager.ResetSave();
             TmpGameManager.instance.StartPlay();
         });
 
         BtnContinue.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             TmpGameManager.instance.StartPlay();
         });
 
         BtnLevel.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             UpdateLevel();
             UILevel.SetActive(true);
         });
 
         BtnExit.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             TmpGameManager.instance.Exit();
+        });
+
+        BtnInfo.onClick.AddListener(() =>
+        {
+            AudioManager.PlayBtnClick();
+            UIManager.Instance.Show("UIInfo");
+            
         });
 
         BtnCloseLevel.onClick.AddListener(() =>
         {
-            UILevel.SetActive(false);
+            AudioManager.PlayBtnClick();
+            TmpGameManager.instance.Exit();
         });
 
         UILevel.SetActive(false);
@@ -68,6 +81,7 @@ public class UIMainMenu : UIBase
         BtnContinue.onClick.RemoveAllListeners();
         BtnLevel.onClick.RemoveAllListeners();
         BtnExit.onClick.RemoveAllListeners();
+        BtnInfo.onClick.RemoveAllListeners();
         BtnCloseLevel.onClick.RemoveAllListeners();
     }
 

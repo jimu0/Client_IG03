@@ -17,6 +17,7 @@ public class UITutorial : UIBase
     {
         BtnClose.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             Close();
         });
     }

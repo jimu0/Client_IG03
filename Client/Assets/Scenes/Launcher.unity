@@ -848,46 +848,57 @@ MonoBehaviour:
     scoreNeed: 0
     levelName: 
     showInLevelUI: 0
+    notPlayBGM: 1
   - sceneName: Level_0
     scoreNeed: 0
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_1
     scoreNeed: 1
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_2
     scoreNeed: 2
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_3
     scoreNeed: 3
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_4
     scoreNeed: 4
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_5
     scoreNeed: 5
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_6
     scoreNeed: 6
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_7
     scoreNeed: 7
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_8
     scoreNeed: 8
     levelName: 
     showInLevelUI: 1
+    notPlayBGM: 0
   - sceneName: Level_cg2
     scoreNeed: 0
     levelName: 
     showInLevelUI: 0
+    notPlayBGM: 1
   preLoadLevelCount: 0
   SetSceneFx: {fileID: 939844306}
 --- !u!1 &1890882845
