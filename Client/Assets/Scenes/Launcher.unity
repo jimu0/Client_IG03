@@ -620,8 +620,8 @@ MonoBehaviour:
   playerHp: 10
   camera: {fileID: 274811262}
   cameraScreenYDown: 0.8
-  cameraScreenYUp: 0.4
-  cameraDistanceWhenLookUpDown: 13
+  cameraScreenYUp: 0.3
+  cameraDistanceWhenLookUpDown: 16
 --- !u!4 &1410160403
 Transform:
   m_ObjectHideFlags: 0

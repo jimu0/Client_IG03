@@ -18,12 +18,14 @@ public class UITitle : UIBase
     int timerID;
     public override void OnShow(object param)
     {
-        List<StoryCfg> storyList = param as List<StoryCfg>;
-        if (storyList == null || storyList.Count == 0)
-        {
-            Close();
-            return;
-        }
+        //List<StoryCfg> storyList = param as List<StoryCfg>;
+        //if (storyList == null || storyList.Count == 0)
+        //{
+        //    Close();
+        //    return;
+        //}
+
+        var str = param as string;
 
         Color color1 = new Color(1, 1, 1, 1);
         Color color2 = new Color(1, 1, 1, 0);
@@ -34,7 +36,8 @@ public class UITitle : UIBase
         seq.AppendInterval(1f);
         seq.Append(text_title.DOColor(color2, 0.5f));
     
-        text_title.text = storyList[0].Content;
+        //text_title.text = storyList[0].Content;
+        text_title.text = str;
 
         timerID = TimerManager.Register(2.5f, () =>
         {

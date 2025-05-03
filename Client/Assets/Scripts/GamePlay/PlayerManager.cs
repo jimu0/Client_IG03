@@ -141,7 +141,8 @@ public class PlayerManager : MonoBehaviour
 
     public void TeleportPlayerAndReset(Vector3 position, RigidbodyConstraints constraints)
     {
-        
+        player.havePartner = WorldStateManager.State.GetBool(WorldStateConst.HavePartner);
+        player.SetPartnerShow(player.havePartner);
 
         player.gameObject.SetActive(true);
         partner.gameObject.SetActive(true);
@@ -151,6 +152,20 @@ public class PlayerManager : MonoBehaviour
 
         player.SetPosition(position);
         partner.ForceDoFollow();
+
+
+        var xDamping = m_framingTransposer.m_XDamping;
+        var yDamping = m_framingTransposer.m_YDamping;
+        var zDamping = m_framingTransposer.m_ZDamping;
+        m_framingTransposer.m_XDamping = 0.1f;
+        m_framingTransposer.m_YDamping = 0.1f;
+        m_framingTransposer.m_ZDamping = 0.1f;
+        TimerManager.Register(0.1f, () =>
+        {
+            m_framingTransposer.m_XDamping = xDamping;
+            m_framingTransposer.m_YDamping = yDamping;
+            m_framingTransposer.m_ZDamping = zDamping;
+        });
     }
 
     public void HidePlayer()

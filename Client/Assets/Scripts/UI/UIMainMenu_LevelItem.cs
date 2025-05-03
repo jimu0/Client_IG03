@@ -23,9 +23,22 @@ public class UIMainMenu_LevelItem : MonoBehaviour
 
         bool unLock = LevelManager.instance.IsLevelUnlock(sceneName);
         ImgLock.gameObject.SetActive(!unLock);
-        TextLock.text = $"<color=#FF6969>{PlayerManager.instance.GetScore()}</color>/{LevelManager.instance.GetNeedScore(sceneName)}";
-        int index = LevelManager.instance.GetLevelIndex(sceneName);
 
+        if (!unLock)
+        {
+            int needScore = LevelManager.instance.GetNeedScore(sceneName);
+            ImgBattery.gameObject.SetActive(needScore > 0);
+            if (needScore < 0)
+            {
+                TextLock.text = "";
+            }
+            else
+            {
+                TextLock.text = $"<color=#FF6969>{PlayerManager.instance.GetScore()}</color>/{LevelManager.instance.GetNeedScore(sceneName)}";
+            }
+        }
+
+        int index = LevelManager.instance.GetLevelIndex(sceneName);
         ResourceManger.LoadResAsync<SpriteAtlas>("Sprite_SpriteAtlas", (sprAtlas) =>
         {
             if (sprAtlas == null)
@@ -34,7 +47,6 @@ public class UIMainMenu_LevelItem : MonoBehaviour
             ImgBattery.sprite = sprAtlas.GetSprite("img_battery");
         });
 
-        
         Btn.onClick.RemoveAllListeners();
         Btn.onClick.AddListener(() =>
         {
