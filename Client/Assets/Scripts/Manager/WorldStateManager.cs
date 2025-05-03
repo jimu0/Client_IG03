@@ -43,6 +43,17 @@ public static class WorldStateManager
         ReadFromFile();
     }
 
+    /// <summary>
+    /// É¾³ý´æµµ
+    /// </summary>
+    public static void ResetSave()
+    {
+        string path = Path.Combine(saveFilePath, saveFileName);
+        if (File.Exists(path))
+            File.Delete(path);
+
+        State.DicState.Clear();
+    }
 
     /// <summary>
     /// ´æµµ

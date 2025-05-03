@@ -93,6 +93,9 @@ public class LevelManager : MonoBehaviour
     public int GetPlayLevelIndex()
     {
         int data = WorldStateManager.State.GetInt(WorldStateConst.LevelComplete, 0);
+        if (data == 0)
+            return 0;
+
         string bitStr = Convert.ToString(data, 2);
         char[] charArray = bitStr.ToCharArray();
         int levelIndex = 0;
@@ -287,6 +290,11 @@ public class LevelManager : MonoBehaviour
         {
             callback?.Invoke();
             m_loadedScene.Add(index);
+
+            if (index == 1)
+            {
+                UIManager.Instance.Show("UITutorial");
+            }
         };
     }
     

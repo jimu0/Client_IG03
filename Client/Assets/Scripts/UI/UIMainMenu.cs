@@ -29,6 +29,7 @@ public class UIMainMenu : UIBase
     {
         BtnStart.onClick.AddListener(() =>
         {
+            WorldStateManager.ResetSave();
             TmpGameManager.instance.StartPlay();
         });
 
@@ -56,7 +57,7 @@ public class UIMainMenu : UIBase
         UILevel.SetActive(false);
 
         var levelIndex = LevelManager.instance.GetPlayLevelIndex();
-        BtnStart.gameObject.SetActive(levelIndex == 0);
+        //BtnStart.gameObject.SetActive(levelIndex == 0);
         BtnContinue.gameObject.SetActive(levelIndex > 0);
         BtnLevel.gameObject.SetActive(levelIndex > 0);
     }
