@@ -8,4 +8,5 @@ public static class WorldStateConst
     public const string StoryComplete = "StoryComplete";
     public const string Score = "Score";
     public const string LevelCollect = "LevelCollect_";
+    public const string HavePartner = "HavePartner";
 }

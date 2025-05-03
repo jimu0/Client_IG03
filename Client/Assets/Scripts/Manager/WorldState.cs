@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,11 @@ public class WorldState
         if (DicState.ContainsKey(key))
             return DicState[key].Equals("true");
         return defaultValue;
+    }
+
+    internal bool GetBool(object havePartner)
+    {
+        throw new NotImplementedException();
     }
 
     public string GetString(string key, string defaultValue = "")
