@@ -71,7 +71,8 @@ MonoBehaviour:
   PositionUnits: 1
   pathPosition: 0
   moveWithPath: 0
-  animator: {fileID: 0}
+  mesh: {fileID: 8067090601395034125}
+  animator: {fileID: 3732325535851260784}
 --- !u!54 &1218643711203213978
 Rigidbody:
   m_ObjectHideFlags: 0

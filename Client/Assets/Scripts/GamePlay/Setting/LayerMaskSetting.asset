@@ -48,6 +48,7 @@ MonoBehaviour:
     - Interactable
     - Default
     - Player
+    - PartnerHolder
   - usage: 5
     layerNames:
     - Pushable

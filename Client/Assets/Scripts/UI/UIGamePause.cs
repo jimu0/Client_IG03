@@ -15,6 +15,7 @@ public class UIGamePause : UIBase
     //public TextMeshProUGUI text_title;
     public Button BtnResume;
     public Button BtnRestart;
+    public Button BtnTutorial;
     public Button BtnExit;
 
 
@@ -35,6 +36,11 @@ public class UIGamePause : UIBase
             Close();
         });
 
+        BtnTutorial.onClick.AddListener(() =>
+        {
+            UIManager.Instance.Show("UITutorial");
+        });
+
         BtnExit.onClick.AddListener(() =>
         {
             SceneFXController.Instance.FadeOutFX(() =>
@@ -50,6 +56,7 @@ public class UIGamePause : UIBase
     {
         BtnResume.onClick.RemoveAllListeners();
         BtnRestart.onClick.RemoveAllListeners();
+        BtnTutorial.onClick.RemoveAllListeners();
         BtnExit.onClick.RemoveAllListeners();
     }
 }

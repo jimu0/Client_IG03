@@ -12,18 +12,22 @@ public struct LevelCfg
     /// <summary>
     /// 关卡场景名
     /// </summary>
+    [Header("关卡场景名")]
     public string sceneName;
     /// <summary>
     /// 关卡解锁所需积分
     /// </summary>
+    [Header("关卡解锁所需积分, -1表示不能通过积分解锁")]
     public int scoreNeed;
     /// <summary>
     /// 关卡名
     /// </summary>
+    [Header("关卡名")]
     public string levelName;
     /// <summary>
     /// 是否展示在选关界面
     /// </summary>
+    [Header("是否展示在选关界面")]
     public bool showInLevelUI;
 }
 
@@ -142,7 +146,11 @@ public class LevelManager : MonoBehaviour
         if (index <= playLevelIndex)
             return true;
 
-        return PlayerManager.instance.GetScore() >= GetNeedScore(sceneName);
+        int needScore = GetNeedScore(sceneName);
+        if (needScore < 0)
+            return false;
+
+        return PlayerManager.instance.GetScore() >= needScore;
     }
 
     /// <summary>
