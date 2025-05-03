@@ -19,15 +19,17 @@ public class Switch : MonoBehaviour
             SwitchOnEvent?.Invoke();
         else if (stayCount == 0 && triggerExistCount > 0)
             SwitchOffEvent?.Invoke();
+
+        triggerExistCount = stayCount;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        triggerExistCount++;
+        DoSwitch(triggerExistCount +1);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        triggerExistCount--;
+        DoSwitch(triggerExistCount - 1);
     }
 }
