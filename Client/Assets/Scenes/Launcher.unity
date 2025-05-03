@@ -866,56 +866,67 @@ MonoBehaviour:
     levelName: "\u8D2B\u7620\u4E4B\u5730"
     showInLevelUI: 0
     notPlayBGM: 1
+    notShowTitle: 1
   - sceneName: Level_0
     scoreNeed: 0
     levelName: "\u8131\u9669"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_1
     scoreNeed: 0
     levelName: "23\u533A"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_2
     scoreNeed: 3
     levelName: "\u4F9B\u8D27\u7AD9"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_3
     scoreNeed: 4
     levelName: "\u6B64\u8DEF\u4E0D\u901A"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_4
     scoreNeed: 6
     levelName: "\u7BA1\u9053"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_5
     scoreNeed: 7
     levelName: "\u5C45\u6C11\u533A"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_6
     scoreNeed: 7
     levelName: "\u5F15\u64CE"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_7
     scoreNeed: 9
     levelName: "\u54E8\u7AD9"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_8
     scoreNeed: 11
     levelName: "\u98CE\u53E3"
     showInLevelUI: 1
     notPlayBGM: 0
+    notShowTitle: 0
   - sceneName: Level_cg2
     scoreNeed: -1
     levelName: "\u52C7\u6C14"
     showInLevelUI: 0
     notPlayBGM: 1
+    notShowTitle: 1
   preLoadLevelCount: 0
   SetSceneFx: {fileID: 939844306}
 --- !u!1 &1890882845
@@ -988,30 +999,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1890882847}
     m_Modifications:
-    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3675290306281189883, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4121043600736358395, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4121043601058839940, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1059,14 +1046,6 @@ PrefabInstance:
     - target: {fileID: 4121043601058839942, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494949699234500716, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: fadeSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494949699234500716, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
-      propertyPath: startWithBlackScreen
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}
