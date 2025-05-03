@@ -549,6 +549,7 @@ public class PartnerController : MonoBehaviour, IPushable
     public void BeShoot()
     {
         //Debug.Log("BeShoot");
+
         ChangeState(EPartnerState.Flying);
         DisableCollider();
 
@@ -580,6 +581,25 @@ public class PartnerController : MonoBehaviour, IPushable
 
     public void BeFollow()
     {
+        if(IsBox())
+        {
+            ResourceManger.LoadResAsync<GameObject>("FX_Flash_ellow_pink", (obj) =>
+            {
+                if (obj == null)
+                    return;
+
+                var fxObj = GameObject.Instantiate(obj);
+                //fxObj.transform.SetParent(transform.parent);
+                fxObj.transform.position = transform.position;
+                fxObj.transform.localScale = Vector3.one * 0.1f;
+                TimerManager.Register(1f, () =>
+                {
+                    Destroy(fxObj);
+                });
+            });
+           
+        }
+
         //Debug.Log("BeFollow");
         ChangeState(EPartnerState.Follow);
         DisableCollider();
