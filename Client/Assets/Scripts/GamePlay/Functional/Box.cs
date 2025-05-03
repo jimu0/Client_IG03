@@ -21,6 +21,8 @@ public class Box : MonoBehaviour, IPushable
     private RaycastHit m_hitInfo;
     private Vector3 m_rigidVelocity;
 
+    private Vector3 m_offset;
+
     [SerializeField]
     private IPushable m_linkedBox;
     
@@ -31,6 +33,8 @@ public class Box : MonoBehaviour, IPushable
         m_rigidbody = GetComponent<Rigidbody>();
         m_size = m_collider.bounds.size;
         m_rigidbody.isKinematic = true;
+
+        m_offset = new Vector3(0.5f, 0.5f, 0);
     }
 
     void Update()
@@ -253,11 +257,13 @@ public class Box : MonoBehaviour, IPushable
 
             if (!hasGround)
                 return true;
+            //Debug.Log($"box IsCanMove {boxCount} {groundPos} {Vector3.Distance(groundPos, transform.position)}");
             //Debug.Log($"box IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos - transform.position))}");
             if (isHorizontal)
-                return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
+                //return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
+                return (Vector3.Distance(groundPos, transform.position+ m_offset)) - boxCount >= 1 - Mathf.Epsilon;
             else
-                return Mathf.Abs(groundPos.y - transform.position.y) - boxCount >= 1 - Mathf.Epsilon;
+                return Mathf.Abs(groundPos.y - (transform.position.y + m_offset.y)) - boxCount >= 1 - Mathf.Epsilon;
         }
 
         return true;

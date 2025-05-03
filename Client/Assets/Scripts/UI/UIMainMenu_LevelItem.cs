@@ -38,6 +38,8 @@ public class UIMainMenu_LevelItem : MonoBehaviour
         Btn.onClick.RemoveAllListeners();
         Btn.onClick.AddListener(() =>
         {
+            if (!unLock)
+                return;
             AudioManager.PlayBtnClick();
             TmpGameManager.instance.StartPlay(sceneName);
         });
