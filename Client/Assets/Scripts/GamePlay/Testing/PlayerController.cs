@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour, IController
 
     public Transform mesh;
 
+    public bool havePartner;
+
     private float playerSpeed => PlayerManager.instance.PlayerMoveSpeed;
     private float jumpHeight => PlayerManager.instance.PlayerJumpHeight;
     private float gravityValue => PlayerManager.instance.GravityValue;
@@ -32,7 +34,6 @@ public class PlayerController : MonoBehaviour, IController
     }
 
     public Animator animator;
-    
     
     void Start()
     {
@@ -158,7 +159,7 @@ public class PlayerController : MonoBehaviour, IController
 
     public void SetPartnerShow(bool value)
     {
-        tranPartnerOnBack.localScale = value ? Vector3.one : Vector3.zero;
+        tranPartnerOnBack.localScale = (value && havePartner) ? Vector3.one : Vector3.zero;
     }
 
     Vector3 GetHorizontalDirection(float value)
@@ -188,21 +189,25 @@ public class PlayerController : MonoBehaviour, IController
             if (!IsJumping())
                 success = DoPushBox();
 
-        if (type == EControlType.BackPartener)
-            if (!IsJumping())
-                success = partner.DoBackAndShoot();
+        if (havePartner)
+        {
+            if (type == EControlType.BackPartener)
+                if (!IsJumping())
+                    success = partner.DoBackAndShoot();
 
-        if (type == EControlType.ShootPartner)
-            if (!IsJumping())
-                success = partner.DoShoot(transform.forward);
+            if (type == EControlType.ShootPartner)
+                if (!IsJumping())
+                    success = partner.DoShoot(transform.forward);
 
-        if (type == EControlType.ActivePartner)
-            if (!IsJumping())
-                success = partner.DoActive();
+            if (type == EControlType.ActivePartner)
+                if (!IsJumping())
+                    success = partner.DoActive();
 
-        if (type == EControlType.InacitvePartner)
-            if (!IsJumping())
-                success = partner.DoInactive();
+            if (type == EControlType.InacitvePartner)
+                if (!IsJumping())
+                    success = partner.DoInactive();
+        }
+            
 
         return success;
     }
