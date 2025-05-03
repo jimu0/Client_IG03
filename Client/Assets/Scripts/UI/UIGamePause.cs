@@ -23,12 +23,14 @@ public class UIGamePause : UIBase
     {
         BtnResume.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             TmpGameManager.instance.Resume();
             Close();
         });
 
         BtnRestart.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             SceneFXController.Instance.FadeOutFX(() =>
             {
                 TmpGameManager.instance.ResetLevel();
@@ -38,11 +40,13 @@ public class UIGamePause : UIBase
 
         BtnTutorial.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             UIManager.Instance.Show("UITutorial");
         });
 
         BtnExit.onClick.AddListener(() =>
         {
+            AudioManager.PlayBtnClick();
             SceneFXController.Instance.FadeOutFX(() =>
             {
                 TmpGameManager.instance.BackToMenu();

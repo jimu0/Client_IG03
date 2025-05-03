@@ -108,6 +108,7 @@ public class TmpGameManager : MonoBehaviour
     /// </summary>
     public void BackToMenu()
     {
+        AudioManager.StopLevelBGM();
         UIManager.Instance.CloseByName("UIGame");
         UIManager.Instance.Show("UIMainMenu");
         LevelManager.instance.UnloadAllLevel();

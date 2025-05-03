@@ -29,6 +29,9 @@ public struct LevelCfg
     /// </summary>
     [Header("是否展示在选关界面")]
     public bool showInLevelUI;
+
+    [Header("不播放bgm（cg关卡打开）")]
+    public bool notPlayBGM;
 }
 
 /// <summary>
@@ -115,30 +118,60 @@ public class LevelManager : MonoBehaviour
         return Mathf.Clamp(levelIndex, 0, levelCfg.Length - 1);
     }
 
+    /// <summary>
+    /// 关卡配置
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="cfg"></param>
+    /// <returns></returns>
+    public bool TryGetLevelCfg(int index, out LevelCfg cfg)
+    {
+        cfg = default;
+        if (index < 0)
+            return false;
+
+        if (index >= levelCfg.Length)
+            return false;
+
+        cfg = levelCfg[index];
+        return true;
+    }
+
+    /// <summary>
+    /// 关卡积分需求
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
     public int GetNeedScore(string sceneName)
     {
         int index = GetLevelIndex(sceneName);
-        if (index < 0)
+        LevelCfg cfg;
+        if (!TryGetLevelCfg(index, out cfg))
             return 0;
 
-        if (index >= levelCfg.Length)
-            return 0;
-
-        return levelCfg[index].scoreNeed;
+        return cfg.scoreNeed;
     }
 
+    /// <summary>
+    /// 关卡名
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
     public string GetLevelName(string sceneName)
     {
         int index = GetLevelIndex(sceneName);
-        if (index < 0)
+        LevelCfg cfg;
+        if (!TryGetLevelCfg(index, out cfg))
             return sceneName;
 
-        if (index >= levelCfg.Length)
-            return sceneName;
-
-        return levelCfg[index].levelName;
+        return cfg.levelName;
     }
 
+    /// <summary>
+    /// 关卡是否解锁
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
     public bool IsLevelUnlock(string sceneName)
     {
         int index = GetLevelIndex(sceneName);
@@ -294,6 +327,15 @@ public class LevelManager : MonoBehaviour
             if (index == 1)
             {
                 UIManager.Instance.Show("UITutorial");
+            }
+
+            LevelCfg cfg;
+            if (TryGetLevelCfg(index, out cfg))
+            {
+                if (cfg.notPlayBGM)
+                    AudioManager.StopLevelBGM();
+                else
+                    AudioManager.PlayLevelBGM();
             }
         };
     }
