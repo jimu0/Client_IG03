@@ -141,7 +141,8 @@ public class PlayerManager : MonoBehaviour
 
     public void TeleportPlayerAndReset(Vector3 position, RigidbodyConstraints constraints)
     {
-        
+        player.havePartner = WorldStateManager.State.GetBool(WorldStateConst.HavePartner);
+        player.SetPartnerShow(player.havePartner);
 
         player.gameObject.SetActive(true);
         partner.gameObject.SetActive(true);

@@ -824,7 +824,7 @@ public class PartnerController : MonoBehaviour, IPushable
     private void EnableCollider()
     {
         m_collider.enabled = true;
-        SendTriggerEnterEvent();
+        //SendTriggerEnterEvent();
     }
 
     private void DisableCollider()
