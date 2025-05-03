@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1382515130}
+    - target: {fileID: 3765382954388336851, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c2cfd38701428542a110f9dc524a0fd, type: 3}
 --- !u!114 &268734243 stripped
@@ -473,6 +477,10 @@ PrefabInstance:
       propertyPath: partner
       value: 
       objectReference: {fileID: 268734243}
+    - target: {fileID: 6101741669263721686, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+      propertyPath: tranPartnerOnBack
+      value: 
+      objectReference: {fileID: 1382515128}
     - target: {fileID: 6101741669263721687, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -490,6 +498,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9180a00b201090c42849c679012591ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1382515128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5918043670061743930, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}
+  m_PrefabInstance: {fileID: 1382515126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1382515130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6101741669263721680, guid: 578ab6a6886d6194ba7e5b02c887162e, type: 3}

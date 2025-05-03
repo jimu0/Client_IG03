@@ -147,10 +147,10 @@ public class PartnerController : MonoBehaviour, IPushable
         }
         else if (m_state == EPartnerState.Follow)
         {
-            m_actionPassTime += Time.deltaTime;
-            var value = m_backCurve.Evaluate(Mathf.Clamp01(m_actionPassTime / m_backTime));
-            m_curPos = Vector3.Lerp(m_moveStartPos, followTarget.position, value);
-            rigidbody.MovePosition(m_curPos);
+            //m_actionPassTime += Time.deltaTime;
+            //var value = m_backCurve.Evaluate(Mathf.Clamp01(m_actionPassTime / m_backTime));
+            //m_curPos = Vector3.Lerp(m_moveStartPos, followTarget.position, value);
+            //rigidbody.MovePosition(m_curPos);
         }
         else if (m_state == EPartnerState.FlyAndBack)
         {
@@ -203,10 +203,7 @@ public class PartnerController : MonoBehaviour, IPushable
             if (pre ^ m_isGrounded)
             {
                 transform.position = AlignPosition(transform.position);
-                if (m_isGrounded)
-                    animator.SetTrigger("Ground");
-                else
-                    animator.ResetTrigger("Ground");
+                animator.SetBool("Ground", m_isGrounded);
             }
         }
         else
@@ -306,7 +303,7 @@ public class PartnerController : MonoBehaviour, IPushable
 
         if (!hit)
         {
-            m_state = EPartnerState.FlyAndBack;
+            ChangeState(EPartnerState.FlyAndBack);
             m_moveStartPos = followTarget.position;
             m_actionPassTime = 0;
             return true;
@@ -539,58 +536,72 @@ public class PartnerController : MonoBehaviour, IPushable
         //}
     }
 
+    void ChangeState(EPartnerState state)
+    {
+        m_state = state; 
+        player.SetPartnerShow(m_state == EPartnerState.Follow);
+        animator.SetBool("Link", m_state == EPartnerState.BoxActiveWithLink);
+
+        if (m_state == EPartnerState.Flying || m_state == EPartnerState.BackAndShoot)
+            animator.SetFloat("Speed", m_flySpeed);
+    }
+
     public void BeShoot()
     {
         //Debug.Log("BeShoot");
-        m_state = EPartnerState.Flying;
+        ChangeState(EPartnerState.Flying);
         DisableCollider();
-        // todo 模型动画
-        animator.SetFloat("Speed", m_flySpeed);
+
+        // 模型动画
+        player.animator.Play("Base Layer.Bona_ani_skill1",0,0);
+        meshTran.localScale = Vector3.one * 0.3f;
     }
 
     public void BeBox()
     {
         //Debug.Log("BeBox");
-        m_state = EPartnerState.Box;
+        ChangeState(EPartnerState.Box);
         EnableCollider();
-        // todo 模型动画
-        
+
+        // todo 模型动画     
+        animator.Play("Base Layer.Partner_ani_collision", 0, 0);
         meshTran.localScale = Vector3.one;
     }
 
     public void BeBackAndShoot()
     {
-        m_state = EPartnerState.BackAndShoot;
+        ChangeState(EPartnerState.BackAndShoot);
         DisableCollider();
 
         // todo 模型动画
-        animator.SetFloat("Speed", m_flySpeed);
+       
         meshTran.localScale = Vector3.one * 0.3f;
     }
 
     public void BeFollow()
     {
         //Debug.Log("BeFollow");
-        m_state = EPartnerState.Follow;
+        ChangeState(EPartnerState.Follow);
         DisableCollider();
-        
+
         // todo 模型动画
-        meshTran.localScale = Vector3.one * 0.3f;
+        meshTran.localScale = Vector3.zero;
     }
 
     public void BeActive()
     {
-        m_state = GetLink() == null ? EPartnerState.BoxActive : EPartnerState.BoxActiveWithLink;
+        ChangeState(GetLink() == null ? EPartnerState.BoxActive : EPartnerState.BoxActiveWithLink);
         EnableCollider();
         CheckGround();
 
         // todo 模型动画
+        animator.Play("Base Layer.Partner_ani_grab", 0, 0);
         meshTran.localScale = Vector3.one * 1f;
     }
 
     public void BeInactive()
     {
-        m_state = EPartnerState.Box;
+        ChangeState(EPartnerState.Box);
         EnableCollider();
         
         // todo 模型动画
@@ -754,9 +765,10 @@ public class PartnerController : MonoBehaviour, IPushable
             if (!hasGround)
                 return true;
 
-            //Debug.Log($"partner IsCanMove {boxCount} {groundPos} {Mathf.Abs(GetHorizontalValue(groundPos) - GetHorizontalValue(transform.position))}");
+            //Debug.Log($"partner IsCanMove {boxCount} {groundPos} {Vector3.Distance(groundPos, transform.position)}");
             if (isHorizontal)
-                return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
+                //return Mathf.Abs(GetHorizontalValue(groundPos - transform.position)) - boxCount >= 1 - Mathf.Epsilon;
+                return Vector3.Distance(groundPos, transform.position) - boxCount >= 1 - Mathf.Epsilon;
             else
                 return Mathf.Abs(groundPos.y - transform.position.y) - boxCount >= 1 - Mathf.Epsilon;
         }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IController
 {
     private Vector3 m_playerVelocity;
     public PartnerController partner;
+    public Transform tranPartnerOnBack;
 
     public CinemachinePathBase path;
     public CinemachinePathBase.PositionUnits PositionUnits = CinemachinePathBase.PositionUnits.Distance;
@@ -148,10 +149,16 @@ public class PlayerController : MonoBehaviour, IController
             if (box != null)
             {
                 box.DoMove(transform.forward);
+                animator.Play("Base Layer.Bona_ani_push", 0, 0);
                 return true;
             }
         }
         return false;
+    }
+
+    public void SetPartnerShow(bool value)
+    {
+        tranPartnerOnBack.localScale = value ? Vector3.one : Vector3.zero;
     }
 
     Vector3 GetHorizontalDirection(float value)
@@ -199,5 +206,5 @@ public class PlayerController : MonoBehaviour, IController
 
         return success;
     }
-#endregion
+    #endregion
 }
