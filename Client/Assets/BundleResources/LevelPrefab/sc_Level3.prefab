@@ -56,7 +56,8 @@ MonoBehaviour:
   boxPositionList:
   - {x: -7, y: 0, z: 0}
   - {x: -7, y: -3, z: 0}
-  collections: []
+  collections:
+  - {fileID: 7574101417892052968}
   constraints: 7000000008000000
 --- !u!1 &468722665
 GameObject:
@@ -135,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657239133
 Transform:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &648218976501621283
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1126,6 +1127,7 @@ Transform:
   - {fileID: 4824969099741056706}
   - {fileID: 4824969101389679670}
   - {fileID: 5348124363542049710}
+  - {fileID: 1532859667942763490}
   m_Father: {fileID: 8258318275886099218}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7406,6 +7408,79 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &579125578
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 804955914048384987}
+    m_Modifications:
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478193241247179039, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_Name
+      value: Functional_battery
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+--- !u!4 &1532859667942763490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1532859668454746792, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+  m_PrefabInstance: {fileID: 579125578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7574101417892052968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7574101417329704610, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+  m_PrefabInstance: {fileID: 579125578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ab9606a47d1f346a6569a174f037bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4377621654098324997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7627,13 +7702,86 @@ PrefabInstance:
       propertyPath: m_ScaleInLightmap
       value: 0.5897543
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5893577441916756048, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
 --- !u!4 &4824969099741056706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1862694275647678722, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
   m_PrefabInstance: {fileID: 6569666940001806272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9075189847411281511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2800579619059739047, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
+  m_PrefabInstance: {fileID: 6569666940001806272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997235149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075189847411281511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a83917cd9ecfb6469cf8ffdb8ed77d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerExistCount: 0
+  SwitchOnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8857221833996761999}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8857221834530620281}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SwitchOffEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8857221833996761999}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8857221834530620281}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6569666940219632492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8061,13 +8209,86 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.1079998
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8752850257340778891, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
 --- !u!4 &4824969101389679670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1862694275647678722, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
   m_PrefabInstance: {fileID: 6569666940576687412}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9075189845779958931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2800579619059739047, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
+  m_PrefabInstance: {fileID: 6569666940576687412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997235153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075189845779958931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a83917cd9ecfb6469cf8ffdb8ed77d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerExistCount: 0
+  SwitchOnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213448065960655673}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1213448065618268836}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SwitchOffEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213448065960655673}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1213448065618268836}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6569666940586222488
 PrefabInstance:
   m_ObjectHideFlags: 0
