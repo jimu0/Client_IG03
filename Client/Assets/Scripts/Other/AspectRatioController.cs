@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine.Events;
 
+#if UNITY_STANDALONE_WIN
+
 /// <summary>
 ///强制设置Unity游戏窗口的长宽比。你可以调整窗口的大小，他会强制保持一定比例
 ///通过拦截窗口大小调整事件(WindowProc回调)并相应地修改它们来实现的
@@ -69,7 +71,7 @@ public class AspectRatioController : MonoBehaviour
     private bool quitStarted;
 
     // WinAPI相关定义
-    #region WINAPI
+#region WINAPI
 
     // 当窗口调整时,WM_SIZING消息通过WindowProc回调发送到窗口
     private const int WM_SIZING = 0x214;
@@ -147,7 +149,7 @@ public class AspectRatioController : MonoBehaviour
         public int Bottom;
     }
 
-    #endregion
+#endregion
 
     void Start()
     {
@@ -423,3 +425,9 @@ public class AspectRatioController : MonoBehaviour
         Application.Quit();
     }
 }
+#else
+public class AspectRatioController : MonoBehaviour
+{
+}
+
+#endif
