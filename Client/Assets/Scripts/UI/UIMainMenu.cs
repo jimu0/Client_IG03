@@ -64,7 +64,7 @@ public class UIMainMenu : UIBase
         BtnCloseLevel.onClick.AddListener(() =>
         {
             AudioManager.PlayBtnClick();
-            TmpGameManager.instance.Exit();
+            UILevel.SetActive(false);
         });
 
         UILevel.SetActive(false);

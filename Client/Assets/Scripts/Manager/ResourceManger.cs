@@ -33,29 +33,28 @@ public static class ResourceManger
         yield return package.InitializeAsync(initParameters);
 #endif
 
-        //Debug.Log("YooAssets"+ YooAssets.GetPackage(defaultPackageName));
+    }
 
+    public static void PreloadRes()
+    {
         // º”‘ÿshader
         var assetInfos = package.GetAssetInfos("Shader");
         foreach (var item in assetInfos)
         {
             var res = package.LoadAssetSync<Object>(item.Address);
+            Debug.Log("Preload Shader" + item.Address);
             if (item.AssetType == typeof(Shader))
-                m_dicShaders.Add(item.Address, res.AssetObject as Shader);
+                m_dicShaders.TryAdd(item.Address, res.AssetObject as Shader);
         }
 
         // º”‘ÿπÿø®Unit
-        var assetInfos2 = package.GetAssetInfos("LevelUnit");
+        var assetInfos2 = package.GetAssetInfos("Preload");
         foreach (var item in assetInfos2)
         {
             var res = package.LoadAssetSync<Object>(item.Address);
-            m_dicLevelUnit.Add(item.Address, res.AssetObject);
+            Debug.Log("Preload " + item.Address);
+            m_dicLevelUnit.TryAdd(item.Address, res.AssetObject);
         }
-
-        //ResourceManger.LoadResAsync<GameObject>("Prefabs_unit_Box", null);
-        //ResourceManger.LoadResAsync<GameObject>("Prefabs_unit_Wall", null);
-        //ResourceManger.LoadResAsync<GameObject>("Prefabs_Functional_Switch1", null);
-        //ResourceManger.LoadResAsync<GameObject>("Prefabs_Functional_Switch2", null);
     }
 
     /// <summary>

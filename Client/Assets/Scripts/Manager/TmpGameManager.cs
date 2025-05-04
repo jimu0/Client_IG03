@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum EGameState
 {
@@ -46,14 +47,21 @@ public class TmpGameManager : MonoBehaviour
         //WorldStateManager.State.SetValue("test", "2");
         //WorldStateManager.SaveToFile();
         
-        ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
+        var op = SceneManager.LoadSceneAsync("GamePlayScene", LoadSceneMode.Single);
+        op.completed += (AsyncOperation _op) =>
         {
+            //ResourceManger.PreloadRes();
             UIManager.Instance.Show("UIMainMenu");
-        });
-                //Debug.Log("Start Story");
-                //StoryManager.StartStory(10000);
-                //StoryManager.StartStory(10002);
-            //});
+        };
+
+        //ResourceManger.LoadSceneAsync("Scene_GamePlayScene", () =>
+        //{
+        //    UIManager.Instance.Show("UIMainMenu");
+        //});
+
+        //Debug.Log("Start Story");
+        //StoryManager.StartStory(10000);
+        //StoryManager.StartStory(10002);
     }
 
     public void Exit()

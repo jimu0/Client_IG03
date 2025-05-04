@@ -30,7 +30,7 @@ MonoBehaviour:
       - CollectPath: Assets/Scenes
         CollectorGUID: e980e8ee518845046961567c2f31988e
         CollectorType: 0
-        AddressRuleName: AddressByFolderAndFileName
+        AddressRuleName: AddressByGroupAndFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectScene
         AssetTags: 
@@ -76,9 +76,17 @@ MonoBehaviour:
         UserData: 
     - GroupName: Shader
       GroupDesc: 
-      AssetTags: 
+      AssetTags: Shader
       ActiveRuleName: EnableGroup
-      Collectors: []
+      Collectors:
+      - CollectPath: Assets/Shaders
+        CollectorGUID: 1c85cdf0620d6c74092b86e7fda6b152
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: Shader
+        UserData: 
     - GroupName: Actor
       GroupDesc: 
       AssetTags: 
@@ -175,4 +183,65 @@ MonoBehaviour:
         PackRuleName: PackDirectory
         FilterRuleName: CollectPrefab
         AssetTags: 
+        UserData: 
+    - GroupName: Preload
+      GroupDesc: 
+      AssetTags: Preload
+      ActiveRuleName: DisableGroup
+      Collectors:
+      - CollectPath: Assets/BundleResources/Actor/Unit/Prefabs
+        CollectorGUID: fe4076920e1d9694fb198029e3898e66
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/Actor/Functional
+        CollectorGUID: d6e5294ebb9498a4a97489b2c21250f7
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/Actor/AridDesertEnvironment
+        CollectorGUID: 8258cb386ee86df4fa5b274049314dcd
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/Actor/FeiTu
+        CollectorGUID: 79770d1dc7b078642b64cf790bda9705
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/LevelPrefab
+        CollectorGUID: 7438a186de9f6f848b4067d62904228e
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/Lightingmap
+        CollectorGUID: 09c6a3d810426044090dcdd552f690f2
+        CollectorType: 0
+        AddressRuleName: AddressByFolderAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: Preload
+        UserData: 
+      - CollectPath: Assets/BundleResources/Timeline
+        CollectorGUID: f17bfe8f48269bf4897b857c168a4591
+        CollectorType: 0
+        AddressRuleName: AddressByGroupAndFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: Preload
         UserData: 

@@ -277,7 +277,7 @@ public class LevelManager : MonoBehaviour
             return;
         
         m_curSceneIndex = index;
-        TryLoadScene(m_curSceneIndex, ()=> { ResetLevel(); });
+        TryLoadScene(m_curSceneIndex, ()=> { ResetLevel(); }, false);
         for (int i = 1; i <= preLoadLevelCount; i++)
         {
             TryLoadScene(m_curSceneIndex + i);
@@ -286,7 +286,7 @@ public class LevelManager : MonoBehaviour
         TryUnloadScene();
     }
 
-    private void TryLoadScene(int index, System.Action callback = null)
+    private void TryLoadScene(int index, System.Action callback = null, bool active = false)
     {
         if (index < 0 || index >= levelCfg.Length)
             return;
@@ -294,7 +294,7 @@ public class LevelManager : MonoBehaviour
         if (m_loadedScene.Contains(index))
             return;
 
-        LoadScene(index, callback);
+        LoadScene(index, callback, active);
     }
 
     void TryUnloadScene()
@@ -315,17 +315,20 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void LoadScene(int index, System.Action callback = null)
+    void LoadScene(int index, System.Action callback = null, bool active = false)
     {   
         if (m_loadedScene.Contains(index))
             return;
 
         var op = SceneManager.LoadSceneAsync(levelCfg[index].sceneName, LoadSceneMode.Additive);
-        // op.allowSceneActivation = true;
+        //op.allowSceneActivation = active;
         op.completed += (AsyncOperation _op) =>
         {
             callback?.Invoke();
             m_loadedScene.Add(index);
+
+            if (active)
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(levelCfg[index].sceneName));
 
             if (index == 1)
             {
