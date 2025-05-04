@@ -9,7 +9,7 @@ using UnityEngine.U2D;
 public class UIMainMenu_LevelItem : MonoBehaviour
 {
     public Button Btn;
-    public TextMeshProUGUI TextLevelName;
+    public Text TextLevelName;
     public TextMeshProUGUI TextLock;
 
     public Image ImgLevel;
