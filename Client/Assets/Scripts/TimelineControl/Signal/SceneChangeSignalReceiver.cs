@@ -12,5 +12,21 @@ namespace Scripts.TimelineControl.Signal
                 LevelManager.instance.EnterLevel(sceneChangeSignal.TargetSceneName);
             }
         }
+
+        public void StartTimeLine()
+        {
+            TmpGameManager.instance.StartTimeLine();
+        }
+        public void EndTimeLine()
+        {
+            TmpGameManager.instance.EndTimeLine();
+        }
+
+        public void BackToMenu()
+        {
+            TmpGameManager.instance.BackToMenu();
+        }
+        
+
     }
 }
