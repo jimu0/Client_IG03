@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1006029808, guid: 5ee38fc85b45d1944b75e3d35a007754, type: 3}
+      propertyPath: collections.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3290192934720485729, guid: 5ee38fc85b45d1944b75e3d35a007754, type: 3}
       propertyPath: m_Name
       value: sc_Level1
