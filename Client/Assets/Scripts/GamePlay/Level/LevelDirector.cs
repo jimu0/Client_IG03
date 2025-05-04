@@ -39,7 +39,14 @@ public class LevelDirector : MonoBehaviour
         //}
         // 先写死
         m_constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-        Debug.Log($"LevelDirector {levelSceneName} m_constraints {m_constraints}");
+        //Debug.Log($"LevelDirector {levelSceneName} m_constraints {m_constraints}");
+
+        for (int i = 0; i < collections.Count; i++)
+        {
+            collections[i].levelIndex = levelIndex;
+            collections[i].number = i;
+        }
+
         LevelManager.instance.RegistLevelDirector(this);
 
     }

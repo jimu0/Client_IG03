@@ -216,6 +216,7 @@ public class LevelManager : MonoBehaviour
         int value = WorldStateManager.State.GetInt(key, 0);
         value |= 1 << number;
         WorldStateManager.State.SetValue(key, value.ToString());
+        WorldStateManager.SaveToFile();
     }
 
     /// <summary>

@@ -176,6 +176,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Collecte(int levelIndex, int number)
     {
+        LevelManager.instance.GatherCollect(levelIndex, number);
         var score = WorldStateManager.State.GetInt(WorldStateConst.Score, 0) + 1;
         WorldStateManager.State.SetValue(WorldStateConst.Score, score.ToString());
     }
