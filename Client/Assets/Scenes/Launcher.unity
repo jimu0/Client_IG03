@@ -939,6 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1890882847}
   - component: {fileID: 1890882846}
+  - component: {fileID: 1890882848}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -982,6 +983,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890882848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890882845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642abd2d1e1688d4381145d45133fe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  allowFullscreen: 1
+  aspectRatioWidth: 16
+  aspectRatioHeight: 9
+  minWidthPixel: 512
+  minHeightPixel: 512
+  maxWidthPixel: 4096
+  maxHeightPixel: 4096
 --- !u!4 &1958543633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4121043601058839940, guid: 3d4102f06fead7046be2e2ab86de58a4, type: 3}

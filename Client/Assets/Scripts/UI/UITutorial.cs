@@ -13,6 +13,8 @@ public class UITutorial : UIBase
 {
     public Button BtnClose;
 
+    public Transform[] TranPartnerControl;
+
     public override void OnShow(object param)
     {
         BtnClose.onClick.AddListener(() =>
@@ -20,6 +22,11 @@ public class UITutorial : UIBase
             AudioManager.PlayBtnClick();
             Close();
         });
+
+        foreach (var item in TranPartnerControl)
+        {
+            item.gameObject.SetActive(WorldStateManager.State.GetBool(WorldStateConst.HavePartner));
+        }
     }
 
     public override void OnClose()
