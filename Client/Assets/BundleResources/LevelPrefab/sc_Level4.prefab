@@ -926,7 +926,7 @@ MonoBehaviour:
   levelIndex: 0
   checkPoints:
   - {fileID: 3456437914919177997}
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 0.5, y: 0, z: 0}
   LevelOrigin: {fileID: 5912566816197327086}
   boxes:
   - {fileID: 7195579231422978425}

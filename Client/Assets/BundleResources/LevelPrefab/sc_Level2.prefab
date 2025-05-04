@@ -220,7 +220,7 @@ MonoBehaviour:
   levelIndex: 0
   checkPoints:
   - {fileID: 468722666}
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 0.5, y: 0, z: 0}
   LevelOrigin: {fileID: 4787853303883195294}
   boxes:
   - {fileID: 5697115076373050095}
