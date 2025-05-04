@@ -333,7 +333,10 @@ public class LevelManager : MonoBehaviour
 
             if (index == 1)
             {
-                UIManager.Instance.Show("UITutorial");
+                TimerManager.Register(2f, () =>
+                {
+                    UIManager.Instance.Show("UITutorial");
+                });
             }
 
             LevelCfg cfg;

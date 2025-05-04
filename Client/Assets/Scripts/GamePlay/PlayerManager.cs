@@ -137,6 +137,11 @@ public class PlayerManager : MonoBehaviour
         WorldStateManager.State.SetValue(WorldStateConst.HavePartner, true);
         player.havePartner = WorldStateManager.State.GetBool(WorldStateConst.HavePartner);
         player.SetPartnerShow(true);
+
+        TimerManager.Register(1f, () =>
+        {
+            UIManager.Instance.Show("UITutorial");
+        });
     }
 
     public void TeleportPlayerAndReset(Vector3 position, RigidbodyConstraints constraints)
