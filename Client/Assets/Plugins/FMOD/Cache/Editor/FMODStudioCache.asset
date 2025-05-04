@@ -264,7 +264,7 @@ MonoBehaviour:
   - {fileID: 3999874768851557352}
   StringsBanks:
   - {fileID: -3654084976393318218}
-  cacheTime: 638816392493663691
+  cacheTime: 638819734059007104
   cacheVersion: 131616
 --- !u!114 &1531786801914800405
 MonoBehaviour:
@@ -388,7 +388,7 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u4E3B\u8981.bank"
   Name: "\u4E3B\u8981"
   StudioPath: "bank:/\u4E3B\u8981"
-  lastModified: 638816392478174826
+  lastModified: 638819734059007104
   FileSizes:
   - Name: Desktop
     Value: 560672
@@ -443,7 +443,7 @@ MonoBehaviour:
   - {fileID: 3999874768851557352}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
