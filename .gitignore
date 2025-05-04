@@ -11,6 +11,7 @@ Client/[Uu]ser[Ss]ettings/
 Client/[Cc]rash[Rr]eports/
 
 # Visual Studio
+.vs/
 Client/.vs/
 Client/*.csproj
 Client/*.sln
