@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_Level5
       objectReference: {fileID: 0}
+    - target: {fileID: 1273605825069295228, guid: f0561d62ec9bef940b787a5ef9b32a15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273605826449601969, guid: f0561d62ec9bef940b787a5ef9b32a15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781699413982039960, guid: f0561d62ec9bef940b787a5ef9b32a15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7766843272632011313, guid: f0561d62ec9bef940b787a5ef9b32a15, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -187,6 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6519755756246711404, guid: 07f3040df89af8b4999f8090a1109f6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.610634
+      objectReference: {fileID: 0}
     - target: {fileID: 7044881151628729684, guid: 07f3040df89af8b4999f8090a1109f6c, type: 3}
       propertyPath: m_Name
       value: StaticRes_Level5
