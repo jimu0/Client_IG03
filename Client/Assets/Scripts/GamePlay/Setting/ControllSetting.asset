@@ -36,7 +36,7 @@ MonoBehaviour:
     commonCdGroup: 1
   - type: 3
     keyCode: 121
-    keyCode2: 101
+    keyCode2: 113
     cd: 0
     commonCdAffected: 1
     commonCd: 0.05
