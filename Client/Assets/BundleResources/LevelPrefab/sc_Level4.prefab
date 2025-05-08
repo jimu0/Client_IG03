@@ -1,5 +1,134 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100151142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100151143}
+  - component: {fileID: 100151144}
+  m_Layer: 3
+  m_Name: unit_Wall (47)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &100151143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100151142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1022940010}
+  m_Father: {fileID: 3442620880618868238}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &100151144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100151142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.5, z: 0}
+--- !u!1 &1022940009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1022940010}
+  - component: {fileID: 1022940012}
+  - component: {fileID: 1022940011}
+  m_Layer: 3
+  m_Name: mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1022940010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022940009}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 100151143}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1022940012
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022940009}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1022940011
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022940009}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5bf7636ea8f513443be1c832cd7ae7fc, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &301222564586095344
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +663,7 @@ Transform:
   - {fileID: 6377354707835453549}
   - {fileID: 6330649703153009167}
   - {fileID: 4168802811043327687}
+  - {fileID: 100151143}
   m_Father: {fileID: 1855001604568157811}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -863,7 +993,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.5844028
+  m_ScaleInLightmap: 0.58288413
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -6263,6 +6393,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Functional_battery
       objectReference: {fileID: 0}
+    - target: {fileID: 5467181016922538771, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217380602909592099, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.582616
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 577654a1b0fdf394e8a801258a6e18db, type: 3}
 --- !u!4 &1532859669242484591 stripped
@@ -6508,11 +6646,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6164767390836274646, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.58416164
+      value: 0.5826448
       objectReference: {fileID: 0}
     - target: {fileID: 6272602073868788875, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844826
+      value: 0.5829633
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5893577441916756048, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
@@ -6562,6 +6700,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8701222881363442147}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchON
+          m_BoolArgument: 0
+        m_CallState: 2
   SwitchOffEvent:
     m_PersistentCalls:
       m_Calls:
@@ -6589,6 +6739,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4973800813351672687}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8701222881363442147}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchOFF
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &8701222881363442147 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1953191368520764203, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
+  m_PrefabInstance: {fileID: 7195579229778555592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8791672696242117578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1862694275647678722, guid: 6d1a6c76d12e7134fb1fbc4689d6f755, type: 3}
@@ -6651,7 +6830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088181579999154260, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844188
+      value: 0.58290005
       objectReference: {fileID: 0}
     - target: {fileID: 3319233481073422842, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_Name
@@ -6667,7 +6846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
@@ -6768,11 +6947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6164767390836274646, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.58416164
+      value: 0.5826448
       objectReference: {fileID: 0}
     - target: {fileID: 7951016894052893168, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.58448493
+      value: 0.5829657
       objectReference: {fileID: 0}
     - target: {fileID: 8455318965672517669, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6969,6 +7148,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8752850257340778891, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
+--- !u!95 &3311801715544033459 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5633500874040376754, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
+  m_PrefabInstance: {fileID: 7195579229953553665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4973800813727997094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2800579619059739047, guid: 9171a2f6c7fedbd448f3464e99bc26e1, type: 3}
@@ -7038,6 +7222,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3311801715544033459}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchOFF
+          m_BoolArgument: 0
+        m_CallState: 2
   SwitchOffEvent:
     m_PersistentCalls:
       m_Calls:
@@ -7087,6 +7283,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3311801715544033459}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchON
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &8791672696421047299 stripped
@@ -7159,11 +7367,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: ba565daf0d10b704080e052179052f0b, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     - target: {fileID: 6710092437999589322, guid: ba565daf0d10b704080e052179052f0b, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844269
+      value: 0.58290803
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba565daf0d10b704080e052179052f0b, type: 3}
@@ -7240,7 +7448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088181579999154260, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844188
+      value: 0.58290005
       objectReference: {fileID: 0}
     - target: {fileID: 3319233481073422842, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_Name
@@ -7256,7 +7464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
@@ -7341,11 +7549,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: ba565daf0d10b704080e052179052f0b, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     - target: {fileID: 6710092437999589322, guid: ba565daf0d10b704080e052179052f0b, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844269
+      value: 0.58290803
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba565daf0d10b704080e052179052f0b, type: 3}
@@ -7422,7 +7630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088181579999154260, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844188
+      value: 0.58290005
       objectReference: {fileID: 0}
     - target: {fileID: 3319233481073422842, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_Name
@@ -7438,7 +7646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
@@ -7515,7 +7723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088181579999154260, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.5844188
+      value: 0.58290005
       objectReference: {fileID: 0}
     - target: {fileID: 3319233481073422842, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_Name
@@ -7531,7 +7739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5967515518198234723, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.584383
+      value: 0.5828645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7190b2244f3984b479e004cd6e09d73f, type: 3}

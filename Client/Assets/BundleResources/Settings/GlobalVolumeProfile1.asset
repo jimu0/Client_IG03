@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Value: 0.1
   depth9TilesThreshold:
     m_OverrideState: 1
-    m_Value: 0.364
+    m_Value: 0.36
   depth9TilesBottomFix:
     m_OverrideState: 0
     m_Value: 0.005
