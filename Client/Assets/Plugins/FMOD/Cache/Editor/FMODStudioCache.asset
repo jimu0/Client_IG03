@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../../Clinet_IG03_fmod/fmodProj/Build/Desktop/assets.bank
   Name: assets
   StudioPath: bank:/assets
-  lastModified: 638821579937931506
+  lastModified: 638816392477977598
   FileSizes:
   - Name: Desktop
     Value: 36224
@@ -145,7 +145,7 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u4E3B\u8981.strings.bank"
   Name: "\u4E3B\u8981.strings"
   StudioPath: "bank:/\u4E3B\u8981.strings"
-  lastModified: 638821579937951483
+  lastModified: 638816392478200058
   FileSizes:
   - Name: Desktop
     Value: 1584
@@ -221,7 +221,7 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/UI\u901A\u7528.bank"
   Name: "UI\u901A\u7528"
   StudioPath: "bank:/UI\u901A\u7528"
-  lastModified: 638821579937921449
+  lastModified: 638816392493663691
   FileSizes:
   - Name: Desktop
     Value: 8512
@@ -264,7 +264,7 @@ MonoBehaviour:
   - {fileID: 3999874768851557352}
   StringsBanks:
   - {fileID: -3654084976393318218}
-  cacheTime: 638821579937951483
+  cacheTime: 638819734059007104
   cacheVersion: 131616
 --- !u!114 &1531786801914800405
 MonoBehaviour:
@@ -388,7 +388,7 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/\u4E3B\u8981.bank"
   Name: "\u4E3B\u8981"
   StudioPath: "bank:/\u4E3B\u8981"
-  lastModified: 638821579937951483
+  lastModified: 638819734059007104
   FileSizes:
   - Name: Desktop
     Value: 560672
@@ -443,7 +443,7 @@ MonoBehaviour:
   - {fileID: 3999874768851557352}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -516,7 +516,7 @@ MonoBehaviour:
   Path: "../../Clinet_IG03_fmod/fmodProj/Build/Desktop/CG\u80CC\u666F.bank"
   Name: "CG\u80CC\u666F"
   StudioPath: "bank:/CG\u80CC\u666F"
-  lastModified: 638821579937921449
+  lastModified: 638816392493372567
   FileSizes:
   - Name: Desktop
     Value: 2308448
