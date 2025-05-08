@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: sc_Level7
       objectReference: {fileID: 0}
-    - target: {fileID: 802014706146154398, guid: 8c2434cae85772d4c8265e4932e43de2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6956972040117533159, guid: 8c2434cae85772d4c8265e4932e43de2, type: 3}
       propertyPath: m_RootOrder
       value: 0

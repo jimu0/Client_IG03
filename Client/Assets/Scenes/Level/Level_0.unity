@@ -416,12 +416,139 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2651255165502153876, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7160673182851110266, guid: abd6d36162e3f29479df4d640743625c, type: 3}
       propertyPath: m_Name
       value: sc_Level0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+--- !u!114 &456242321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1093899244855390937, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+  m_PrefabInstance: {fileID: 456242320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4cc665d01f94048bd599aa410e54f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &456242322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8919099251304428438, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+  m_PrefabInstance: {fileID: 456242320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4cc665d01f94048bd599aa410e54f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &456242323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2651255165502153876, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+  m_PrefabInstance: {fileID: 456242320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &456242324 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1805292429648578072, guid: abd6d36162e3f29479df4d640743625c, type: 3}
+  m_PrefabInstance: {fileID: 456242320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &456242325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456242323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a83917cd9ecfb6469cf8ffdb8ed77d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerExistCount: 0
+  SwitchOnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 456242322}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 456242321}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 456242324}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchON
+          m_BoolArgument: 0
+        m_CallState: 2
+  SwitchOffEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 456242322}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 456242321}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: CloseDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 456242324}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Functional_Switch_SwitchOFF
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &503285404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1730,10 @@ PrefabInstance:
     - target: {fileID: 263350206623381720, guid: 73fc4d2f8c78a6c42b49def3b783686a, type: 3}
       propertyPath: m_Name
       value: StaticRes_Level0
+      objectReference: {fileID: 0}
+    - target: {fileID: 263350206623381720, guid: 73fc4d2f8c78a6c42b49def3b783686a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 263350206623381720, guid: 73fc4d2f8c78a6c42b49def3b783686a, type: 3}
       propertyPath: m_StaticEditorFlags
